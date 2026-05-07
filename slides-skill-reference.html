@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skill Reference – Zendesk AI Slides</title>
+  <style>
+    :root {
+      --color-coconut: #ffffff;
+      --color-licorice: #11110d;
+      --color-matcha: #70a32a;
+      --color-sesame: #f5f5f2;
+
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-mono: 'Monaco', 'Courier New', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--color-coconut);
+      color: var(--color-licorice);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    /* Header */
+    .header {
+      padding: 48px 0;
+      border-bottom: 1px solid var(--color-licorice);
+      margin-bottom: 80px;
+    }
+
+    .header__title {
+      font-size: 21px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+
+    /* Section */
+    .section {
+      margin-bottom: 80px;
+    }
+
+    .section__number {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      letter-spacing: 0.05em;
+      opacity: 0.5;
+      margin-bottom: 16px;
+    }
+
+    .section__title {
+      font-size: 32px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 24px;
+    }
+
+    .section__prose {
+      max-width: 720px;
+    }
+
+    .section__prose p {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .section__prose p:last-child {
+      margin-bottom: 0;
+    }
+
+    .section__prose code {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      background: var(--color-sesame);
+      padding: 2px 6px;
+      border-radius: 3px;
+    }
+
+    .section__prose strong {
+      font-weight: 600;
+    }
+
+    /* Code block */
+    .code-block {
+      background: var(--color-sesame);
+      padding: 24px;
+      border-radius: 6px;
+      margin: 32px 0;
+      overflow-x: auto;
+    }
+
+    .code-block__content {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      line-height: 1.6;
+      white-space: pre-wrap;
+    }
+
+    /* Token grid */
+    .token-grid {
+      display: grid;
+      gap: 16px;
+      margin: 32px 0;
+    }
+
+    .token-item {
+      display: grid;
+      grid-template-columns: 100px 200px 1fr;
+      gap: 16px;
+      align-items: center;
+      padding: 16px;
+      background: var(--color-sesame);
+      border-radius: 6px;
+    }
+
+    .token-item__swatch {
+      width: 100%;
+      height: 48px;
+      border-radius: 4px;
+      border: 1px solid rgba(17, 17, 13, 0.1);
+    }
+
+    .token-item__name {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .token-item__value {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      opacity: 0.6;
+    }
+
+    .token-item__usage {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    /* Footer nav */
+    .footer-nav {
+      border-top: 1px solid var(--color-licorice);
+      padding: 48px 0 64px;
+      display: flex;
+      gap: 32px;
+    }
+
+    .footer-nav__link {
+      font-size: 15px;
+      color: var(--color-licorice);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .footer-nav__link:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 24px;
+      }
+
+      .section__title {
+        font-size: 24px;
+      }
+
+      .token-item {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1 class="header__title">Skill Reference</h1>
+    </header>
+
+    <main>
+      <!-- 01 — Installation -->
+      <section class="section">
+        <div class="section__number">01 — INSTALLATION</div>
+        <h2 class="section__title">Where it lives and how to install it</h2>
+
+        <div class="section__prose">
+          <p>The Zendesk AI Slides skill is a Claude Code skill file: <code>zendesk-slides-skill.md</code>. Place it in your project's <code>.claude/skills/</code> directory or in the global skills directory at <code>~/.claude/skills/</code>.</p>
+          <p><strong>Installation:</strong></p>
+        </div>
+
+        <div class="code-block">
+          <div class="code-block__content"># Project-specific (recommended for team sharing)
+mkdir -p .claude/skills
+cp zendesk-slides-skill.md .claude/skills/
+
+# Global (available across all projects)
+mkdir -p ~/.claude/skills
+cp zendesk-slides-skill.md ~/.claude/skills/</div>
+        </div>
+
+        <div class="section__prose">
+          <p>Once installed, the skill activates automatically when Claude detects slide, deck, or presentation work. No manual invocation required.</p>
+        </div>
+      </section>
+
+      <!-- 02 — Worked example -->
+      <section class="section">
+        <div class="section__number">02 — WORKED EXAMPLE</div>
+        <h2 class="section__title">Using the skill: starter prompt to draft output</h2>
+
+        <div class="section__prose">
+          <p><strong>Starter prompt:</strong></p>
+        </div>
+
+        <div class="code-block">
+          <div class="code-block__content">I need a 10-slide deck for the Zendesk Intelligence Assistant launch. Internal audience (product + leadership). Sections: problem, solution, product, proof, close. Images: I have product screenshots for slides 6-7, customer photo for slide 8. Rest can be placeholders.</div>
+        </div>
+
+        <div class="section__prose">
+          <p><strong>Claude's draft output (excerpt):</strong></p>
+        </div>
+
+        <div class="code-block">
+          <div class="code-block__content">**Slide 1: Cover (speaker: yes)**
+
+Eyebrow: [Leave blank or "01 · Launch"]
+Headline: Zendesk Intelligence Assistant
+Speaker: Maya Chen, VP Product, Zendesk
+Image: [placeholder: product dashboard screenshot]
+
+---
+
+**Slide 3: Section divider (body: yes)**
+
+Eyebrow: 01 · The problem
+Headline: The support gap
+Body: Today's agents spend 60% of their time searching for answers instead of helping customers.
+
+---
+
+**Slide 6: Content (columns: 3, media: none)**
+
+Eyebrow: 03 · Product
+Headline: Built on three principles
+Subline: Context-aware, instant, and always learning
+Columns:
+  - **Context-aware**: Understands full ticket history, not just keywords.
+  - **Instant answers**: Sub-second response time for agent queries.
+  - **Always learning**: Improves from every interaction automatically.
+
+---
+
+Does this structure work, or should I adjust the archetype / split the content?</div>
+        </div>
+
+        <div class="section__prose">
+          <p><strong>Common follow-ups:</strong></p>
+          <p>"Make slide 6 a 4-column layout instead" → Claude adjusts parameters<br>
+          "Add a Quote slide after slide 7" → Claude inserts and renumbers<br>
+          "The headline on slide 3 is too vague" → Claude revises copy</p>
+        </div>
+      </section>
+
+      <!-- 03 — Draft block format -->
+      <section class="section">
+        <div class="section__number">03 — DRAFT BLOCK FORMAT</div>
+        <h2 class="section__title">How Claude presents slide drafts</h2>
+
+        <div class="section__prose">
+          <p>Each slide draft follows this structure:</p>
+        </div>
+
+        <div class="code-block">
+          <div class="code-block__content">**Slide [N]: [Archetype] ([parameters])**
+
+Eyebrow: [NN] · [SECTION LABEL]
+Headline: [headline text]
+Subline: [subline text, if applicable]
+Body: [body text or column content]
+Image: [image filename OR placeholder description]
+Speaker: [name, title, company — Cover only]
+Quote attribution: [name, title, company — Quote only]</div>
+        </div>
+
+        <div class="section__prose">
+          <p>The format is consistent and machine-parseable. Eyebrow numbering (<code>[NN]</code>) and section labels map to the deck's structure. Images reference the user's inventory or describe placeholders for later replacement.</p>
+        </div>
+      </section>
+
+      <!-- 04 — Full skill content -->
+      <section class="section">
+        <div class="section__number">04 — FULL SKILL CONTENT</div>
+        <h2 class="section__title">The complete skill file</h2>
+
+        <div class="section__prose">
+          <p>This is the skill Claude reads when drafting slides. Copy rules, archetype parameters, stop-and-ask discipline, and anti-patterns are all encoded here.</p>
+        </div>
+
+        <div class="code-block">
+          <div class="code-block__content">---
+name: zendesk-slides
+description: Generate slide decks using the Zendesk AI Slides design system. Triggers on slide, deck, or presentation work.
+---
+
+# Zendesk AI Slides Skill
+
+You draft slide content for the Zendesk AI Slides design system. Your job: pick the right archetype for each slide, write clear copy that fits the template constraints, and choose images from the inventory the user provides. The Figma template enforces all brand decisions — size, color, spacing, position. You enforce writing decisions — sentence case, no period on headlines, jargon swaps. You flag concerns about length and structure (slide is getting long, two ideas competing) for the user to resolve, but render what the user provides.
+
+## Preflight
+
+Before drafting slides, confirm:
+
+1. Theme applied: The user has applied the Zendesk AI Slides Figma template to their file
+2. Image inventory: The user has identified available images or confirmed placeholder-only approach
+3. Section structure: The user has outlined the deck's major sections
+4. Confidentiality footer: Master element, do not modify
+5. Audience context: Who will see this deck? Shapes jargon tolerance and detail density
+
+## Archetype Set
+
+| Archetype | Parameters | When to use |
+|-----------|-----------|-------------|
+| Cover | speaker: yes/no | Deck opener |
+| Agenda | rows: 3–8 | Deck roadmap |
+| Section divider | body: yes/no | Chapter break |
+| Statement | — | Bold declarative slide |
+| Quote | — | Customer testimonial |
+| Content | columns: 1/2/3/4/5, media: image/icon/none | Flexible layout |
+| Product plate | — | Product feature with large image |
+| Data display | type: callouts | Metric callouts grid |
+| Timeline | milestones: 2–4 | Horizontal milestone sequence |
+| Closing | — | Final slide, Zendesk wordmark |
+
+## Copy Rules
+
+1. Sentence case for headlines
+2. No period on headlines
+3. One idea per slide (flag if two claims compete)
+4. Body text gets periods
+5. Brevity is the user's call (flag if dense)
+6. Jargon swaps for external audiences
+
+## Imagery Decision Rule
+
+1. Reuse first (check inventory)
+2. Placeholder second (describe what it should depict)
+3. Never generate
+
+## Stop-and-Ask List
+
+- Choosing a Closing slide vs. CTA slide
+- Splitting a dense slide
+- Using the Agenda archetype in short decks
+- Interpreting ambiguous source material
+
+## Draft Block Format
+
+**Slide [N]: [Archetype] ([parameters])**
+Eyebrow: [NN] · [SECTION LABEL]
+Headline: [headline text]
+[etc.]
+
+## Anti-Patterns
+
+1. Empty columns (don't pad with filler)
+2. Headline redundancy (eyebrow + headline repeat)
+3. Mixing metaphors in Timeline (inconsistent granularity)
+4. Burying the lede (conclusion in body, not headline)
+5. Placeholder proliferation (pause after 3-4)
+6. Agenda mismatch (agenda vs. section dividers)</div>
+        </div>
+      </section>
+
+      <!-- 05 — Token reference -->
+      <section class="section">
+        <div class="section__number">05 — TOKEN REFERENCE</div>
+        <h2 class="section__title">Design tokens used in the system</h2>
+
+        <div class="section__prose">
+          <p>Color, typography, and spacing tokens pulled from the Figma template. These are the values the AI references when describing layouts and the designer uses when building the template.</p>
+        </div>
+
+        <h3 style="font-size: 21px; font-weight: 600; margin: 32px 0 16px;">Color Tokens</h3>
+
+        <div class="token-grid">
+          <div class="token-item">
+            <div class="token-item__swatch" style="background: #ffffff; border: 2px solid #e5e5e2;"></div>
+            <div>
+              <div class="token-item__name">Primary/Coconut</div>
+              <div class="token-item__value">#FFFFFF</div>
+            </div>
+            <div class="token-item__usage">Light slide backgrounds (Cover, Content, Quote, Data, Timeline)</div>
+          </div>
+
+          <div class="token-item">
+            <div class="token-item__swatch" style="background: #11110d;"></div>
+            <div>
+              <div class="token-item__name">Primary/Licorice</div>
+              <div class="token-item__value">#11110D</div>
+            </div>
+            <div class="token-item__usage">Primary text, dark slide backgrounds (Section divider, Statement, Closing)</div>
+          </div>
+
+          <div class="token-item">
+            <div class="token-item__swatch" style="background: #70a32a;"></div>
+            <div>
+              <div class="token-item__name">Extended/Matcha 400</div>
+              <div class="token-item__value">#70A32A</div>
+            </div>
+            <div class="token-item__usage">Brand accent in Cover headline, Agenda title</div>
+          </div>
+
+          <div class="token-item">
+            <div class="token-item__swatch" style="background: #d1f470;"></div>
+            <div>
+              <div class="token-item__name">Primary/Matcha</div>
+              <div class="token-item__value">#D1F470</div>
+            </div>
+            <div class="token-item__usage">Bright Matcha in Data display callouts, Timeline connector</div>
+          </div>
+
+          <div class="token-item">
+            <div class="token-item__swatch" style="background: #f5f5f2;"></div>
+            <div>
+              <div class="token-item__name">Extended/Sesame 100</div>
+              <div class="token-item__value">#F5F5F2</div>
+            </div>
+            <div class="token-item__usage">Light neutral (Agenda background)</div>
+          </div>
+
+          <div class="token-item">
+            <div class="token-item__swatch" style="background: #e5e5e2;"></div>
+            <div>
+              <div class="token-item__name">Extended/Sesame 200</div>
+              <div class="token-item__value">#E5E5E2</div>
+            </div>
+            <div class="token-item__usage">Image placeholder backgrounds</div>
+          </div>
+
+          <div class="token-item">
+            <div class="token-item__swatch" style="background: #203524;"></div>
+            <div>
+              <div class="token-item__name">Secondary/Fern</div>
+              <div class="token-item__value">#203524</div>
+            </div>
+            <div class="token-item__usage">Dark green callout background (Data display)</div>
+          </div>
+
+          <div class="token-item">
+            <div class="token-item__swatch" style="background: #2d4c33;"></div>
+            <div>
+              <div class="token-item__name">Secondary/Shamrock</div>
+              <div class="token-item__value">#2D4C33</div>
+            </div>
+            <div class="token-item__usage">Medium green callout background (Data display)</div>
+          </div>
+
+          <div class="token-item">
+            <div class="token-item__swatch" style="background: #355e34;"></div>
+            <div>
+              <div class="token-item__name">Extended/Matcha 600</div>
+              <div class="token-item__value">#355E34</div>
+            </div>
+            <div class="token-item__usage">Dark green background (Product plate only)</div>
+          </div>
+        </div>
+
+        <h3 style="font-size: 21px; font-weight: 600; margin: 48px 0 16px;">Typography Tokens</h3>
+
+        <div class="section__prose">
+          <p>All type set in Inter. Sizes and weights defined in the template:</p>
+        </div>
+
+        <div class="token-grid">
+          <div class="token-item">
+            <div style="font-family: Inter; font-size: 14px; font-weight: 500; line-height: 19px; width: 100px;">Eyebrow</div>
+            <div>
+              <div class="token-item__name">Inter Medium 14pt</div>
+              <div class="token-item__value">weight: 500, lh: 19px</div>
+            </div>
+            <div class="token-item__usage">Eyebrow pill text ([NN] · [SECTION LABEL])</div>
+          </div>
+
+          <div class="token-item">
+            <div style="font-family: Inter; font-size: 27px; font-weight: 400; line-height: 1.3; width: 100px; font-size: 18px;">Body</div>
+            <div>
+              <div class="token-item__name">Inter Regular 27pt</div>
+              <div class="token-item__value">weight: 400, lh: 130%</div>
+            </div>
+            <div class="token-item__usage">Column body, timeline body, section body, product body</div>
+          </div>
+
+          <div class="token-item">
+            <div style="font-family: Inter; font-size: 32px; font-weight: 700; line-height: 1.3; width: 100px; font-size: 20px;">Header</div>
+            <div>
+              <div class="token-item__name">Inter Bold 32pt</div>
+              <div class="token-item__value">weight: 700, lh: 130%</div>
+            </div>
+            <div class="token-item__usage">Content column headers, timeline headers (all caps)</div>
+          </div>
+
+          <div class="token-item">
+            <div style="font-family: Inter; font-size: 40px; font-weight: 500; line-height: 1.3; width: 100px; font-size: 22px;">Subline</div>
+            <div>
+              <div class="token-item__name">Inter Medium 40pt</div>
+              <div class="token-item__value">weight: 500, lh: 130%</div>
+            </div>
+            <div class="token-item__usage">Content subline, data callout subline, agenda header</div>
+          </div>
+
+          <div class="token-item">
+            <div style="font-family: Inter; font-size: 80px; font-weight: 600; line-height: 1.1; width: 100px; font-size: 26px;">Headline</div>
+            <div>
+              <div class="token-item__name">Inter Semi Bold 80pt</div>
+              <div class="token-item__value">weight: 600, lh: 110%</div>
+            </div>
+            <div class="token-item__usage">Content, statement, quote, data display headlines</div>
+          </div>
+
+          <div class="token-item">
+            <div style="font-family: Inter; font-size: 140px; font-weight: 600; line-height: 0.85; width: 100px; font-size: 28px;">Large</div>
+            <div>
+              <div class="token-item__name">Inter Semi Bold 140pt</div>
+              <div class="token-item__value">weight: 600, lh: 85%</div>
+            </div>
+            <div class="token-item__usage">Cover headline</div>
+          </div>
+
+          <div class="token-item">
+            <div style="font-family: Inter; font-size: 160px; font-weight: 600; line-height: 0.85; width: 100px; font-size: 30px;">Section</div>
+            <div>
+              <div class="token-item__name">Inter Semi Bold 160pt</div>
+              <div class="token-item__value">weight: 600, lh: 85%</div>
+            </div>
+            <div class="token-item__usage">Section divider headline, Agenda title</div>
+          </div>
+
+          <div class="token-item">
+            <div style="font-family: Inter; font-size: 112px; font-weight: 600; width: 100px; font-size: 32px;">Data</div>
+            <div>
+              <div class="token-item__name">Inter Semi Bold 112pt</div>
+              <div class="token-item__value">weight: 600, lh: 0</div>
+            </div>
+            <div class="token-item__usage">Data display callout values ([$0.00])</div>
+          </div>
+        </div>
+
+        <h3 style="font-size: 21px; font-weight: 600; margin: 48px 0 16px;">Spacing Tokens</h3>
+
+        <div class="section__prose">
+          <p>Fixed pixel values inferred from layout inspection:</p>
+        </div>
+
+        <div class="token-grid">
+          <div class="token-item">
+            <div style="width: 100px; height: 30px; background: var(--color-matcha); border-radius: 4px;"></div>
+            <div>
+              <div class="token-item__name">Horizontal padding</div>
+              <div class="token-item__value">30px</div>
+            </div>
+            <div class="token-item__usage">Standard left/right padding for all slides</div>
+          </div>
+
+          <div class="token-item">
+            <div style="width: 100px; height: 32px; background: var(--color-matcha); border-radius: 4px;"></div>
+            <div>
+              <div class="token-item__name">Column gap</div>
+              <div class="token-item__value">32px</div>
+            </div>
+            <div class="token-item__usage">Gap between Content columns, Data display callouts</div>
+          </div>
+
+          <div class="token-item">
+            <div style="width: 100px; height: 40px; background: var(--color-matcha); border-radius: 4px;"></div>
+            <div>
+              <div class="token-item__name">Callout padding</div>
+              <div class="token-item__value">40px</div>
+            </div>
+            <div class="token-item__usage">Internal padding for Data display callout boxes</div>
+          </div>
+
+          <div class="token-item">
+            <div style="width: 100px; height: 64px; background: var(--color-matcha); border-radius: 4px;"></div>
+            <div>
+              <div class="token-item__name">Major section gap</div>
+              <div class="token-item__value">64px</div>
+            </div>
+            <div class="token-item__usage">Vertical space between major content sections</div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer-nav">
+      <a href="index.html" class="footer-nav__link">← Overview</a>
+      <a href="slides-visual-reference.html" class="footer-nav__link">Visual Reference</a>
+    </footer>
+  </div>
+</body>
+</html>

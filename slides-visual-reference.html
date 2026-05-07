@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visual Reference – Zendesk AI Slides</title>
+  <style>
+    :root {
+      --color-coconut: #ffffff;
+      --color-licorice: #11110d;
+      --color-matcha: #70a32a;
+      --color-sesame: #f5f5f2;
+
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-mono: 'Monaco', 'Courier New', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--color-coconut);
+      color: var(--color-licorice);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    /* Header */
+    .header {
+      padding: 48px 0;
+      border-bottom: 1px solid var(--color-licorice);
+      margin-bottom: 80px;
+    }
+
+    .header__title {
+      font-size: 21px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+
+    /* Section */
+    .section {
+      margin-bottom: 160px;
+    }
+
+    .section__number {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      letter-spacing: 0.05em;
+      opacity: 0.5;
+      margin-bottom: 16px;
+    }
+
+    .section__title {
+      font-size: 32px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 32px;
+    }
+
+    .section__prose {
+      max-width: 720px;
+      margin-bottom: 48px;
+    }
+
+    .section__prose p {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .section__prose p:last-child {
+      margin-bottom: 0;
+    }
+
+    .section__prose strong {
+      font-weight: 600;
+    }
+
+    /* Slide render */
+    .slide {
+      background: var(--color-sesame);
+      padding: 48px;
+      border-radius: 8px;
+      margin-bottom: 48px;
+    }
+
+    .slide__image {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 4px;
+      box-shadow: 0 2px 12px rgba(17, 17, 13, 0.08);
+    }
+
+    /* Parameters */
+    .parameters {
+      max-width: 720px;
+      margin-bottom: 32px;
+    }
+
+    .parameters__title {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .parameters__list {
+      list-style: none;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .parameters__list li {
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .parameters__list li:before {
+      content: '·';
+      position: absolute;
+      left: 0;
+    }
+
+    /* Footer nav */
+    .footer-nav {
+      border-top: 1px solid var(--color-licorice);
+      padding: 48px 0 64px;
+      display: flex;
+      gap: 32px;
+    }
+
+    .footer-nav__link {
+      font-size: 15px;
+      color: var(--color-licorice);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .footer-nav__link:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 24px;
+      }
+
+      .section {
+        margin-bottom: 80px;
+      }
+
+      .section__title {
+        font-size: 24px;
+      }
+
+      .slide {
+        padding: 24px;
+      }
+    }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1 class="header__title">Visual Reference</h1>
+    </header>
+
+    <main>
+      <!-- 01 — Cover -->
+      <section class="section">
+        <div class="section__number">01 — COVER</div>
+        <h2 class="section__title">Cover</h2>
+
+        <div class="section__prose">
+          <p><strong>When to use:</strong> Deck opener. Every deck starts here. Use <code>speaker: yes</code> for conference talks or webinars where the presenter's identity matters (includes speaker photo, name, title). Use <code>speaker: no</code> for decks sent without a presenter — sales leave-behinds, strategy docs, internal briefings.</p>
+          <p><strong>What pairs with it:</strong> Follow immediately with Agenda (slide 2) or jump straight to a Section divider if the deck is short and the structure is obvious.</p>
+          <p><strong>What to avoid:</strong> Don't use Cover as a chapter break mid-deck. That's what Section divider is for. Don't skip it — even internal decks benefit from a clear opener that sets context.</p>
+        </div>
+
+        <div class="parameters">
+          <div class="parameters__title">Parameters</div>
+          <ul class="parameters__list">
+            <li><strong>speaker:</strong> yes/no (includes speaker photo, name, title, company when yes)</li>
+            <li><strong>Matcha placement:</strong> Headline text (structural, not a choice)</li>
+          </ul>
+        </div>
+
+        <div class="slide">
+          <img src="assets/renders/cover--canonical.png" alt="Cover archetype" class="slide__image">
+        </div>
+      </section>
+
+      <!-- 02 — Agenda -->
+      <section class="section">
+        <div class="section__number">02 — AGENDA</div>
+        <h2 class="section__title">Agenda</h2>
+
+        <div class="section__prose">
+          <p><strong>When to use:</strong> Deck roadmap. Use early (slide 2 or 3) to set expectations about structure and scope. Best for decks with 5+ major sections or when the audience needs a preview to orient themselves. Each row: section name + optional subline + number.</p>
+          <p><strong>What pairs with it:</strong> Follows Cover. The agenda items should map 1:1 to Section divider slides later in the deck — if the agenda says "Customer impact," there should be a Section divider with that exact headline.</p>
+          <p><strong>What to avoid:</strong> Don't use Agenda in short decks (under 10 slides). Don't number the agenda items 1–8 if the deck doesn't have clear chapter breaks. Don't include slide numbers in the agenda — they change during iteration and go stale.</p>
+        </div>
+
+        <div class="parameters">
+          <div class="parameters__title">Parameters</div>
+          <ul class="parameters__list">
+            <li><strong>rows:</strong> 3–8 (each row = section name + optional subline + number placeholder)</li>
+            <li><strong>Matcha placement:</strong> "Agenda" title text (structural)</li>
+          </ul>
+        </div>
+
+        <div class="slide">
+          <img src="assets/renders/agenda--canonical.png" alt="Agenda archetype" class="slide__image">
+        </div>
+      </section>
+
+      <!-- 03 — Section divider -->
+      <section class="section">
+        <div class="section__number">03 — SECTION DIVIDER</div>
+        <h2 class="section__title">Section divider</h2>
+
+        <div class="section__prose">
+          <p><strong>When to use:</strong> Chapter break. Marks a major shift in topic or argument. The large headline sits bottom-aligned; optional body text top-left provides context if the section name alone is cryptic. Use <code>body: yes</code> for sections that need a one-sentence framing ("Today's agents spend 60% of their time searching for answers instead of helping customers"). Use <code>body: no</code> when the headline is self-explanatory.</p>
+          <p><strong>What pairs with it:</strong> Follows an Agenda item. The headline should match the agenda row verbatim — if the agenda said "The support gap," the Section divider says "The support gap." Signals to the audience: we're moving to the next chapter.</p>
+          <p><strong>What to avoid:</strong> Don't use Section divider for every slide. It's a beat, not a slide type. Don't write body text longer than two lines — if you need more than that, use a Content slide instead.</p>
+        </div>
+
+        <div class="parameters">
+          <div class="parameters__title">Parameters</div>
+          <ul class="parameters__list">
+            <li><strong>body:</strong> yes/no (optional body text top-left)</li>
+            <li><strong>Background:</strong> Dark (licorice), white text</li>
+            <li><strong>Matcha placement:</strong> None (this archetype does not use Matcha)</li>
+          </ul>
+        </div>
+
+        <div class="slide">
+          <img src="assets/renders/section-divider--canonical.png" alt="Section divider archetype" class="slide__image">
+        </div>
+      </section>
+
+      <!-- 04 — Statement -->
+      <section class="section">
+        <div class="section__number">04 — STATEMENT</div>
+        <h2 class="section__title">Statement</h2>
+
+        <div class="section__prose">
+          <p><strong>When to use:</strong> Bold declarative slide. One big idea, center-aligned, no supporting text. Use for mission statements, principles, or turning-point moments in the narrative. This is the slide that gets screenshotted and posted to Slack. Make it count.</p>
+          <p><strong>What pairs with it:</strong> Sandwiched between evidence slides. Lead with data or proof (Content, Data display), follow with the Statement as the conclusion, then move forward. Or use it as a transition — close one section with a Statement, then start the next section.</p>
+          <p><strong>What to avoid:</strong> Don't use Statement for concepts that need explanation — if the idea requires a subline or bullets to make sense, use Content instead. Don't stack multiple Statements back-to-back; they lose impact. Don't write more than two lines of text — Statement is about brevity and emphasis.</p>
+        </div>
+
+        <div class="parameters">
+          <div class="parameters__title">Parameters</div>
+          <ul class="parameters__list">
+            <li><strong>None</strong> (statement text is the only variable)</li>
+            <li><strong>Background:</strong> Dark (licorice), white text</li>
+            <li><strong>Zendesk logo:</strong> Bottom-left (master element)</li>
+          </ul>
+        </div>
+
+        <div class="slide">
+          <img src="assets/renders/statement--canonical.png" alt="Statement archetype" class="slide__image">
+        </div>
+      </section>
+
+      <!-- 05 — Quote -->
+      <section class="section">
+        <div class="section__number">05 — QUOTE</div>
+        <h2 class="section__title">Quote</h2>
+
+        <div class="section__prose">
+          <p><strong>When to use:</strong> Customer or partner testimonial. Includes portrait image, quote text with hanging punctuation, and attribution (name, title, company). Use in the "proof" section of a deck — after you've explained what you built, show that customers validate it. Best when the quote is specific and credible, not generic praise.</p>
+          <p><strong>What pairs with it:</strong> Follows a Product plate or Content slide that explains the feature. Pair with Data display if you want to alternate qualitative proof (quote) and quantitative proof (metrics). Use before closing to leave the audience with a customer voice in their head.</p>
+          <p><strong>What to avoid:</strong> Don't use internal quotes (from your own team) unless it's a retrospective or post-mortem. Don't use quotes longer than three lines — edit for the most compelling excerpt. Don't use a placeholder portrait; real faces build trust. If you don't have a customer photo, use a different archetype.</p>
+        </div>
+
+        <div class="parameters">
+          <div class="parameters__title">Parameters</div>
+          <ul class="parameters__list">
+            <li><strong>None</strong> (quote text, name, title, company, portrait image)</li>
+            <li><strong>Image placeholder:</strong> Portrait orientation, left side</li>
+            <li><strong>Quote text:</strong> Hanging punctuation (opening quote sits in margin)</li>
+          </ul>
+        </div>
+
+        <div class="slide">
+          <img src="assets/renders/quote--canonical.png" alt="Quote archetype" class="slide__image">
+        </div>
+      </section>
+
+      <!-- 06 — Content -->
+      <section class="section">
+        <div class="section__number">06 — CONTENT</div>
+        <h2 class="section__title">Content</h2>
+
+        <div class="section__prose">
+          <p><strong>When to use:</strong> Flexible information layout. The workhorse. Headline + optional subline + columnar body. Use <code>columns: 1</code> for narrative (a single story or argument). Use <code>columns: 3–5</code> for feature lists, comparison tables, process steps. Use <code>media: image</code> to add a hero image; <code>media: icon</code> to pair icons with headers; <code>media: none</code> for text-only.</p>
+          <p><strong>What pairs with it:</strong> Everything. Content is modular and compositional — use it after a Section divider to unpack the chapter, use it before a Statement to build the argument, use it after a Quote to show product details. Stack multiple Content slides if the narrative requires it, but vary the column count to maintain rhythm.</p>
+          <p><strong>What to avoid:</strong> Don't overload a single Content slide with more than 5 columns. Split instead. Don't use empty columns to pad out a grid — if you only have 3 items, use <code>columns: 3</code>, not <code>columns: 4</code> with one blank. Don't bury the lede in body text — surface the conclusion in the headline.</p>
+        </div>
+
+        <div class="parameters">
+          <div class="parameters__title">Parameters</div>
+          <ul class="parameters__list">
+            <li><strong>columns:</strong> 1/2/3/4/5 (equal flex-grow distribution, 32px gaps)</li>
+            <li><strong>media:</strong> image/icon/none (adds hero image or icon row)</li>
+            <li><strong>Subline:</strong> Optional (755px width when present)</li>
+          </ul>
+        </div>
+
+        <div class="slide">
+          <img src="assets/renders/content--cols5-none.png" alt="Content archetype (5 columns)" class="slide__image">
+        </div>
+      </section>
+
+      <!-- 07 — Product plate -->
+      <section class="section">
+        <div class="section__number">07 — PRODUCT PLATE</div>
+        <h2 class="section__title">Product plate</h2>
+
+        <div class="section__prose">
+          <p><strong>When to use:</strong> Product feature with large image. Left column: headline top-aligned, body text bottom-aligned. Right: product screenshot. Use for demos, feature deep-dives, or "see it in action" moments. The dark green background (matcha-600) signals "this is the product" — use it to transition from concept to concrete.</p>
+          <p><strong>What pairs with it:</strong> Follows a Content slide that explains the feature conceptually. Pair with Quote to show customer reaction after demonstrating the product. Use before Data display if you want to show the feature, then show the impact metrics.</p>
+          <p><strong>What to avoid:</strong> Don't use Product plate for non-product imagery (charts, diagrams, photos). That's what Content with <code>media: image</code> is for. Don't use it without a real product screenshot — the placeholder makes it look unfinished. Don't write body text longer than three lines; this archetype is about showing, not telling.</p>
+        </div>
+
+        <div class="parameters">
+          <div class="parameters__title">Parameters</div>
+          <ul class="parameters__list">
+            <li><strong>None</strong> (headline, body text, product image)</li>
+            <li><strong>Background:</strong> Dark green (matcha-600), white text</li>
+            <li><strong>Image placeholder:</strong> Right side, landscape orientation</li>
+          </ul>
+        </div>
+
+        <div class="slide">
+          <img src="assets/renders/product-plate--canonical.png" alt="Product plate archetype" class="slide__image">
+        </div>
+      </section>
+
+      <!-- 08 — Data display -->
+      <section class="section">
+        <div class="section__number">08 — DATA DISPLAY</div>
+        <h2 class="section__title">Data display</h2>
+
+        <div class="section__prose">
+          <p><strong>When to use:</strong> Grid of metric callouts. Each callout: large number/value + descriptive subline. Use for dashboards, ROI summaries, impact reports. Best when the metrics are the headline — the numbers tell the story on their own. Alternating color schemes (Matcha on Fern, Sesame on Shamrock) provide visual rhythm.</p>
+          <p><strong>What pairs with it:</strong> Follows a Product plate or Content slide that explains what was built. Pair with Quote to alternate quantitative proof (metrics) and qualitative proof (customer voice). Use near the end of the deck to summarize impact before closing.</p>
+          <p><strong>What to avoid:</strong> Don't use Data display for charts or graphs — only the callouts variant exists. If you need a bar chart or line graph, provide a custom image. Don't use callouts for non-numeric data (text-only callouts lose impact). Don't write sublines longer than two lines — keep the focus on the number.</p>
+        </div>
+
+        <div class="parameters">
+          <div class="parameters__title">Parameters</div>
+          <ul class="parameters__list">
+            <li><strong>type:</strong> callouts (only variant; chart/map/pricing-table do not exist)</li>
+            <li><strong>Callout grid:</strong> 3 columns × 2 rows, 32px gaps</li>
+            <li><strong>Matcha placement:</strong> Text color in callout boxes (structural)</li>
+            <li><strong>Color alternation:</strong> Pattern fixed by template (Matcha/Fern, Sesame/Shamrock)</li>
+          </ul>
+        </div>
+
+        <div class="slide">
+          <img src="assets/renders/data-display--callouts.png" alt="Data display archetype" class="slide__image">
+        </div>
+      </section>
+
+      <!-- 09 — Timeline -->
+      <section class="section">
+        <div class="section__number">09 — TIMELINE</div>
+        <h2 class="section__title">Timeline</h2>
+
+        <div class="section__prose">
+          <p><strong>When to use:</strong> Horizontal milestone sequence. Each milestone: year/date header (all caps, bold) + body text. Use for roadmaps, company history, release schedules. The timeline connector (Matcha line + circles) visually links the milestones into a sequence. Best with 2–4 milestones; more than that and the layout gets crowded.</p>
+          <p><strong>What pairs with it:</strong> Follows a Product plate or Content slide that explains the vision. Use near the end of the deck to show "what's next" after demonstrating the current state. Pair with Data display if you want to show future milestones, then show current metrics.</p>
+          <p><strong>What to avoid:</strong> Don't mix granularity — if milestones are years (2023, 2024, 2025), don't insert "Q4 2024" as one milestone. Keep the time scale consistent. Don't use Timeline for non-chronological steps (that's a Content slide with <code>columns: 3</code> or <code>columns: 4</code>). Don't write body text longer than three lines per milestone.</p>
+        </div>
+
+        <div class="parameters">
+          <div class="parameters__title">Parameters</div>
+          <ul class="parameters__list">
+            <li><strong>milestones:</strong> 2–4 (each milestone = header + body text)</li>
+            <li><strong>Matcha placement:</strong> Timeline connector graphic (line and circles, structural)</li>
+            <li><strong>Headers:</strong> All caps, bold (e.g., "Q2 2026", "2027", "PHASE 3")</li>
+          </ul>
+        </div>
+
+        <div class="slide">
+          <img src="assets/renders/timeline--canonical.png" alt="Timeline archetype" class="slide__image">
+        </div>
+      </section>
+
+      <!-- 10 — Closing -->
+      <section class="section">
+        <div class="section__number">10 — CLOSING</div>
+        <h2 class="section__title">Closing</h2>
+
+        <div class="section__prose">
+          <p><strong>When to use:</strong> Final slide. Zendesk wordmark on black, no text, no CTA. Use as the last slide when the deck is self-contained and doesn't require follow-up action. The wordmark is brand presence — a signature, not a call to action.</p>
+          <p><strong>What pairs with it:</strong> Nothing follows Closing. It's the end. If you need a CTA (contact details, next steps, "Questions?"), use a Content slide before Closing, then end with this.</p>
+          <p><strong>What to avoid:</strong> Don't skip Closing in favor of ending on a data slide — it feels abrupt. Don't use Closing mid-deck as a transition. Don't add text to this slide — if you need text, use a different archetype.</p>
+        </div>
+
+        <div class="parameters">
+          <div class="parameters__title">Parameters</div>
+          <ul class="parameters__list">
+            <li><strong>None</strong> (Zendesk wordmark only, centered)</li>
+            <li><strong>Background:</strong> Dark (licorice)</li>
+            <li><strong>No eyebrow:</strong> This is the only archetype without an eyebrow component</li>
+          </ul>
+        </div>
+
+        <div class="slide">
+          <img src="assets/renders/closing--canonical.png" alt="Closing archetype" class="slide__image">
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer-nav">
+      <a href="index.html" class="footer-nav__link">← Overview</a>
+      <a href="slides-skill-reference.html" class="footer-nav__link">Skill Reference →</a>
+    </footer>
+  </div>
+</body>
+</html>
