@@ -1,0 +1,21 @@
+{
+  "archetypes": [
+    { "id": "cover",           "file": "cover--canonical.png",        "variants": [] },
+    { "id": "agenda",          "file": "agenda--canonical.png",        "variants": [] },
+    { "id": "section-divider", "file": "section-divider--canonical.png","variants": [] },
+    { "id": "statement",       "file": "statement--canonical.png",     "variants": [] },
+    { "id": "quote",           "file": "quote--canonical.png",         "variants": [] },
+    { "id": "content",         "file": "content--cols5-none.png",      "variants": [
+      "content--cols1-none.png",
+      "content--cols3-none.png",
+      "content--cols3-image.png"
+    ]},
+    { "id": "product-plate",   "file": "product-plate--canonical.png", "variants": [] },
+    { "id": "data-display",    "file": "data-display--callouts.png",   "variants": [] },
+    { "id": "timeline",        "file": "timeline--canonical.png",      "variants": [] },
+    { "id": "closing",         "file": "closing--canonical.png",       "variants": [] }
+  ],
+  "base_url": "https://dlcious.github.io/slides/assets/renders/",
+  "resolution": "3840x2160",
+  "format": "png"
+}
