@@ -87,6 +87,23 @@
       font-weight: 600;
     }
 
+    /* Deck embed */
+    .deck-embed {
+      width: 100%;
+      height: 70vh;
+      margin-bottom: 80px;
+      background: #000;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .deck-embed iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
     /* Slide render */
     .slide {
       background: var(--color-sesame);
@@ -179,6 +196,11 @@
     <header class="header">
       <h1 class="header__title">Visual Reference</h1>
     </header>
+
+    <!-- Embedded deck -->
+    <div class="deck-embed">
+      <iframe src="deck.html" title="Zendesk Intelligence Assistant Deck"></iframe>
+    </div>
 
     <main>
       <!-- 01 — Cover -->
