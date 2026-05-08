@@ -1,663 +1,433 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Skill Reference – Zendesk AI Slides</title>
-  <style>
-    :root {
-      --color-coconut: #ffffff;
-      --color-licorice: #11110d;
-      --color-matcha: #70a32a;
-      --color-sesame: #f5f5f2;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Reference – Zendesk AI Slides</title>
+    <style>
+        @font-face{font-family:'Zendesk Sans';src:url('fonts/zendesk-sans/ZendeskSans-Regular.woff2')format('woff2');font-weight:400}
+        @font-face{font-family:'Zendesk Sans';src:url('fonts/zendesk-sans/ZendeskSans-Medium.woff2')format('woff2');font-weight:500}
+        @font-face{font-family:'Zendesk Mono';src:url('fonts/zendesk-mono/ZendeskMono-Regular.woff2')format('woff2');font-weight:400}
+        @font-face{font-family:'Zendesk Mono';src:url('fonts/zendesk-mono/ZendeskMono-Medium.woff2')format('woff2');font-weight:500}
+        @font-face{font-family:'Zendesk Mono';src:url('fonts/zendesk-mono/ZendeskMono-SemiBold.woff2')format('woff2');font-weight:600}
+        :root{
+            --licorice:#11110D;--coconut:#FFFFFF;--matcha:#D1F470;--matcha-400:#70A32A;
+            --c79:rgba(255,255,255,0.79);--c47:rgba(255,255,255,0.47);--c32:rgba(255,255,255,0.32);
+            --c13:rgba(255,255,255,0.13);--c7:rgba(255,255,255,0.07);--c5:rgba(255,255,255,0.05);
+            --syn-key:#D1F470;--syn-str:#FFFFFF;--syn-num:#FEEB7E;--syn-bool:#A1D78F;
+            --syn-null:rgba(255,255,255,.47);--syn-comment:rgba(255,255,255,.32);
+            --sans:'Zendesk Sans',-apple-system,sans-serif;
+            --mono:'Zendesk Mono',ui-monospace,monospace;
+            --nav:280px;--max:980px;
+        }
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{font-family:var(--mono);background:var(--licorice);color:var(--coconut);line-height:1.55;-webkit-font-smoothing:antialiased}
+        a{color:inherit} button{font-family:inherit}
 
-      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      --font-mono: 'Monaco', 'Courier New', monospace;
-    }
+        /* NAV */
+        .nav{position:fixed;top:0;left:0;width:var(--nav);height:100vh;background:#0A0A07;border-right:1px solid var(--c7);padding:56px 40px;display:flex;flex-direction:column;z-index:100;overflow-y:auto}
+        .nav__brand{display:flex;align-items:center;gap:14px;margin-bottom:72px;text-decoration:none;color:inherit}
+        .nav__mark{width:36px;height:26px;flex-shrink:0}
+        .nav__brand-text{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--coconut);line-height:1.4}
+        .nav__brand-text span{display:block;color:var(--c47);margin-top:2px}
+        .nav__heading{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--c47);margin-bottom:24px}
+        .nav__menu{display:flex;flex-direction:column;margin-bottom:56px}
+        .nav__item{display:flex;align-items:baseline;gap:12px;padding:10px 0 10px 14px;font-family:var(--mono);font-size:12px;color:var(--c79);text-decoration:none;border-left:1px solid var(--c13);transition:color .2s,border-color .2s,padding-left .2s}
+        .nav__item:hover{color:var(--coconut);border-left-color:var(--c32)}
+        .nav__item--active{color:var(--matcha);border-left-color:var(--matcha);padding-left:16px}
+        .nav__num{font-family:var(--mono);font-size:10px;color:var(--c47);min-width:18px}
+        .nav__item--active .nav__num{color:var(--matcha)}
+        .nav__footer{margin-top:auto;padding-top:24px;border-top:1px solid var(--c13);font-family:var(--mono);font-size:10px;color:var(--c47);letter-spacing:0.05em;text-transform:uppercase;line-height:1.6}
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+        /* PAGE */
+        .page{margin-left:var(--nav);min-height:100vh}
+        .container{max-width:var(--max);margin:0 auto;padding:0 72px}
 
-    body {
-      font-family: var(--font-sans);
-      background: var(--color-coconut);
-      color: var(--color-licorice);
-      line-height: 1.5;
-      -webkit-font-smoothing: antialiased;
-    }
+        /* HERO */
+        .hero{padding:96px 0 128px;position:relative;overflow:hidden;border-bottom:1px solid var(--c7)}
+        .hero__inner{max-width:var(--max);margin:0 auto;padding:0 72px;position:relative;z-index:1}
+        .hero__supertitle{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--matcha);margin-bottom:24px;display:inline-flex;align-items:center;gap:12px}
+        .hero__supertitle::before{content:'';display:inline-block;width:32px;height:1px;background:var(--matcha)}
+        .hero__title{font-family:var(--sans);font-size:clamp(48px,7vw,96px);font-weight:500;line-height:0.92;letter-spacing:-0.025em;color:var(--coconut);margin-bottom:24px}
+        .hero__title em{font-family:var(--mono);font-style:normal;font-weight:400;color:var(--matcha);font-size:clamp(16px,2vw,24px);display:block;margin-top:24px;letter-spacing:-0.01em;line-height:1}
+        .hero__subtitle{font-family:var(--mono);font-size:14px;line-height:1.6;color:var(--c79);max-width:380px}
+        .hero::after{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 1px 1px,var(--c7) 1px,transparent 0);background-size:28px 28px;opacity:.6;pointer-events:none}
 
-    .container {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 0 48px;
-    }
+        /* SECTIONS */
+        .section{padding:96px 0;border-bottom:1px solid var(--c7)}
+        .section:last-of-type{border-bottom:none;padding-bottom:180px}
+        .section__marker{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--matcha);margin-bottom:24px;display:flex;align-items:center;gap:12px}
+        .section__marker::before{content:'';width:32px;height:1px;background:var(--matcha)}
+        .section__title{font-family:var(--sans);font-size:clamp(32px,4vw,48px);font-weight:500;line-height:1.05;letter-spacing:-0.02em;color:var(--coconut);margin-bottom:24px}
+        .section__lede{font-family:var(--mono);font-size:14px;line-height:1.65;color:var(--c79);max-width:580px;margin-bottom:56px}
+        .section__subhead{font-family:var(--mono);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--matcha);margin-top:56px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--c7)}
+        .section__subhead:first-of-type{margin-top:0}
 
-    /* Header */
-    .header {
-      padding: 48px 0;
-      border-bottom: 1px solid var(--color-licorice);
-      margin-bottom: 80px;
-    }
+        /* CODE BLOCKS */
+        .code-block{background:#0A0A07;border:1px solid var(--c7);border-radius:12px;margin-bottom:24px;position:relative;overflow:hidden}
+        .code-block__head{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid var(--c7);background:rgba(255,255,255,.02)}
+        .code-block__name{font-family:var(--mono);font-size:11px;color:var(--c47);text-transform:uppercase;letter-spacing:0.08em;display:flex;align-items:center;gap:10px}
+        .code-block__dots{display:flex;gap:5px}
+        .code-block__dots span{width:10px;height:10px;border-radius:50%;background:var(--c13)}
+        .copy-button{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;background:transparent;border:1px solid var(--c13);color:var(--c47);padding:5px 12px;border-radius:6px;cursor:pointer;transition:all .2s}
+        .copy-button:hover{border-color:var(--matcha);color:var(--matcha)}
+        .copy-button.copied{border-color:var(--matcha);color:var(--matcha)}
+        pre{padding:24px;overflow-x:auto;font-family:var(--mono);font-size:13px;line-height:1.65;color:var(--c79)}
 
-    .header__title {
-      font-size: 21px;
-      font-weight: 500;
-      letter-spacing: -0.01em;
-    }
+        /* TOKEN TABLE */
+        .token-table{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:13px;margin-bottom:24px}
+        .token-table th{font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--c47);text-align:left;padding:10px 16px;border-bottom:1px solid var(--c7)}
+        .token-table td{padding:12px 16px;border-bottom:1px solid var(--c7);color:var(--c79);vertical-align:top}
+        .token-table tr:last-child td{border-bottom:none}
+        .token-table tr:hover td{background:var(--c5)}
+        .swatch{display:inline-block;width:14px;height:14px;border-radius:3px;border:1px solid var(--c13);vertical-align:middle;margin-right:8px;flex-shrink:0}
+        .token-name{color:var(--matcha);font-weight:500}
+        .token-hex{color:var(--coconut)}
+        .token-desc{font-size:12px;color:var(--c47)}
 
-    /* Section */
-    .section {
-      margin-bottom: 80px;
-    }
+        /* ARCHETYPE TABLE */
+        .arch-table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:24px}
+        .arch-table th{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--c47);text-align:left;padding:10px 16px;border-bottom:1px solid var(--c7)}
+        .arch-table td{padding:14px 16px;border-bottom:1px solid var(--c7);color:var(--c79);vertical-align:top;line-height:1.5}
+        .arch-table tr:last-child td{border-bottom:none}
+        .arch-table tr:hover td{background:var(--c5)}
+        .arch-num{font-family:var(--mono);font-size:10px;color:var(--c47)}
+        .arch-name{color:var(--coconut);font-weight:500}
+        .param-tag{display:inline-block;font-family:var(--mono);font-size:10px;padding:2px 8px;border-radius:4px;background:rgba(209,244,112,.08);color:var(--matcha);border:1px solid rgba(209,244,112,.15);margin:2px 2px 2px 0}
 
-    .section__number {
-      font-family: var(--font-mono);
-      font-size: 13px;
-      letter-spacing: 0.05em;
-      opacity: 0.5;
-      margin-bottom: 16px;
-    }
+        /* WORKED EXAMPLE */
+        .example{background:#0A0A07;border:1px solid var(--c7);border-radius:12px;padding:32px;margin-bottom:24px}
+        .example__label{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--matcha);margin-bottom:16px}
+        .example__slide{margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--c7)}
+        .example__slide:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+        .example__slide-title{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--coconut);margin-bottom:12px}
+        .example__field{display:grid;grid-template-columns:120px 1fr;gap:8px;font-size:13px;margin-bottom:6px}
+        .example__key{font-family:var(--mono);font-size:11px;color:var(--c47);padding-top:1px}
+        .example__val{color:var(--c79)}
 
-    .section__title {
-      font-size: 32px;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-      margin-bottom: 24px;
-    }
+        /* OVERVIEW LIST */
+        .overview-list{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:40px}
+        .overview-item{padding:20px 24px;background:var(--c5);border:1px solid var(--c7);border-radius:12px}
+        .overview-item strong{display:block;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--matcha);margin-bottom:8px}
+        .overview-item p{font-size:13px;color:var(--c79);line-height:1.55}
 
-    .section__prose {
-      max-width: 720px;
-    }
+        /* COPY RULES */
+        .rule-list{display:flex;flex-direction:column;gap:16px;margin-bottom:24px}
+        .rule{display:grid;grid-template-columns:32px 1fr;gap:16px;align-items:start}
+        .rule__num{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--matcha);padding-top:2px}
+        .rule__text{font-size:14px;color:var(--c79);line-height:1.55}
+        .rule__text strong{color:var(--coconut)}
 
-    .section__prose p {
-      font-size: 16px;
-      line-height: 1.6;
-      margin-bottom: 16px;
-    }
+        /* TOGGLE */
+        .toggle{position:fixed;bottom:40px;left:50%;transform:translateX(calc(-50% + var(--nav)/2));background:rgba(20,20,16,.95);backdrop-filter:blur(10px);padding:6px;border-radius:999px;display:flex;gap:4px;z-index:200;border:1px solid var(--c13);box-shadow:0 16px 40px rgba(0,0,0,.5)}
+        .toggle__btn{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:10px 22px;border-radius:999px;border:none;background:transparent;color:var(--c79);text-decoration:none;cursor:pointer;transition:all .2s}
+        .toggle__btn:hover{color:var(--coconut)}
+        .toggle__btn--active{background:var(--matcha);color:var(--licorice)}
 
-    .section__prose p:last-child {
-      margin-bottom: 0;
-    }
-
-    .section__prose code {
-      font-family: var(--font-mono);
-      font-size: 14px;
-      background: var(--color-sesame);
-      padding: 2px 6px;
-      border-radius: 3px;
-    }
-
-    .section__prose strong {
-      font-weight: 600;
-    }
-
-    /* Code block */
-    .code-block {
-      background: var(--color-sesame);
-      padding: 24px;
-      border-radius: 6px;
-      margin: 32px 0;
-      overflow-x: auto;
-    }
-
-    .code-block__content {
-      font-family: var(--font-mono);
-      font-size: 14px;
-      line-height: 1.6;
-      white-space: pre-wrap;
-    }
-
-    /* Token grid */
-    .token-grid {
-      display: grid;
-      gap: 16px;
-      margin: 32px 0;
-    }
-
-    .token-item {
-      display: grid;
-      grid-template-columns: 100px 200px 1fr;
-      gap: 16px;
-      align-items: center;
-      padding: 16px;
-      background: var(--color-sesame);
-      border-radius: 6px;
-    }
-
-    .token-item__swatch {
-      width: 100%;
-      height: 48px;
-      border-radius: 4px;
-      border: 1px solid rgba(17, 17, 13, 0.1);
-    }
-
-    .token-item__name {
-      font-family: var(--font-mono);
-      font-size: 13px;
-      font-weight: 500;
-    }
-
-    .token-item__value {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      opacity: 0.6;
-    }
-
-    .token-item__usage {
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    /* Footer nav */
-    .footer-nav {
-      border-top: 1px solid var(--color-licorice);
-      padding: 48px 0 64px;
-      display: flex;
-      gap: 32px;
-    }
-
-    .footer-nav__link {
-      font-size: 15px;
-      color: var(--color-licorice);
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .footer-nav__link:hover {
-      text-decoration: underline;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .container {
-        padding: 0 24px;
-      }
-
-      .section__title {
-        font-size: 24px;
-      }
-
-      .token-item {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+        @media(max-width:1024px){.nav{transform:translateX(-100%)}.page{margin-left:0}.toggle{transform:translateX(-50%)}.overview-list{grid-template-columns:1fr}}
+        @media(max-width:640px){.container,.hero__inner{padding:0 24px}.example{padding:24px}}
+    </style>
 </head>
 <body>
-  <div class="container">
-    <header class="header">
-      <h1 class="header__title">Skill Reference</h1>
-    </header>
+    <nav class="nav">
+        <a href="index.html" class="nav__brand">
+            <svg class="nav__mark" viewBox="0 0 144 105" fill="none"><path d="M77.4095 104.5C77.5392 86.3085 92.3259 71.6016 110.548 71.6016C128.77 71.6016 143.556 86.3085 143.686 104.5L77.4095 104.5Z" fill="#FFF"/><path d="M143.5 0H77.5V77L143.5 0Z" fill="#FFF"/><path d="M66.2766 0C66.1468 18.1914 51.3605 32.8983 33.1385 32.8984C14.9165 32.8984 0.12976 18.1915 0 0L66.2766 0Z" fill="#FFF"/><path d="M0 104.5L66.5 104.5L66.5 27.5L0 104.5Z" fill="#FFF"/></svg>
+            <div class="nav__brand-text">Zendesk<span>AI Slides 1.0</span></div>
+        </a>
+        <div class="nav__heading">Reference</div>
+        <nav class="nav__menu">
+            <a href="#overview"      class="nav__item nav__item--active"><span class="nav__num">00</span>Overview</a>
+            <a href="#installation"  class="nav__item"><span class="nav__num">01</span>Installation</a>
+            <a href="#archetypes"    class="nav__item"><span class="nav__num">02</span>Archetypes</a>
+            <a href="#copy-rules"    class="nav__item"><span class="nav__num">03</span>Copy rules</a>
+            <a href="#draft-format"  class="nav__item"><span class="nav__num">04</span>Draft format</a>
+            <a href="#worked-example" class="nav__item"><span class="nav__num">05</span>Worked example</a>
+            <a href="#tokens-color"  class="nav__item"><span class="nav__num">06</span>Color tokens</a>
+            <a href="#tokens-type"   class="nav__item"><span class="nav__num">07</span>Type tokens</a>
+            <a href="#tokens-space"  class="nav__item"><span class="nav__num">08</span>Spacing tokens</a>
+            <a href="#anti-patterns" class="nav__item"><span class="nav__num">09</span>Anti-patterns</a>
+            <a href="#session-start" class="nav__item"><span class="nav__num">10</span>Session start</a>
+        </nav>
+        <div class="nav__footer">AI Slides 1.0<br>v2026.05</div>
+    </nav>
 
-    <main>
-      <!-- 01 — Installation -->
-      <section class="section">
-        <div class="section__number">01 — INSTALLATION</div>
-        <h2 class="section__title">Where it lives and how to install it</h2>
+    <main class="page">
+        <section class="hero">
+            <div class="hero__inner">
+                <div>
+                    <div class="hero__supertitle">Skill Reference</div>
+                    <h1 class="hero__title">AI Slides<br>skill guide<em>// machine reference</em></h1>
+                    <p class="hero__subtitle">Structured tokens, copy rules, archetypes, and worked examples – for AI agents and developers building Zendesk AI Slides decks.</p>
+                </div>
+            </div>
+        </section>
 
-        <div class="section__prose">
-          <p>The Zendesk AI Slides skill is a Claude Code skill file: <code>zendesk-slides-skill.md</code>. Place it in your project's <code>.claude/skills/</code> directory or in the global skills directory at <code>~/.claude/skills/</code>.</p>
-          <p><strong>Installation:</strong></p>
-        </div>
+        <!-- 00 OVERVIEW -->
+        <section class="section" id="overview"><div class="container">
+            <div class="section__marker">00 – Overview</div>
+            <h2 class="section__title">Built to be parsed.</h2>
+            <p class="section__lede">This document gives AI agents structured access to the Zendesk AI Slides design system. Every section is copy-ready – archetypes, tokens, copy rules, and worked examples keyed to the same canonical names used in the visual reference.</p>
+            <div class="overview-list">
+                <div class="overview-item"><strong>Archetypes</strong><p>10 slide types with parameters, when-to-use, and layout specs</p></div>
+                <div class="overview-item"><strong>Copy rules</strong><p>Sentence case, no periods on headlines, jargon swaps, one idea per slide</p></div>
+                <div class="overview-item"><strong>Design tokens</strong><p>Colors, typography, and spacing pulled from the Figma template</p></div>
+                <div class="overview-item"><strong>Draft format</strong><p>Machine-parseable slide draft block format with all fields defined</p></div>
+                <div class="overview-item"><strong>Worked example</strong><p>Starter prompt – full draft output with common follow-ups</p></div>
+                <div class="overview-item"><strong>Session start</strong><p>Single-URL session initialization for autonomous deck building</p></div>
+            </div>
+        </div></section>
 
-        <div class="code-block">
-          <div class="code-block__content"># Project-specific (recommended for team sharing)
-mkdir -p .claude/skills
-cp zendesk-slides-skill.md .claude/skills/
+        <!-- 01 INSTALLATION -->
+        <section class="section" id="installation"><div class="container">
+            <div class="section__marker">01 – Installation</div>
+            <h2 class="section__title">Where it lives.</h2>
+            <p class="section__lede">The Zendesk AI Slides skill is a Claude Code skill file. Place it in your project's skills directory or the global skills directory.</p>
+            <div class="section__subhead">Project-specific (recommended)</div>
+            <div class="code-block">
+                <div class="code-block__head"><div class="code-block__name"><span class="code-block__dots"><span></span><span></span><span></span></span>shell</div><button class="copy-button" onclick="copyCode(this,'install-1')">Copy</button></div>
+                <pre id="install-1">mkdir -p .claude/skills
+cp zendesk-slides-skill.md .claude/skills/</pre>
+            </div>
+            <div class="section__subhead">Global (available across all projects)</div>
+            <div class="code-block">
+                <div class="code-block__head"><div class="code-block__name"><span class="code-block__dots"><span></span><span></span><span></span></span>shell</div><button class="copy-button" onclick="copyCode(this,'install-2')">Copy</button></div>
+                <pre id="install-2">mkdir -p ~/.claude/skills
+cp zendesk-slides-skill.md ~/.claude/skills/</pre>
+            </div>
+            <p class="section__lede" style="margin-top:24px;margin-bottom:0">Once installed, the skill activates automatically when Claude detects slide, deck, or presentation work. No manual invocation required.</p>
+        </div></section>
 
-# Global (available across all projects)
-mkdir -p ~/.claude/skills
-cp zendesk-slides-skill.md ~/.claude/skills/</div>
-        </div>
+        <!-- 02 ARCHETYPES -->
+        <section class="section" id="archetypes"><div class="container">
+            <div class="section__marker">02 – Archetypes</div>
+            <h2 class="section__title">The ten archetypes.</h2>
+            <p class="section__lede">Each archetype maps to a Figma template layout. Parameters are the only variables – all brand decisions (color, font, spacing) are enforced by the template.</p>
+            <table class="arch-table">
+                <thead><tr><th>#</th><th>Archetype</th><th>Parameters</th><th>Background</th><th>When to use</th></tr></thead>
+                <tbody>
+                    <tr><td class="arch-num">01</td><td class="arch-name">Cover</td><td><span class="param-tag">speaker: yes/no</span></td><td>Coconut</td><td>Deck opener</td></tr>
+                    <tr><td class="arch-num">02</td><td class="arch-name">Agenda</td><td><span class="param-tag">rows: 3–8</span></td><td>Sesame 100</td><td>Deck roadmap, slide 2–3</td></tr>
+                    <tr><td class="arch-num">03</td><td class="arch-name">Section divider</td><td><span class="param-tag">body: yes/no</span></td><td>Licorice</td><td>Chapter break</td></tr>
+                    <tr><td class="arch-num">04</td><td class="arch-name">Statement</td><td>–</td><td>Licorice</td><td>Bold declarative, one idea</td></tr>
+                    <tr><td class="arch-num">05</td><td class="arch-name">Quote</td><td>–</td><td>Coconut</td><td>Customer testimonial</td></tr>
+                    <tr><td class="arch-num">06</td><td class="arch-name">Content</td><td><span class="param-tag">columns: 1–5</span><span class="param-tag">media: image/icon/none</span></td><td>Coconut</td><td>Flexible information layout</td></tr>
+                    <tr><td class="arch-num">07</td><td class="arch-name">Product plate</td><td>–</td><td>Matcha 600</td><td>Product feature + screenshot</td></tr>
+                    <tr><td class="arch-num">08</td><td class="arch-name">Data display</td><td><span class="param-tag">type: callouts</span></td><td>Coconut</td><td>Metric callout grid (3×2)</td></tr>
+                    <tr><td class="arch-num">09</td><td class="arch-name">Timeline</td><td><span class="param-tag">milestones: 2–4</span></td><td>Coconut</td><td>Roadmap / history</td></tr>
+                    <tr><td class="arch-num">10</td><td class="arch-name">Closing</td><td>–</td><td>Licorice</td><td>Final slide, wordmark only</td></tr>
+                </tbody>
+            </table>
+        </div></section>
 
-        <div class="section__prose">
-          <p>Once installed, the skill activates automatically when Claude detects slide, deck, or presentation work. No manual invocation required.</p>
-        </div>
-      </section>
+        <!-- 03 COPY RULES -->
+        <section class="section" id="copy-rules"><div class="container">
+            <div class="section__marker">03 – Copy rules</div>
+            <h2 class="section__title">Six rules, always enforced.</h2>
+            <p class="section__lede">These rules have no geometric enforcement in the template – the AI must apply them. Apply before showing the user. Do not present a draft that violates them.</p>
+            <div class="rule-list">
+                <div class="rule"><div class="rule__num">01</div><div class="rule__text"><strong>Sentence case for headlines.</strong> "This is the headline" not "This Is The Headline."</div></div>
+                <div class="rule"><div class="rule__num">02</div><div class="rule__text"><strong>No period on headlines.</strong> Headlines and sublines end without punctuation unless they are a question.</div></div>
+                <div class="rule"><div class="rule__num">03</div><div class="rule__text"><strong>One idea per slide.</strong> If a slide draft has two distinct claims, flag and ask the user whether to split or keep combined.</div></div>
+                <div class="rule"><div class="rule__num">04</div><div class="rule__text"><strong>Body text gets periods.</strong> Column body, timeline body, section body, product body – full sentences need terminal punctuation.</div></div>
+                <div class="rule"><div class="rule__num">05</div><div class="rule__text"><strong>Brevity is the user's call.</strong> If a draft is dense, flag it and ask whether to shorten or split. Do not unilaterally cut content.</div></div>
+                <div class="rule"><div class="rule__num">06</div><div class="rule__text"><strong>Jargon swaps.</strong> Replace leverage → use, utilize → use, stakeholders → the team / customers (be specific), bandwidth → time / capacity.</div></div>
+            </div>
+        </div></section>
 
-      <!-- 02 — Worked example -->
-      <section class="section">
-        <div class="section__number">02 — WORKED EXAMPLE</div>
-        <h2 class="section__title">Using the skill: starter prompt to draft output</h2>
-
-        <div class="section__prose">
-          <p><strong>Starter prompt:</strong></p>
-        </div>
-
-        <div class="code-block">
-          <div class="code-block__content">I need a 10-slide deck for the Zendesk Intelligence Assistant launch. Internal audience (product + leadership). Sections: problem, solution, product, proof, close. Images: I have product screenshots for slides 6-7, customer photo for slide 8. Rest can be placeholders.</div>
-        </div>
-
-        <div class="section__prose">
-          <p><strong>Claude's draft output (excerpt):</strong></p>
-        </div>
-
-        <div class="code-block">
-          <div class="code-block__content">**Slide 1: Cover (speaker: yes)**
-
-Eyebrow: 01 · Launch
-Headline: Zendesk Intelligence Assistant
-Speaker: Maya Chen, VP Product, Zendesk
-Image: [placeholder: product dashboard screenshot]
-
----
-
-**Slide 3: Section divider (body: yes)**
-
-Eyebrow: 01 · The problem
-Headline: The support gap
-Body: Today's agents spend 60% of their time searching for answers instead of helping customers.
-
----
-
-**Slide 6: Content (columns: 3, media: none)**
-
-Eyebrow: 03 · Product
-Headline: Built on three principles
-Subline: Context-aware, instant, and always learning
-Columns:
-  - **Context-aware**: Understands full ticket history, not just keywords.
-  - **Instant answers**: Sub-second response time for agent queries.
-  - **Always learning**: Improves from every interaction automatically.
-
----
-
-Does this structure work, or should I adjust the archetype / split the content?</div>
-        </div>
-
-        <div class="section__prose">
-          <p><strong>Common follow-ups:</strong></p>
-          <p>"Make slide 6 a 4-column layout instead" → Claude adjusts parameters<br>
-          "Add a Quote slide after slide 7" → Claude inserts and renumbers<br>
-          "The headline on slide 3 is too vague" → Claude revises copy</p>
-        </div>
-      </section>
-
-      <!-- 03 — Draft block format -->
-      <section class="section">
-        <div class="section__number">03 — DRAFT BLOCK FORMAT</div>
-        <h2 class="section__title">How Claude presents slide drafts</h2>
-
-        <div class="section__prose">
-          <p>Each slide draft follows this structure:</p>
-        </div>
-
-        <div class="code-block">
-          <div class="code-block__content">**Slide [N]: [Archetype] ([parameters])**
-
-Eyebrow: [NN] · [SECTION LABEL]
-Headline: [headline text]
-Subline: [subline text, if applicable]
-Body: [body text or column content]
-Image: [image filename OR placeholder description]
-Speaker: [name, title, company — Cover only]
-Quote attribution: [name, title, company — Quote only]</div>
-        </div>
-
-        <div class="section__prose">
-          <p>The format is consistent and machine-parseable. Eyebrow numbering (<code>[NN]</code>) and section labels map to the deck's structure. Images reference the user's inventory or describe placeholders for later replacement.</p>
-        </div>
-      </section>
-
-      <!-- 04 — Full skill content -->
-      <section class="section">
-        <div class="section__number">04 — FULL SKILL CONTENT</div>
-        <h2 class="section__title">The complete skill file</h2>
-
-        <div class="section__prose">
-          <p>The full skill below is the canonical source. Last synced from zendesk-slides-skill.md on 2026-05-07.</p>
-        </div>
-
-        <div class="code-block">
-          <div class="code-block__content">---
-name: zendesk-slides
-description: Generate slide decks using the Zendesk AI Slides design system. Triggers on slide, deck, or presentation work.
----
-
-# Zendesk AI Slides Skill
-
-You draft slide content for the Zendesk AI Slides design system. Your job: pick the right archetype for each slide, write clear copy that fits the template constraints, and choose images from the inventory the user provides. The Figma template enforces all brand decisions — size, color, spacing, position. You enforce writing decisions — sentence case, no period on headlines, jargon swaps. You flag concerns about length and structure (slide is getting long, two ideas competing) for the user to resolve, but render what the user provides. Taste calls (where Matcha appears, whether a slide reads as "Fresh") belong to the human.
-
-## Preflight
-
-Before drafting slides, confirm:
-
-1. **Theme applied**: The user has applied the Zendesk AI Slides Figma template to their file
-2. **Image inventory**: The user has identified available images (product screenshots, customer photos, brand illustrations, icons) or confirmed placeholder-only approach
-3. **Section structure**: The user has outlined the deck's major sections (e.g., Problem → Solution → Product → Proof → Close)
-4. **Confidentiality footer**: The footer "© 2026 Zendesk, Inc. All rights reserved. Private and confidential." appears on every slide as a master element. Do not modify it, do not ask whether to include it, do not duplicate it.
-5. **Audience context**: Who will see this deck? (sales prospects, internal leadership, conference attendees, customer training) — this shapes jargon tolerance and detail density
-
-If any preflight item is unclear, ask before drafting.
-
-## Archetype Set
-
-| Archetype | Parameters | When to use |
-|-----------|-----------|-------------|
-| Cover | speaker: yes/no | Deck opener. Use `speaker: yes` for conference talks or webinars (includes speaker photo, name, title). Use `speaker: no` for decks sent without a presenter. |
-| Agenda | rows: 3–8 | Deck roadmap. Lists major sections with optional subline per row. Use early in the deck (slide 2 or 3). |
-| Section divider | body: yes/no | Chapter break. Large headline, optional body text for context. Use `body: yes` if the section name alone is cryptic. |
-| Statement | — | Bold declarative slide. One big idea, center-aligned, no supporting text. Use for mission statements, principles, or turning-point moments. |
-| Quote | — | Customer or partner testimonial. Includes portrait image, quote text, attribution (name, title, company). |
-| Content | columns: 1/2/3/4/5, media: image/icon/none | Flexible information layout. Headline + optional subline + columnar body. Use `columns: 1` for narrative. Use `columns: 3–5` for feature lists, comparison tables, process steps. `media: image` adds a hero image above or beside columns; `media: icon` pairs icons with headers; `media: none` is text-only. |
-| Product plate | — | Product feature with large image. Left column: headline top, body text bottom. Right: product screenshot. Use for demos, feature deep-dives, or "see it in action" moments. |
-| Data display | type: callouts | Grid of metric callouts (up to 6 shown in template). Each callout: large number + subline. Use for dashboards, ROI summaries, impact reports. |
-| Timeline | milestones: 2–4 | Horizontal timeline. Each milestone: year/date header + body text. Use for roadmaps, company history, release schedules. |
-| Closing | — | Final slide. Zendesk wordmark on black. No text, no CTA — just brand presence. |
-
-**Gap note**: Chart, map, and pricing-table data display types do not exist in the template. If the user asks for these, suggest the Data display (callouts) archetype or ask if they'll provide a custom image.
-
-## Copy Rules (AI-enforced)
-
-These rules have no geometric enforcement in the template — you must apply them:
-
-1. **Sentence case for headlines**: "This is the headline" not "This Is The Headline"
-2. **No period on headlines**: Headlines and sublines end without punctuation unless they're a question
-3. **One idea per slide**: If a slide draft has two distinct claims, flag this and ask the user whether to split or keep combined. Render what the user decides.
-4. **Body text gets periods**: Column body, timeline body, product body — these are full sentences and need terminal punctuation
-5. **Brevity is the user's call**: The template's large type and generous spacing make long body text look crowded. If a draft is dense, flag this and ask whether to shorten or split. Do not unilaterally cut content the user provided.
-6. **Jargon swaps**: Replace internal codenames, acronyms, or Zendesk-specific shorthand with plain language unless the audience is internal and fluent
-
-When drafting, apply these rules before showing the user. Do not present a draft that violates them and ask permission — just follow the rules.
-
-## Imagery Decision Rule
-
-When a slide needs an image:
-
-1. **Reuse first**: Check the user's image inventory. If an existing image fits, use it.
-2. **Placeholder second**: If no image fits, insert a placeholder and note what the placeholder should depict (e.g., "[placeholder: customer service agent using Zendesk dashboard]").
-3. **Never generate**: Do not offer to create, generate, render, or produce an image. The template includes placeholder graphics; the user will replace them or commission assets separately.
-
-If the user asks you to "make an image," explain this constraint and offer to draft the placeholder description instead.
-
-## Stop-and-Ask List
-
-Pause and ask the user before:
-
-- **Choosing a Closing slide**: Some decks end with a CTA slide, not the wordmark. Ask if the final slide should be Closing (wordmark) or a custom Content slide with contact details / next steps.
-- **Splitting a dense slide**: If a single concept requires more content than the archetype allows (e.g., 6 columns instead of 5), ask whether to split into two slides or condense the content.
-- **Using the Agenda archetype**: Some users prefer to skip agenda slides in short decks. Ask if they want one.
-- **Interpreting ambiguous source material**: If the user provides a rough outline like "Slide 5: benefits," ask which benefits and whether they want a Content (columns) or Data display (callouts) treatment.
-
-## Draft Block Format
-
-Present each slide draft in this format:
-
-```
-**Slide [N]: [Archetype] ([parameters])**
+        <!-- 04 DRAFT FORMAT -->
+        <section class="section" id="draft-format"><div class="container">
+            <div class="section__marker">04 – Draft format</div>
+            <h2 class="section__title">How to present slides.</h2>
+            <p class="section__lede">Each slide draft follows this structure. The format is consistent and machine-parseable. After showing the draft, ask: "Does this structure work, or should I adjust the archetype / split the content?"</p>
+            <div class="code-block">
+                <div class="code-block__head"><div class="code-block__name"><span class="code-block__dots"><span></span><span></span><span></span></span>slide-draft.md</div><button class="copy-button" onclick="copyCode(this,'draft-fmt')">Copy</button></div>
+                <pre id="draft-fmt">**Slide [N]: [Archetype] ([parameters])**
 
 Eyebrow: [NN] · [SECTION LABEL]
 Headline: [headline text]
 Subline: [subline text, if applicable]
 Body: [body text or column content]
 Image: [image filename from inventory OR placeholder description]
-Speaker: [name, title, company — Cover only]
-Quote attribution: [name, title, company — Quote only]
-```
-
-**Eyebrow behavior**: All archetypes include the eyebrow field except Closing. Statement, Section divider, Cover, Agenda, Quote, Content, Product plate, Data display, and Timeline all have eyebrows. Always fill the eyebrow with the section number and label format shown above.
-
-Example:
-
-```
-**Slide 3: Content (columns: 3, media: none)**
-
-Eyebrow: 02 · Product overview
-Headline: Built for teams that scale
-Subline: Zendesk grows with your business, from startup to enterprise
-Columns:
-  - **Flexible pricing**: Pay for what you use, upgrade anytime.
-  - **Seamless integrations**: Connect to Slack, Salesforce, Jira, and 1,000+ apps.
-  - **Enterprise security**: SOC 2, GDPR, HIPAA compliant out of the box.
-```
-
-After showing the draft, ask: "Does this structure work, or should I adjust the archetype / split the content?"
-
-## Anti-Patterns (AI can violate)
-
-Avoid these — the template won't stop you:
-
-1. **Empty columns**: If using Content (columns: 4) but only 3 items exist, reduce to `columns: 3`. Don't pad with filler.
-2. **Headline redundancy**: The eyebrow says "03 · Customer success," the headline says "Customer success stories." Pick one framing device — don't repeat the section name verbatim.
-3. **Mixing metaphors in a Timeline**: If milestones are years (2023, 2024, 2025), don't insert "Q4 2024" as one milestone. Keep the granularity consistent.
-4. **Burying the lede**: Putting the most important claim in body text instead of the headline. Surface the conclusion — use the body to support or explain, not reveal.
-5. **Placeholder proliferation**: A deck with 12 slides and 11 placeholders signals the user doesn't have assets ready. After 3–4 placeholders, ask if they want to pause drafting until images are sourced.
-6. **Agenda mismatch**: The Agenda slide lists 5 sections, but the deck has 7 section dividers. The agenda is a contract with the audience — if it's wrong, they'll notice.
-
-When you catch yourself about to commit an anti-pattern, stop and revise before showing the user.</div>
-        </div>
-      </section>
-
-      <!-- 05 — Token reference -->
-      <section class="section">
-        <div class="section__number">05 — TOKEN REFERENCE</div>
-        <h2 class="section__title">Design tokens used in the system</h2>
-
-        <div class="section__prose">
-          <p>Color, typography, and spacing tokens pulled from the Figma template. These are the values the AI references when describing layouts and the designer uses when building the template.</p>
-        </div>
-
-        <h3 style="font-size: 21px; font-weight: 600; margin: 32px 0 16px;">Color Tokens</h3>
-
-        <div class="token-grid">
-          <div class="token-item">
-            <div class="token-item__swatch" style="background: #ffffff; border: 2px solid #e5e5e2;"></div>
-            <div>
-              <div class="token-item__name">Primary/Coconut</div>
-              <div class="token-item__value">#FFFFFF</div>
+Speaker: [name, title, company – Cover only]
+Quote attribution: [name, title, company – Quote only]</pre>
             </div>
-            <div class="token-item__usage">Light slide backgrounds (Cover, Content, Quote, Data, Timeline)</div>
-          </div>
+            <p class="section__lede" style="margin-bottom:16px">Eyebrow rules: every archetype except Closing carries the eyebrow pill. Format is <code>NN · SECTION LABEL</code>. The number ties to the section, not the slide index. The label is identical across every slide in a section.</p>
+        </div></section>
 
-          <div class="token-item">
-            <div class="token-item__swatch" style="background: #11110d;"></div>
-            <div>
-              <div class="token-item__name">Primary/Licorice</div>
-              <div class="token-item__value">#11110D</div>
+        <!-- 05 WORKED EXAMPLE -->
+        <section class="section" id="worked-example"><div class="container">
+            <div class="section__marker">05 – Worked example</div>
+            <h2 class="section__title">Starter prompt to output.</h2>
+            <p class="section__lede">A complete example showing how the skill takes a brief and produces structured slide drafts.</p>
+
+            <div class="section__subhead">Starter prompt</div>
+            <div class="code-block">
+                <div class="code-block__head"><div class="code-block__name"><span class="code-block__dots"><span></span><span></span><span></span></span>user-prompt.txt</div></div>
+                <pre>I need a 10-slide deck for the Zendesk Intelligence Assistant launch.
+Internal audience (product + leadership).
+Sections: problem, solution, product, proof, close.
+Images: product screenshots for slides 6–7, customer photo for slide 8.
+Rest can be placeholders.</pre>
             </div>
-            <div class="token-item__usage">Primary text, dark slide backgrounds (Section divider, Statement, Closing)</div>
-          </div>
 
-          <div class="token-item">
-            <div class="token-item__swatch" style="background: #70a32a;"></div>
-            <div>
-              <div class="token-item__name">Extended/Matcha 400</div>
-              <div class="token-item__value">#70A32A</div>
+            <div class="section__subhead">Draft output (excerpt)</div>
+            <div class="example">
+                <div class="example__label">Slide drafts</div>
+                <div class="example__slide">
+                    <div class="example__slide-title">Slide 1: Cover (speaker: yes)</div>
+                    <div class="example__field"><span class="example__key">Eyebrow</span><span class="example__val">01 · Launch</span></div>
+                    <div class="example__field"><span class="example__key">Headline</span><span class="example__val">Zendesk Intelligence Assistant</span></div>
+                    <div class="example__field"><span class="example__key">Speaker</span><span class="example__val">Maya Chen, VP Product, Zendesk</span></div>
+                    <div class="example__field"><span class="example__key">Image</span><span class="example__val">[placeholder: product dashboard screenshot, forward-looking mood]</span></div>
+                </div>
+                <div class="example__slide">
+                    <div class="example__slide-title">Slide 3: Section divider (body: yes)</div>
+                    <div class="example__field"><span class="example__key">Eyebrow</span><span class="example__val">01 · The problem</span></div>
+                    <div class="example__field"><span class="example__key">Headline</span><span class="example__val">The support gap</span></div>
+                    <div class="example__field"><span class="example__key">Body</span><span class="example__val">Today's agents spend 60% of their time searching for answers instead of helping customers.</span></div>
+                </div>
+                <div class="example__slide">
+                    <div class="example__slide-title">Slide 6: Content (columns: 3, media: none)</div>
+                    <div class="example__field"><span class="example__key">Eyebrow</span><span class="example__val">03 · Product</span></div>
+                    <div class="example__field"><span class="example__key">Headline</span><span class="example__val">Built on three principles</span></div>
+                    <div class="example__field"><span class="example__key">Subline</span><span class="example__val">Context-aware, instant, and always learning</span></div>
+                    <div class="example__field"><span class="example__key">Columns</span><span class="example__val">Context-aware: Understands full ticket history, not just keywords. / Instant answers: Sub-second response time for agent queries. / Always learning: Improves from every interaction automatically.</span></div>
+                </div>
             </div>
-            <div class="token-item__usage">Brand accent in Cover headline, Agenda title</div>
-          </div>
 
-          <div class="token-item">
-            <div class="token-item__swatch" style="background: #d1f470;"></div>
-            <div>
-              <div class="token-item__name">Primary/Matcha</div>
-              <div class="token-item__value">#D1F470</div>
+            <div class="section__subhead">Common follow-ups</div>
+            <div class="code-block">
+                <div class="code-block__head"><div class="code-block__name"><span class="code-block__dots"><span></span><span></span><span></span></span>follow-ups.txt</div></div>
+                <pre>"Make slide 6 a 4-column layout instead" → Claude adjusts parameters
+"Add a Quote slide after slide 7"         → Claude inserts and renumbers
+"The headline on slide 3 is too vague"   → Claude revises copy</pre>
             </div>
-            <div class="token-item__usage">Bright Matcha in Data display callouts, Timeline connector</div>
-          </div>
+        </div></section>
 
-          <div class="token-item">
-            <div class="token-item__swatch" style="background: #f5f5f2;"></div>
-            <div>
-              <div class="token-item__name">Extended/Sesame 100</div>
-              <div class="token-item__value">#F5F5F2</div>
+        <!-- 06 COLOR TOKENS -->
+        <section class="section" id="tokens-color"><div class="container">
+            <div class="section__marker">06 – Color tokens</div>
+            <h2 class="section__title">Color tokens.</h2>
+            <p class="section__lede">All color values as used in the slide template. Matcha 400 is the headline/agenda accent. Bright Matcha is data display values and timeline connector only.</p>
+            <table class="token-table">
+                <thead><tr><th>Token</th><th>Hex</th><th>Usage</th></tr></thead>
+                <tbody>
+                    <tr><td class="token-name"><span class="swatch" style="background:#FFFFFF;border-color:rgba(255,255,255,.2)"></span>Coconut</td><td class="token-hex">#FFFFFF</td><td class="token-desc">Light slide backgrounds – Cover, Content, Quote, Data display, Timeline</td></tr>
+                    <tr><td class="token-name"><span class="swatch" style="background:#11110D"></span>Licorice</td><td class="token-hex">#11110D</td><td class="token-desc">Dark slide backgrounds – Section divider, Statement, Closing. Primary text on light slides</td></tr>
+                    <tr><td class="token-name"><span class="swatch" style="background:#D1F470"></span>Matcha</td><td class="token-hex">#D1F470</td><td class="token-desc">Bright Matcha – Data display callout values, Timeline connector graphic</td></tr>
+                    <tr><td class="token-name"><span class="swatch" style="background:#70A32A"></span>Matcha 400</td><td class="token-hex">#70A32A</td><td class="token-desc">Cover headline, Agenda title, eyebrow text on light slides</td></tr>
+                    <tr><td class="token-name"><span class="swatch" style="background:#355E34"></span>Matcha 600</td><td class="token-hex">#355E34</td><td class="token-desc">Product plate background only</td></tr>
+                    <tr><td class="token-name"><span class="swatch" style="background:#F5F5F2;border-color:rgba(255,255,255,.1)"></span>Sesame 100</td><td class="token-hex">#F5F5F2</td><td class="token-desc">Agenda slide background</td></tr>
+                    <tr><td class="token-name"><span class="swatch" style="background:#E5E5E2;border-color:rgba(255,255,255,.1)"></span>Sesame 200</td><td class="token-hex">#E5E5E2</td><td class="token-desc">Image placeholder backgrounds</td></tr>
+                    <tr><td class="token-name"><span class="swatch" style="background:#203524"></span>Fern</td><td class="token-hex">#203524</td><td class="token-desc">Data display callout background – odd cells</td></tr>
+                    <tr><td class="token-name"><span class="swatch" style="background:#2D4C33"></span>Shamrock</td><td class="token-hex">#2D4C33</td><td class="token-desc">Data display callout background – even cells</td></tr>
+                </tbody>
+            </table>
+        </div></section>
+
+        <!-- 07 TYPE TOKENS -->
+        <section class="section" id="tokens-type"><div class="container">
+            <div class="section__marker">07 – Typography tokens</div>
+            <h2 class="section__title">Type tokens.</h2>
+            <p class="section__lede">All type is set in Inter. Sizes are the Figma template's pt values – not scaled for pixels. Line heights are percentages.</p>
+            <table class="token-table">
+                <thead><tr><th>Token</th><th>Size</th><th>Weight</th><th>Line height</th><th>Usage</th></tr></thead>
+                <tbody>
+                    <tr><td class="token-name">Eyebrow</td><td>14pt</td><td>500 Medium</td><td>19px</td><td class="token-desc">Eyebrow pill – [NN] · [SECTION LABEL]</td></tr>
+                    <tr><td class="token-name">Body</td><td>27pt</td><td>400 Regular</td><td>130%</td><td class="token-desc">Column body, timeline body, section body, product body</td></tr>
+                    <tr><td class="token-name">Header</td><td>32pt</td><td>700 Bold</td><td>130%</td><td class="token-desc">Content column headers, timeline headers (ALL CAPS)</td></tr>
+                    <tr><td class="token-name">Subline</td><td>40pt</td><td>500 Medium</td><td>130%</td><td class="token-desc">Content subline, data callout subline, agenda row header</td></tr>
+                    <tr><td class="token-name">Headline</td><td>80pt</td><td>600 Semi Bold</td><td>110%</td><td class="token-desc">Content, Statement, Quote, Data display headlines</td></tr>
+                    <tr><td class="token-name">Large</td><td>140pt</td><td>600 Semi Bold</td><td>85%</td><td class="token-desc">Cover headline</td></tr>
+                    <tr><td class="token-name">Section</td><td>160pt</td><td>600 Semi Bold</td><td>85%</td><td class="token-desc">Section divider headline, Agenda title</td></tr>
+                    <tr><td class="token-name">Data</td><td>112pt</td><td>600 Semi Bold</td><td>0</td><td class="token-desc">Data display callout values – [$0.00]</td></tr>
+                </tbody>
+            </table>
+        </div></section>
+
+        <!-- 08 SPACING TOKENS -->
+        <section class="section" id="tokens-space"><div class="container">
+            <div class="section__marker">08 – Spacing tokens</div>
+            <h2 class="section__title">Spacing tokens.</h2>
+            <p class="section__lede">Fixed pixel values inferred from layout inspection of the Figma template. Slide canvas is 1920×1080px.</p>
+            <table class="token-table">
+                <thead><tr><th>Token</th><th>Value</th><th>Usage</th></tr></thead>
+                <tbody>
+                    <tr><td class="token-name">Horizontal padding</td><td>30px</td><td class="token-desc">Standard left/right margin for all slide content</td></tr>
+                    <tr><td class="token-name">Column gap</td><td>32px</td><td class="token-desc">Gap between Content columns and Data display callouts</td></tr>
+                    <tr><td class="token-name">Callout padding</td><td>40px</td><td class="token-desc">Internal padding for Data display callout boxes</td></tr>
+                    <tr><td class="token-name">Major section gap</td><td>64px</td><td class="token-desc">Vertical space between major content sections on a slide</td></tr>
+                    <tr><td class="token-name">Image corner radius</td><td>20px</td><td class="token-desc">All placeholder and image containers – cover, quote, product plate</td></tr>
+                </tbody>
+            </table>
+        </div></section>
+
+        <!-- 09 ANTI-PATTERNS -->
+        <section class="section" id="anti-patterns"><div class="container">
+            <div class="section__marker">09 – Anti-patterns</div>
+            <h2 class="section__title">Six things to never do.</h2>
+            <p class="section__lede">The template won't stop these – the AI must catch them. When you notice yourself about to commit one, stop and revise before showing the user.</p>
+            <div class="rule-list">
+                <div class="rule"><div class="rule__num">01</div><div class="rule__text"><strong>Empty columns.</strong> If using Content (columns: 4) but only 3 items exist, reduce to columns: 3. Don't pad with filler.</div></div>
+                <div class="rule"><div class="rule__num">02</div><div class="rule__text"><strong>Headline redundancy.</strong> The eyebrow says "03 · Customer success," the headline says "Customer success stories." Pick one – don't repeat the section name verbatim.</div></div>
+                <div class="rule"><div class="rule__num">03</div><div class="rule__text"><strong>Mixed Timeline granularity.</strong> If milestones are years (2023, 2024, 2025), don't insert "Q4 2024" as one milestone. Keep the time scale consistent.</div></div>
+                <div class="rule"><div class="rule__num">04</div><div class="rule__text"><strong>Burying the lede.</strong> The most important claim goes in the headline. Use the body to support or explain, not to reveal the conclusion.</div></div>
+                <div class="rule"><div class="rule__num">05</div><div class="rule__text"><strong>Placeholder proliferation.</strong> A deck with 12 slides and 11 placeholders signals assets aren't ready. After 3–4 placeholders, ask if they want to pause drafting.</div></div>
+                <div class="rule"><div class="rule__num">06</div><div class="rule__text"><strong>Agenda mismatch.</strong> The Agenda lists 5 sections but the deck has 7 section dividers. The agenda is a contract with the audience – if it's wrong, they'll notice.</div></div>
             </div>
-            <div class="token-item__usage">Light neutral (Agenda background)</div>
-          </div>
+        </div></section>
 
-          <div class="token-item">
-            <div class="token-item__swatch" style="background: #e5e5e2;"></div>
-            <div>
-              <div class="token-item__name">Extended/Sesame 200</div>
-              <div class="token-item__value">#E5E5E2</div>
+        <!-- 10 SESSION START -->
+        <section class="section" id="session-start"><div class="container">
+            <div class="section__marker">10 – Session start</div>
+            <h2 class="section__title">Initializing a session.</h2>
+            <p class="section__lede">For fully autonomous deck building, share the session-start URL. Claude fetches the skill files, token reference, and archetype renders, then confirms it is ready before asking for content.</p>
+            <div class="section__subhead">Session start prompt</div>
+            <div class="code-block">
+                <div class="code-block__head"><div class="code-block__name"><span class="code-block__dots"><span></span><span></span><span></span></span>prompt.txt</div><button class="copy-button" onclick="copyCode(this,'session-prompt')">Copy</button></div>
+                <pre id="session-prompt">Load the Zendesk AI Slides skill from:
+https://raw.githubusercontent.com/dlcious/slides/main/session-start.md
+
+Once loaded, confirm you have the skill, tokens, and archetype renders,
+then ask me for the deck brief.</pre>
             </div>
-            <div class="token-item__usage">Image placeholder backgrounds</div>
-          </div>
-
-          <div class="token-item">
-            <div class="token-item__swatch" style="background: #203524;"></div>
-            <div>
-              <div class="token-item__name">Secondary/Fern</div>
-              <div class="token-item__value">#203524</div>
+            <div class="section__subhead">What Claude fetches</div>
+            <div class="code-block">
+                <div class="code-block__head"><div class="code-block__name"><span class="code-block__dots"><span></span><span></span><span></span></span>session-start.md</div></div>
+                <pre>1. zendesk-slides-skill.md    – archetype set, copy rules, stop-and-ask list
+2. slide-archetypes.md        – per-archetype layout specs and prompt scaffolds
+3. voice-for-slides.md        – slide-specific copy principles and jargon swaps
+4. zendesk-brand-skill.md     – color tokens, typography, spacing
+5. assets/renders/index.json  – archetype render manifest
+6. assets/renders/*.png       – visual ground truth for each archetype</pre>
             </div>
-            <div class="token-item__usage">Dark green callout background (Data display)</div>
-          </div>
+        </div></section>
 
-          <div class="token-item">
-            <div class="token-item__swatch" style="background: #2d4c33;"></div>
-            <div>
-              <div class="token-item__name">Secondary/Shamrock</div>
-              <div class="token-item__value">#2D4C33</div>
-            </div>
-            <div class="token-item__usage">Medium green callout background (Data display)</div>
-          </div>
-
-          <div class="token-item">
-            <div class="token-item__swatch" style="background: #355e34;"></div>
-            <div>
-              <div class="token-item__name">Extended/Matcha 600</div>
-              <div class="token-item__value">#355E34</div>
-            </div>
-            <div class="token-item__usage">Dark green background (Product plate only)</div>
-          </div>
-        </div>
-
-        <h3 style="font-size: 21px; font-weight: 600; margin: 48px 0 16px;">Typography Tokens</h3>
-
-        <div class="section__prose">
-          <p>All type set in Inter. Sizes and weights defined in the template:</p>
-        </div>
-
-        <div class="token-grid">
-          <div class="token-item">
-            <div style="font-family: Inter; font-size: 14px; font-weight: 500; line-height: 19px; width: 100px;">Eyebrow</div>
-            <div>
-              <div class="token-item__name">Inter Medium 14pt</div>
-              <div class="token-item__value">weight: 500, lh: 19px</div>
-            </div>
-            <div class="token-item__usage">Eyebrow pill text ([NN] · [SECTION LABEL])</div>
-          </div>
-
-          <div class="token-item">
-            <div style="font-family: Inter; font-size: 27px; font-weight: 400; line-height: 1.3; width: 100px; font-size: 18px;">Body</div>
-            <div>
-              <div class="token-item__name">Inter Regular 27pt</div>
-              <div class="token-item__value">weight: 400, lh: 130%</div>
-            </div>
-            <div class="token-item__usage">Column body, timeline body, section body, product body</div>
-          </div>
-
-          <div class="token-item">
-            <div style="font-family: Inter; font-size: 32px; font-weight: 700; line-height: 1.3; width: 100px; font-size: 20px;">Header</div>
-            <div>
-              <div class="token-item__name">Inter Bold 32pt</div>
-              <div class="token-item__value">weight: 700, lh: 130%</div>
-            </div>
-            <div class="token-item__usage">Content column headers, timeline headers (all caps)</div>
-          </div>
-
-          <div class="token-item">
-            <div style="font-family: Inter; font-size: 40px; font-weight: 500; line-height: 1.3; width: 100px; font-size: 22px;">Subline</div>
-            <div>
-              <div class="token-item__name">Inter Medium 40pt</div>
-              <div class="token-item__value">weight: 500, lh: 130%</div>
-            </div>
-            <div class="token-item__usage">Content subline, data callout subline, agenda header</div>
-          </div>
-
-          <div class="token-item">
-            <div style="font-family: Inter; font-size: 80px; font-weight: 600; line-height: 1.1; width: 100px; font-size: 26px;">Headline</div>
-            <div>
-              <div class="token-item__name">Inter Semi Bold 80pt</div>
-              <div class="token-item__value">weight: 600, lh: 110%</div>
-            </div>
-            <div class="token-item__usage">Content, statement, quote, data display headlines</div>
-          </div>
-
-          <div class="token-item">
-            <div style="font-family: Inter; font-size: 140px; font-weight: 600; line-height: 0.85; width: 100px; font-size: 28px;">Large</div>
-            <div>
-              <div class="token-item__name">Inter Semi Bold 140pt</div>
-              <div class="token-item__value">weight: 600, lh: 85%</div>
-            </div>
-            <div class="token-item__usage">Cover headline</div>
-          </div>
-
-          <div class="token-item">
-            <div style="font-family: Inter; font-size: 160px; font-weight: 600; line-height: 0.85; width: 100px; font-size: 30px;">Section</div>
-            <div>
-              <div class="token-item__name">Inter Semi Bold 160pt</div>
-              <div class="token-item__value">weight: 600, lh: 85%</div>
-            </div>
-            <div class="token-item__usage">Section divider headline, Agenda title</div>
-          </div>
-
-          <div class="token-item">
-            <div style="font-family: Inter; font-size: 112px; font-weight: 600; width: 100px; font-size: 32px;">Data</div>
-            <div>
-              <div class="token-item__name">Inter Semi Bold 112pt</div>
-              <div class="token-item__value">weight: 600, lh: 0</div>
-            </div>
-            <div class="token-item__usage">Data display callout values ([$0.00])</div>
-          </div>
-        </div>
-
-        <h3 style="font-size: 21px; font-weight: 600; margin: 48px 0 16px;">Spacing Tokens</h3>
-
-        <div class="section__prose">
-          <p>Fixed pixel values inferred from layout inspection:</p>
-        </div>
-
-        <div class="token-grid">
-          <div class="token-item">
-            <div style="width: 100px; height: 30px; background: var(--color-matcha); border-radius: 4px;"></div>
-            <div>
-              <div class="token-item__name">Horizontal padding</div>
-              <div class="token-item__value">30px</div>
-            </div>
-            <div class="token-item__usage">Standard left/right padding for all slides</div>
-          </div>
-
-          <div class="token-item">
-            <div style="width: 100px; height: 32px; background: var(--color-matcha); border-radius: 4px;"></div>
-            <div>
-              <div class="token-item__name">Column gap</div>
-              <div class="token-item__value">32px</div>
-            </div>
-            <div class="token-item__usage">Gap between Content columns, Data display callouts</div>
-          </div>
-
-          <div class="token-item">
-            <div style="width: 100px; height: 40px; background: var(--color-matcha); border-radius: 4px;"></div>
-            <div>
-              <div class="token-item__name">Callout padding</div>
-              <div class="token-item__value">40px</div>
-            </div>
-            <div class="token-item__usage">Internal padding for Data display callout boxes</div>
-          </div>
-
-          <div class="token-item">
-            <div style="width: 100px; height: 64px; background: var(--color-matcha); border-radius: 4px;"></div>
-            <div>
-              <div class="token-item__name">Major section gap</div>
-              <div class="token-item__value">64px</div>
-            </div>
-            <div class="token-item__usage">Vertical space between major content sections</div>
-          </div>
-        </div>
-      </section>
     </main>
 
-    <footer class="footer-nav">
-      <a href="index.html" class="footer-nav__link">← Overview</a>
-      <a href="slides-visual-reference.html" class="footer-nav__link">Visual Reference</a>
-    </footer>
-  </div>
+    <div class="toggle">
+        <a href="slides-visual-reference.html" class="toggle__btn">Human</a>
+        <a href="slides-skill-reference.html" class="toggle__btn toggle__btn--active">Machine</a>
+    </div>
+
+    <script>
+        // Active nav on scroll
+        const sections=document.querySelectorAll('section[id]');
+        const navItems=document.querySelectorAll('.nav__item');
+        const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){const id=e.target.id;navItems.forEach(i=>i.classList.toggle('nav__item--active',i.getAttribute('href')==='#'+id))}})},{rootMargin:'-40% 0px -55% 0px'});
+        sections.forEach(s=>obs.observe(s));
+
+        // Copy buttons
+        function copyCode(btn, id) {
+            const pre = document.getElementById(id);
+            if (!pre) return;
+            navigator.clipboard.writeText(pre.textContent).then(() => {
+                btn.textContent = 'Copied';
+                btn.classList.add('copied');
+                setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+            });
+        }
+    </script>
 </body>
 </html>

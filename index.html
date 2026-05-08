@@ -1,214 +1,340 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zendesk AI Slides Design System</title>
-  <style>
-    :root {
-      --color-coconut: #ffffff;
-      --color-licorice: #11110d;
-      --color-matcha: #70a32a;
-      --color-sesame: #f5f5f2;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zendesk AI Slides – Design System</title>
+    <style>
+        @font-face { font-family: 'Zendesk Sans'; src: url('fonts/zendesk-sans/ZendeskSans-Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'Zendesk Sans'; src: url('fonts/zendesk-sans/ZendeskSans-Medium.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'Zendesk Sans'; src: url('fonts/zendesk-sans/ZendeskSans-MediumItalic.woff2') format('woff2'); font-weight: 500; font-style: italic; font-display: swap; }
+        @font-face { font-family: 'Zendesk Sans'; src: url('fonts/zendesk-sans/ZendeskSans-SemiBold.woff2') format('woff2'); font-weight: 600; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'Zendesk Mono'; src: url('fonts/zendesk-mono/ZendeskMono-Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+        @font-face { font-family: 'Zendesk Mono'; src: url('fonts/zendesk-mono/ZendeskMono-Medium.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
 
-      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      --font-mono: 'Monaco', 'Courier New', monospace;
-    }
+        :root {
+            --color-licorice: #11110D;
+            --color-coconut: #FFFFFF;
+            --color-matcha: #D1F470;
+            --color-coconut-79: rgba(255,255,255,0.79);
+            --color-coconut-56: rgba(255,255,255,0.56);
+            --color-coconut-32: rgba(255,255,255,0.32);
+            --color-coconut-13: rgba(255,255,255,0.13);
+            --color-coconut-7: rgba(255,255,255,0.07);
+            --font-sans: 'Zendesk Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'Zendesk Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+            --s-8:8px; --s-12:12px; --s-16:16px; --s-24:24px; --s-32:32px;
+            --s-40:40px; --s-56:56px; --s-72:72px; --s-96:96px;
+        }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
-    body {
-      font-family: var(--font-sans);
-      background: var(--color-coconut);
-      color: var(--color-licorice);
-      line-height: 1.5;
-      -webkit-font-smoothing: antialiased;
-    }
+        body {
+            font-family: var(--font-sans);
+            background: var(--color-licorice);
+            color: var(--color-coconut);
+            min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
 
-    .container {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 0 32px;
-    }
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: radial-gradient(circle at 1px 1px, var(--color-coconut-7) 1px, transparent 0);
+            background-size: 32px 32px;
+            pointer-events: none;
+            z-index: 0;
+        }
 
-    /* Hero */
-    .hero {
-      padding: 160px 0 120px;
-    }
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -20%;
+            right: -10%;
+            width: 70vw; height: 70vw;
+            max-width: 900px; max-height: 900px;
+            background: radial-gradient(circle, rgba(209,244,112,0.07) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+        }
 
-    .hero__headline {
-      font-size: 64px;
-      font-weight: 500;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      margin-bottom: 24px;
-    }
+        .page {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: var(--s-40) var(--s-56);
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
 
-    .hero__headline em {
-      font-style: italic;
-      font-weight: 500;
-    }
+        /* HEADER */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: var(--s-96);
+        }
 
-    .hero__subline {
-      font-size: 21px;
-      line-height: 1.4;
-      font-weight: 400;
-      color: var(--color-licorice);
-      opacity: 0.7;
-      max-width: 640px;
-    }
+        .brand { display: flex; align-items: center; gap: var(--s-12); text-decoration: none; color: inherit; }
+        .brand__mark { width: 32px; height: 23px; flex-shrink: 0; }
+        .brand__text {
+            font-family: var(--font-mono);
+            font-size: 11px; font-weight: 500;
+            letter-spacing: 0.1em; text-transform: uppercase;
+            color: var(--color-coconut-79);
+        }
 
-    /* Cards */
-    .cards {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
-      margin-bottom: 160px;
-    }
+        .status {
+            display: flex; align-items: center; gap: var(--s-12);
+            font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+            letter-spacing: 0.08em; text-transform: uppercase;
+            color: var(--color-coconut-56);
+        }
 
-    .card {
-      background: var(--color-sesame);
-      border-radius: 8px;
-      padding: 48px 40px;
-      text-decoration: none;
-      color: inherit;
-      transition: transform 0.2s;
-      border: 1px solid transparent;
-    }
+        .status__dot {
+            width: 8px; height: 8px; border-radius: 50%;
+            background: var(--color-matcha);
+            box-shadow: 0 0 12px rgba(209,244,112,0.6);
+            animation: pulse 2s ease-in-out infinite;
+            flex-shrink: 0;
+        }
 
-    .card:hover {
-      transform: translateY(-2px);
-      border-color: var(--color-licorice);
-    }
+        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.35} }
 
-    .card__label {
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      margin-bottom: 24px;
-      opacity: 0.6;
-    }
+        /* HERO */
+        .hero { flex: 1; display: flex; flex-direction: column; justify-content: center; padding-bottom: var(--s-72); }
 
-    .card__title {
-      font-size: 32px;
-      font-weight: 600;
-      line-height: 1.2;
-      margin-bottom: 16px;
-      letter-spacing: -0.01em;
-    }
+        .hero__supertitle {
+            font-family: var(--font-mono); font-size: 12px; font-weight: 500;
+            letter-spacing: 0.12em; text-transform: uppercase;
+            color: var(--color-matcha); margin-bottom: var(--s-32);
+            display: flex; align-items: center; gap: var(--s-12);
+        }
+        .hero__supertitle::before { content:''; width:40px; height:1px; background:var(--color-matcha); flex-shrink:0; }
 
-    .card__description {
-      font-size: 16px;
-      line-height: 1.5;
-      opacity: 0.8;
-    }
+        .hero__title {
+            font-family: var(--font-sans);
+            font-size: clamp(56px, 9vw, 130px);
+            font-weight: 500; line-height: 0.92;
+            letter-spacing: -0.03em;
+            color: var(--color-coconut); margin-bottom: var(--s-32);
+        }
+        .hero__title em { font-style: italic; color: var(--color-matcha); }
 
-    /* Metadata footer */
-    .metadata {
-      border-top: 1px solid var(--color-licorice);
-      padding: 48px 0 64px;
-    }
+        .hero__lede {
+            font-size: 17px; line-height: 1.6;
+            color: var(--color-coconut-79);
+            max-width: 52ch; margin-bottom: var(--s-72);
+        }
 
-    .metadata__grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 32px;
-    }
+        /* TICKER */
+        .ticker {
+            overflow: hidden;
+            margin: 0 calc(-1 * var(--s-56));
+            margin-bottom: var(--s-72);
+            border-top: 1px solid var(--color-coconut-13);
+            border-bottom: 1px solid var(--color-coconut-13);
+            padding: 14px 0;
+            position: relative;
+        }
+        .ticker::before, .ticker::after {
+            content:''; position:absolute; top:0; bottom:0; width:80px; z-index:2; pointer-events:none;
+        }
+        .ticker::before { left:0; background: linear-gradient(to right, var(--color-licorice), transparent); }
+        .ticker::after  { right:0; background: linear-gradient(to left, var(--color-licorice), transparent); }
 
-    .metadata__item {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
+        .ticker__track {
+            display: flex; gap: var(--s-8);
+            animation: ticker 30s linear infinite;
+            width: max-content;
+        }
+        .ticker:hover .ticker__track { animation-play-state: paused; }
 
-    .metadata__key {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      opacity: 0.5;
-    }
+        @keyframes ticker { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
 
-    .metadata__value {
-      font-size: 15px;
-      font-weight: 500;
-    }
+        .ticker__item {
+            font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+            letter-spacing: 0.06em; text-transform: uppercase;
+            color: var(--color-coconut-32); white-space: nowrap;
+            padding: 5px 16px;
+            border: 1px solid var(--color-coconut-13); border-radius: 999px;
+        }
+        .ticker__item--hi { color: var(--color-matcha); border-color: rgba(209,244,112,0.25); }
 
-    /* Responsive */
-    @media (max-width: 768px) {
-      .hero {
-        padding: 80px 0 60px;
-      }
+        /* ROUTES */
+        .routes { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-24); margin-bottom: var(--s-72); }
 
-      .hero__headline {
-        font-size: 42px;
-      }
+        .route {
+            position: relative; display: block;
+            padding: var(--s-40); border-radius: 20px;
+            text-decoration: none; color: inherit;
+            border: 1px solid var(--color-coconut-13);
+            background: var(--color-coconut-7);
+            backdrop-filter: blur(12px);
+            transition: border-color 0.2s, transform 0.2s;
+            overflow: hidden;
+        }
+        .route::after {
+            content:''; position:absolute; inset:0;
+            background: radial-gradient(circle at 80% 0%, rgba(209,244,112,0.1), transparent 60%);
+            opacity:0; transition: opacity 0.3s; pointer-events:none;
+        }
+        .route:hover { border-color: rgba(209,244,112,0.4); transform: translateY(-2px); }
+        .route:hover::after { opacity:1; }
 
-      .hero__subline {
-        font-size: 18px;
-      }
+        .route__tag {
+            font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+            letter-spacing: 0.12em; text-transform: uppercase;
+            color: var(--color-matcha); margin-bottom: var(--s-16);
+            display: flex; align-items: center; gap: var(--s-8);
+        }
+        .route__tag::before { content:''; width:6px; height:6px; border-radius:50%; background:var(--color-matcha); flex-shrink:0; }
 
-      .cards {
-        grid-template-columns: 1fr;
-        margin-bottom: 80px;
-      }
+        .route__title { font-size: 34px; font-weight: 500; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: var(--s-12); }
 
-      .metadata__grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 24px;
-      }
-    }
-  </style>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+        .route__desc { font-size: 15px; line-height: 1.6; color: var(--color-coconut-79); margin-bottom: var(--s-32); max-width: 40ch; }
+
+        .route__cta {
+            display: inline-flex; align-items: center; gap: var(--s-8);
+            font-family: var(--font-mono); font-size: 12px; font-weight: 500;
+            letter-spacing: 0.08em; text-transform: uppercase;
+            color: var(--color-coconut-79); text-decoration: none;
+            transition: color 0.2s;
+        }
+        .route:hover .route__cta { color: var(--color-coconut); }
+        .route__cta svg { width:14px; height:14px; transition: transform 0.2s; }
+        .route:hover .route__cta svg { transform: translateX(4px); }
+
+        /* META */
+        .meta {
+            display: flex; flex-wrap: wrap; gap: var(--s-40);
+            padding-top: var(--s-32);
+            border-top: 1px solid var(--color-coconut-13);
+            font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+            letter-spacing: 0.1em; text-transform: uppercase;
+            color: var(--color-coconut-56);
+        }
+        .meta__item { display: flex; gap: var(--s-8); }
+        .meta__label { color: var(--color-coconut-32); }
+
+        /* TOGGLE */
+        .toggle {
+            position: fixed; bottom: var(--s-40); left: 50%; transform: translateX(-50%);
+            background: rgba(20,20,16,0.95);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            padding: 6px; border-radius: 999px;
+            display: flex; gap: 4px; z-index: 200;
+            border: 1px solid var(--color-coconut-13);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+        }
+        .toggle__btn {
+            font-family: var(--font-mono); font-size: 11px; font-weight: 600;
+            letter-spacing: 0.08em; text-transform: uppercase;
+            padding: 10px 22px; border-radius: 999px;
+            border: none; background: transparent;
+            color: var(--color-coconut-79);
+            text-decoration: none; cursor: pointer;
+            transition: all 0.2s;
+        }
+        .toggle__btn:hover { color: var(--color-coconut); }
+        .toggle__btn--active { background: var(--color-matcha); color: var(--color-licorice); }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .page { padding: var(--s-32); }
+            .header { margin-bottom: var(--s-72); }
+            .routes { grid-template-columns: 1fr; }
+            .ticker { margin: 0 calc(-1 * var(--s-32)); margin-bottom: var(--s-56); }
+        }
+        @media (max-width: 560px) {
+            .page { padding: var(--s-24); }
+            .status span:not(.status__dot) { display: none; }
+            .route { padding: var(--s-32) var(--s-24); }
+            .ticker { margin: 0 calc(-1 * var(--s-24)); }
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <section class="hero">
-      <h1 class="hero__headline">Built so every deck <em>ships</em> on brand.</h1>
-      <p class="hero__subline">A single source of truth for the Zendesk AI Slides design system — expressed two ways.</p>
-    </section>
+    <div class="page">
+        <header class="header">
+            <a href="index.html" class="brand">
+                <svg class="brand__mark" viewBox="0 0 144 105" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M77.4095 104.5C77.5392 86.3085 92.3259 71.6016 110.548 71.6016C128.77 71.6016 143.556 86.3085 143.686 104.5L77.4095 104.5Z" fill="#FFFFFF"/>
+                    <path d="M143.5 0H77.5V77L143.5 0Z" fill="#FFFFFF"/>
+                    <path d="M66.2766 0C66.1468 18.1914 51.3605 32.8983 33.1385 32.8984C14.9165 32.8984 0.12976 18.1915 0 0L66.2766 0Z" fill="#FFFFFF"/>
+                    <path d="M0 104.5L66.5 104.5L66.5 27.5L0 104.5Z" fill="#FFFFFF"/>
+                </svg>
+                <div class="brand__text">Zendesk · AI Slides</div>
+            </a>
+            <div class="status">
+                <span class="status__dot"></span>
+                <span>AI Slides 1.0 · v2026.05</span>
+            </div>
+        </header>
 
-    <section class="cards">
-      <a href="slides-visual-reference.html" class="card">
-        <div class="card__label">Reading Mode · Human</div>
-        <h2 class="card__title">Visual reference</h2>
-        <p class="card__description">Ten archetypes presented as a flowing deck. Real content, full-fidelity layouts, prose guidance on when to use each slide type.</p>
-      </a>
+        <main class="hero">
+            <div class="hero__supertitle">AI Slides Design System</div>
+            <h1 class="hero__title">Built so every deck<br><em>ships</em> on brand.</h1>
+            <p class="hero__lede">A single source of truth for the Zendesk AI Slides design system – expressed two ways. A visual reference for designers and stakeholders. A structured skill reference for AI agents.</p>
 
-      <a href="slides-skill-reference.html" class="card">
-        <div class="card__label">Reading Mode · Machine</div>
-        <h2 class="card__title">Skill reference</h2>
-        <p class="card__description">How to install and use the AI skill. Full skill content, worked examples, token reference, and common follow-ups.</p>
-      </a>
-    </section>
+            <div class="ticker" aria-hidden="true">
+                <div class="ticker__track">
+                    <span class="ticker__item ticker__item--hi">01 · Cover</span>
+                    <span class="ticker__item">02 · Agenda</span>
+                    <span class="ticker__item">03 · Section divider</span>
+                    <span class="ticker__item">04 · Statement</span>
+                    <span class="ticker__item">05 · Quote</span>
+                    <span class="ticker__item">06 · Content</span>
+                    <span class="ticker__item">07 · Product plate</span>
+                    <span class="ticker__item">08 · Data display</span>
+                    <span class="ticker__item">09 · Timeline</span>
+                    <span class="ticker__item ticker__item--hi">10 · Closing</span>
+                    <span class="ticker__item ticker__item--hi">01 · Cover</span>
+                    <span class="ticker__item">02 · Agenda</span>
+                    <span class="ticker__item">03 · Section divider</span>
+                    <span class="ticker__item">04 · Statement</span>
+                    <span class="ticker__item">05 · Quote</span>
+                    <span class="ticker__item">06 · Content</span>
+                    <span class="ticker__item">07 · Product plate</span>
+                    <span class="ticker__item">08 · Data display</span>
+                    <span class="ticker__item">09 · Timeline</span>
+                    <span class="ticker__item ticker__item--hi">10 · Closing</span>
+                </div>
+            </div>
 
-    <footer class="metadata">
-      <div class="metadata__grid">
-        <div class="metadata__item">
-          <div class="metadata__key">System</div>
-          <div class="metadata__value">AI Slides 1.0</div>
-        </div>
-        <div class="metadata__item">
-          <div class="metadata__key">Version</div>
-          <div class="metadata__value">2026.05</div>
-        </div>
-        <div class="metadata__item">
-          <div class="metadata__key">Audience</div>
-          <div class="metadata__value">Humans + Machines</div>
-        </div>
-        <div class="metadata__item">
-          <div class="metadata__key">Built for</div>
-          <div class="metadata__value">Claude Code</div>
-        </div>
-      </div>
-    </footer>
-  </div>
+            <div class="routes">
+                <a href="slides-visual-reference.html" class="route">
+                    <div class="route__tag">Reading Mode · Human</div>
+                    <h2 class="route__title">Visual reference</h2>
+                    <p class="route__desc">Ten archetypes presented as a flowing deck. Real content, full-fidelity layouts, and prose guidance on when to use each slide type.</p>
+                    <span class="route__cta">Open visual guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+                </a>
+                <a href="slides-skill-reference.html" class="route">
+                    <div class="route__tag">Reading Mode · Machine</div>
+                    <h2 class="route__title">Skill reference</h2>
+                    <p class="route__desc">How to install and use the AI skill. Full skill content, worked examples, token reference, and common follow-ups.</p>
+                    <span class="route__cta">Open skill guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+                </a>
+            </div>
+
+            <div class="meta">
+                <div class="meta__item"><span class="meta__label">System</span><span>AI Slides 1.0</span></div>
+                <div class="meta__item"><span class="meta__label">Version</span><span>2026.05</span></div>
+                <div class="meta__item"><span class="meta__label">Audience</span><span>Humans + Machines</span></div>
+                <div class="meta__item"><span class="meta__label">Built for</span><span>Claude Code</span></div>
+            </div>
+        </main>
+    </div>
+
+    <div class="toggle">
+        <a href="slides-visual-reference.html" class="toggle__btn">Human</a>
+        <a href="slides-skill-reference.html" class="toggle__btn">Machine</a>
+    </div>
 </body>
 </html>

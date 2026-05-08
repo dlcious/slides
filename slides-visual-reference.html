@@ -1,463 +1,290 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Visual Reference – Zendesk AI Slides</title>
-  <style>
-    :root {
-      --color-coconut: #ffffff;
-      --color-licorice: #11110d;
-      --color-matcha: #70a32a;
-      --color-sesame: #f5f5f2;
-
-      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      --font-mono: 'Monaco', 'Courier New', monospace;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: var(--font-sans);
-      background: var(--color-coconut);
-      color: var(--color-licorice);
-      line-height: 1.5;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 48px;
-    }
-
-    /* Header */
-    .header {
-      padding: 48px 0;
-      border-bottom: 1px solid var(--color-licorice);
-      margin-bottom: 80px;
-    }
-
-    .header__title {
-      font-size: 21px;
-      font-weight: 500;
-      letter-spacing: -0.01em;
-    }
-
-    /* Section */
-    .section {
-      margin-bottom: 160px;
-    }
-
-    .section__number {
-      font-family: var(--font-mono);
-      font-size: 13px;
-      letter-spacing: 0.05em;
-      opacity: 0.5;
-      margin-bottom: 16px;
-    }
-
-    .section__title {
-      font-size: 32px;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-      margin-bottom: 32px;
-    }
-
-    .section__prose {
-      max-width: 720px;
-      margin-bottom: 48px;
-    }
-
-    .section__prose p {
-      font-size: 16px;
-      line-height: 1.6;
-      margin-bottom: 16px;
-    }
-
-    .section__prose p:last-child {
-      margin-bottom: 0;
-    }
-
-    .section__prose strong {
-      font-weight: 600;
-    }
-
-    /* Deck embed */
-    .deck-embed {
-      width: 100%;
-      height: 70vh;
-      margin-bottom: 80px;
-      background: #000;
-      border-radius: 8px;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .deck-embed iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    /* Slide render */
-    .slide {
-      background: var(--color-sesame);
-      padding: 48px;
-      border-radius: 8px;
-      margin-bottom: 48px;
-    }
-
-    .slide__image {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 4px;
-      box-shadow: 0 2px 12px rgba(17, 17, 13, 0.08);
-    }
-
-    /* Parameters */
-    .parameters {
-      max-width: 720px;
-      margin-bottom: 32px;
-    }
-
-    .parameters__title {
-      font-size: 15px;
-      font-weight: 600;
-      margin-bottom: 12px;
-    }
-
-    .parameters__list {
-      list-style: none;
-      font-size: 15px;
-      line-height: 1.6;
-    }
-
-    .parameters__list li {
-      padding-left: 16px;
-      position: relative;
-    }
-
-    .parameters__list li:before {
-      content: '·';
-      position: absolute;
-      left: 0;
-    }
-
-    /* Footer nav */
-    .footer-nav {
-      border-top: 1px solid var(--color-licorice);
-      padding: 48px 0 64px;
-      display: flex;
-      gap: 32px;
-    }
-
-    .footer-nav__link {
-      font-size: 15px;
-      color: var(--color-licorice);
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .footer-nav__link:hover {
-      text-decoration: underline;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .container {
-        padding: 0 24px;
-      }
-
-      .section {
-        margin-bottom: 80px;
-      }
-
-      .section__title {
-        font-size: 24px;
-      }
-
-      .slide {
-        padding: 24px;
-      }
-    }
-  </style>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zendesk AI Slides – Visual Reference</title>
+    <style>
+        @font-face { font-family: 'Zendesk Sans'; src: url('fonts/zendesk-sans/ZendeskSans-Regular.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+        @font-face { font-family: 'Zendesk Sans'; src: url('fonts/zendesk-sans/ZendeskSans-Medium.woff2') format('woff2'); font-weight: 500; font-display: swap; }
+        @font-face { font-family: 'Zendesk Sans'; src: url('fonts/zendesk-sans/ZendeskSans-SemiBold.woff2') format('woff2'); font-weight: 600; font-display: swap; }
+        @font-face { font-family: 'Zendesk Mono'; src: url('fonts/zendesk-mono/ZendeskMono-Regular.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+        @font-face { font-family: 'Zendesk Mono'; src: url('fonts/zendesk-mono/ZendeskMono-Medium.woff2') format('woff2'); font-weight: 500; font-display: swap; }
+        :root {
+            --color-licorice:#11110D; --color-coconut:#FFFFFF; --color-matcha:#D1F470;
+            --color-coconut-79:rgba(255,255,255,0.79); --color-coconut-47:rgba(255,255,255,0.47);
+            --color-coconut-32:rgba(255,255,255,0.32); --color-coconut-13:rgba(255,255,255,0.13);
+            --color-coconut-7:rgba(255,255,255,0.07); --color-coconut-5:rgba(255,255,255,0.05);
+            --font-sans:'Zendesk Sans',-apple-system,BlinkMacSystemFont,sans-serif;
+            --font-mono:'Zendesk Mono',ui-monospace,'SF Mono',Menlo,monospace;
+            --s-8:8px;--s-12:12px;--s-16:16px;--s-24:24px;--s-40:40px;
+            --s-56:56px;--s-72:72px;--s-96:96px;--s-128:128px;
+            --nav-width:260px; --content-max:1040px;
+        }
+        *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+        html{scroll-behavior:smooth;}
+        body{font-family:var(--font-sans);background:var(--color-licorice);color:var(--color-coconut);-webkit-font-smoothing:antialiased;}
+        a{color:inherit;text-decoration:none;}
+        body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(circle at 1px 1px,var(--color-coconut-7) 1px,transparent 0);background-size:28px 28px;pointer-events:none;z-index:0;}
+        .nav{position:fixed;top:0;left:0;width:var(--nav-width);height:100vh;background:#0A0A07;border-right:1px solid var(--color-coconut-7);padding:var(--s-56) var(--s-40);display:flex;flex-direction:column;z-index:100;overflow-y:auto;}
+        .nav__brand{display:flex;align-items:center;gap:12px;margin-bottom:var(--s-72);}
+        .nav__mark{width:32px;height:23px;flex-shrink:0;}
+        .nav__brand-text{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--color-coconut);line-height:1.4;}
+        .nav__brand-text span{display:block;color:var(--color-coconut-47);margin-top:2px;}
+        .nav__heading{font-family:var(--font-mono);font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-coconut-47);margin-bottom:var(--s-16);}
+        .nav__menu{display:flex;flex-direction:column;margin-bottom:var(--s-56);}
+        .nav__item{display:flex;align-items:baseline;gap:10px;padding:9px 0 9px 14px;font-family:var(--font-mono);font-size:12px;color:var(--color-coconut-79);border-left:1px solid var(--color-coconut-13);transition:color .2s,border-color .2s,padding-left .2s;}
+        .nav__item:hover{color:var(--color-coconut);border-left-color:var(--color-coconut-32);}
+        .nav__item--active{color:var(--color-matcha);border-left-color:var(--color-matcha);padding-left:16px;}
+        .nav__num{font-family:var(--font-mono);font-size:10px;color:var(--color-coconut-47);min-width:18px;}
+        .nav__item--active .nav__num{color:var(--color-matcha);}
+        .nav__footer{margin-top:auto;padding-top:var(--s-24);border-top:1px solid var(--color-coconut-13);font-family:var(--font-mono);font-size:10px;color:var(--color-coconut-47);letter-spacing:.05em;text-transform:uppercase;line-height:1.6;}
+        .page{margin-left:var(--nav-width);min-height:100vh;position:relative;z-index:1;}
+        .container{max-width:var(--content-max);margin:0 auto;padding:0 var(--s-72);}
+        .hero{padding:var(--s-96) 0 var(--s-128);position:relative;overflow:hidden;border-bottom:1px solid var(--color-coconut-7);}
+        .hero__inner{max-width:var(--content-max);margin:0 auto;padding:0 var(--s-72);position:relative;z-index:1;}
+        .hero__supertitle{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-matcha);margin-bottom:var(--s-24);display:inline-flex;align-items:center;gap:12px;}
+        .hero__supertitle::before{content:'';display:inline-block;width:32px;height:1px;background:var(--color-matcha);}
+        .hero__title{font-size:clamp(56px,8vw,108px);font-weight:500;line-height:.92;letter-spacing:-.025em;color:var(--color-coconut);margin-bottom:var(--s-24);}
+        .hero__title em{font-family:var(--font-mono);font-style:normal;font-weight:400;color:var(--color-matcha);font-size:clamp(16px,2vw,22px);display:block;line-height:1;margin-top:var(--s-24);}
+        .hero__subtitle{font-family:var(--font-mono);font-size:14px;line-height:1.6;color:var(--color-coconut-79);max-width:420px;}
+        .hero::after{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 1px 1px,var(--color-coconut-7) 1px,transparent 0);background-size:28px 28px;opacity:.6;pointer-events:none;}
+        .hero__meta{position:absolute;bottom:var(--s-40);left:50%;transform:translateX(-50%);max-width:var(--content-max);width:100%;padding:0 var(--s-72);display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:10px;color:var(--color-coconut-47);text-transform:uppercase;letter-spacing:.08em;z-index:1;}
+        .section{padding:var(--s-128) 0;border-bottom:1px solid var(--color-coconut-7);}
+        .section:last-of-type{border-bottom:none;padding-bottom:160px;}
+        .section__marker{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--color-matcha);margin-bottom:var(--s-24);display:flex;align-items:center;gap:12px;}
+        .section__marker::before{content:'';width:32px;height:1px;background:var(--color-matcha);}
+        .archetype__header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:var(--s-24);padding-bottom:var(--s-16);border-bottom:1px solid var(--color-coconut-7);}
+        .archetype__num{font-family:var(--font-mono);font-size:11px;color:var(--color-coconut-47);margin-bottom:4px;}
+        .archetype__name{font-size:28px;font-weight:500;letter-spacing:-.015em;}
+        .param-list{display:flex;flex-wrap:wrap;gap:8px;}
+        .param{font-family:var(--font-mono);font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--color-coconut-13);color:var(--color-coconut-79);}
+        .param--matcha{border-color:var(--color-matcha);color:var(--color-matcha);}
+        .archetype__frame{width:100%;aspect-ratio:16/9;background:var(--color-coconut-5);border:1px solid var(--color-coconut-13);border-radius:12px;overflow:hidden;margin-bottom:var(--s-24);}
+        .archetype__frame img{width:100%;height:100%;object-fit:cover;display:block;}
+        .archetype__meta{display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--s-24);}
+        .archetype__block-label{font-family:var(--font-mono);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--color-coconut-47);margin-bottom:8px;}
+        .archetype__block-body{font-size:14px;line-height:1.55;color:var(--color-coconut-79);}
+        .archetype__block-body strong{color:var(--color-coconut);font-weight:500;}
+        .toggle{position:fixed;bottom:var(--s-40);left:50%;transform:translateX(calc(-50% + var(--nav-width)/2));background:rgba(20,20,16,.95);backdrop-filter:blur(10px);padding:6px;border-radius:999px;display:flex;gap:4px;z-index:200;border:1px solid var(--color-coconut-13);box-shadow:0 16px 40px rgba(0,0,0,.5);}
+        .toggle__btn{font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:10px 22px;border-radius:999px;border:none;background:transparent;color:var(--color-coconut-79);text-decoration:none;cursor:pointer;transition:all .2s;}
+        .toggle__btn:hover{color:var(--color-coconut);}
+        .toggle__btn--active{background:var(--color-matcha);color:var(--color-licorice);}
+        @media(max-width:1024px){.nav{transform:translateX(-100%)}.page{margin-left:0}.toggle{transform:translateX(-50%)}}
+        @media(max-width:768px){.archetype__meta{grid-template-columns:1fr}.container{padding:0 var(--s-24)}}
+    </style>
 </head>
 <body>
-  <div class="container">
-    <header class="header">
-      <h1 class="header__title">Visual Reference</h1>
-    </header>
-
-    <!-- Embedded deck -->
-    <div class="deck-embed">
-      <iframe src="deck.html" title="Zendesk Intelligence Assistant Deck"></iframe>
+<nav class="nav">
+    <div class="nav__brand">
+        <svg class="nav__mark" viewBox="0 0 144 105" fill="none"><path d="M77.4095 104.5C77.5392 86.3085 92.3259 71.6016 110.548 71.6016C128.77 71.6016 143.556 86.3085 143.686 104.5L77.4095 104.5Z" fill="#FFF"/><path d="M143.5 0H77.5V77L143.5 0Z" fill="#FFF"/><path d="M66.2766 0C66.1468 18.1914 51.3605 32.8983 33.1385 32.8984C14.9165 32.8984 0.12976 18.1915 0 0L66.2766 0Z" fill="#FFF"/><path d="M0 104.5L66.5 104.5L66.5 27.5L0 104.5Z" fill="#FFF"/></svg>
+        <div class="nav__brand-text">Zendesk<span>AI Slides</span></div>
+    </div>
+    <div class="nav__heading">Archetypes</div>
+    <div class="nav__menu">
+        <a href="#cover" class="nav__item nav__item--active"><span class="nav__num">01</span>Cover</a>
+        <a href="#agenda" class="nav__item"><span class="nav__num">02</span>Agenda</a>
+        <a href="#section-divider" class="nav__item"><span class="nav__num">03</span>Section divider</a>
+        <a href="#statement" class="nav__item"><span class="nav__num">04</span>Statement</a>
+        <a href="#quote" class="nav__item"><span class="nav__num">05</span>Quote</a>
+        <a href="#content" class="nav__item"><span class="nav__num">06</span>Content</a>
+        <a href="#product-plate" class="nav__item"><span class="nav__num">07</span>Product plate</a>
+        <a href="#data-display" class="nav__item"><span class="nav__num">08</span>Data display</a>
+        <a href="#timeline" class="nav__item"><span class="nav__num">09</span>Timeline</a>
+        <a href="#closing" class="nav__item"><span class="nav__num">10</span>Closing</a>
+    </div>
+    <div class="nav__footer">AI Slides 1.0<br>v2026.05</div>
+</nav>
+<main class="page">
+    <div class="hero">
+        <div class="hero__inner">
+            <div>
+                <div class="hero__supertitle">Visual Reference</div>
+                <h1 class="hero__title">Ten archetypes.<br>One system.<em>// human reference</em></h1>
+                <p class="hero__subtitle">Full-fidelity layouts, real content, and guidance on when to use each slide type.</p>
+            </div>
+        </div>
+        <div class="hero__meta"><span>Slides · 10 archetypes</span><span>System · AI Slides 1.0</span><span>Updated · 2026.05</span></div>
     </div>
 
-    <main>
-      <!-- 01 — Cover -->
-      <section class="section">
-        <div class="section__number">01 — COVER</div>
-        <h2 class="section__title">Cover</h2>
 
-        <div class="section__prose">
-          <p><strong>When to use:</strong> Deck opener. Every deck starts here. Use <code>speaker: yes</code> for conference talks or webinars where the presenter's identity matters (includes speaker photo, name, title). Use <code>speaker: no</code> for decks sent without a presenter — sales leave-behinds, strategy docs, internal briefings.</p>
-          <p><strong>What pairs with it:</strong> Follow immediately with Agenda (slide 2) or jump straight to a Section divider if the deck is short and the structure is obvious.</p>
-          <p><strong>What to avoid:</strong> Don't use Cover as a chapter break mid-deck. That's what Section divider is for. Don't skip it — even internal decks benefit from a clear opener that sets context.</p>
+    <section class="section" id="cover">
+        <div class="container">
+            <div class="section__marker">01 – Cover</div>
+            <div class="archetype__header">
+                <div><div class="archetype__num">Archetype 01</div><div class="archetype__name">Cover</div></div>
+                <div class="param-list"><span class="param param--matcha">speaker: yes/no</span></div>
+            </div>
+            <div class="archetype__frame"><img src="https://raw.githubusercontent.com/dlcious/slides/main/assets/renders/cover--canonical.png" alt="Cover archetype" loading="lazy"></div>
+            <div class="archetype__meta">
+                <div><div class="archetype__block-label">When to use</div><div class="archetype__block-body">Deck opener. Every deck starts here. Use speaker: yes for talks or webinars. Use speaker: no for leave-behinds.</div></div>
+                <div><div class="archetype__block-label">Layout</div><div class="archetype__block-body">White (Coconut) bg. Large Matcha 400 headline top-left. Image right column (755×926px). Speaker block bottom-left.</div></div>
+                <div><div class="archetype__block-label">What to avoid</div><div class="archetype__block-body">Don't use Cover as a chapter break. Don't skip it – even internal decks need a clear opener.</div></div>
+            </div>
         </div>
+    </section>
 
-        <div class="parameters">
-          <div class="parameters__title">Parameters</div>
-          <ul class="parameters__list">
-            <li><strong>speaker:</strong> yes/no (includes speaker photo, name, title, company when yes)</li>
-            <li><strong>Matcha placement:</strong> Headline text (structural, not a choice)</li>
-          </ul>
+    <section class="section" id="agenda">
+        <div class="container">
+            <div class="section__marker">02 – Agenda</div>
+            <div class="archetype__header">
+                <div><div class="archetype__num">Archetype 02</div><div class="archetype__name">Agenda</div></div>
+                <div class="param-list"><span class="param param--matcha">rows: 3–8</span></div>
+            </div>
+            <div class="archetype__frame"><img src="https://raw.githubusercontent.com/dlcious/slides/main/assets/renders/agenda--canonical.png" alt="Agenda archetype" loading="lazy"></div>
+            <div class="archetype__meta">
+                <div><div class="archetype__block-label">When to use</div><div class="archetype__block-body">Deck roadmap. Use early – slide 2 or 3. Agenda items should map 1:1 to Section dividers later in the deck.</div></div>
+                <div><div class="archetype__block-label">Layout</div><div class="archetype__block-body">Sesame 100 background. Large 'Agenda' title bottom-left in Matcha 400. Rows right two-thirds: header + subline + number.</div></div>
+                <div><div class="archetype__block-label">What to avoid</div><div class="archetype__block-body">Don't use in short decks (under 10 slides). Don't include slide numbers – they change during iteration.</div></div>
+            </div>
         </div>
+    </section>
 
-        <div class="slide">
-          <img src="https://raw.githubusercontent.com/dlcious/slides/main/assets/renders/cover--canonical.png" alt="Cover archetype" class="slide__image">
+    <section class="section" id="section-divider">
+        <div class="container">
+            <div class="section__marker">03 – Section divider</div>
+            <div class="archetype__header">
+                <div><div class="archetype__num">Archetype 03</div><div class="archetype__name">Section divider</div></div>
+                <div class="param-list"><span class="param param--matcha">body: yes/no</span></div>
+            </div>
+            <div class="archetype__frame"><img src="https://raw.githubusercontent.com/dlcious/slides/main/assets/renders/section-divider--canonical.png" alt="Section divider archetype" loading="lazy"></div>
+            <div class="archetype__meta">
+                <div><div class="archetype__block-label">When to use</div><div class="archetype__block-body">Chapter break. The headline should match the agenda row verbatim. Use body: yes when the section name is cryptic.</div></div>
+                <div><div class="archetype__block-label">Layout</div><div class="archetype__block-body">Licorice background. Optional body text top-left (white, small). Huge white headline bottom-left at 160pt. No Matcha.</div></div>
+                <div><div class="archetype__block-label">What to avoid</div><div class="archetype__block-body">Don't use for every slide – it's a beat. Don't write body text longer than two lines.</div></div>
+            </div>
         </div>
-      </section>
+    </section>
 
-      <!-- 02 — Agenda -->
-      <section class="section">
-        <div class="section__number">02 — AGENDA</div>
-        <h2 class="section__title">Agenda</h2>
-
-        <div class="section__prose">
-          <p><strong>When to use:</strong> Deck roadmap. Use early (slide 2 or 3) to set expectations about structure and scope. Best for decks with 5+ major sections or when the audience needs a preview to orient themselves. Each row: section name + optional subline + number.</p>
-          <p><strong>What pairs with it:</strong> Follows Cover. The agenda items should map 1:1 to Section divider slides later in the deck — if the agenda says "Customer impact," there should be a Section divider with that exact headline.</p>
-          <p><strong>What to avoid:</strong> Don't use Agenda in short decks (under 10 slides). Don't number the agenda items 1–8 if the deck doesn't have clear chapter breaks. Don't include slide numbers in the agenda — they change during iteration and go stale.</p>
+    <section class="section" id="statement">
+        <div class="container">
+            <div class="section__marker">04 – Statement</div>
+            <div class="archetype__header">
+                <div><div class="archetype__num">Archetype 04</div><div class="archetype__name">Statement</div></div>
+                <div class="param-list"><span class="param param--matcha">no parameters</span></div>
+            </div>
+            <div class="archetype__frame"><img src="https://raw.githubusercontent.com/dlcious/slides/main/assets/renders/statement--canonical.png" alt="Statement archetype" loading="lazy"></div>
+            <div class="archetype__meta">
+                <div><div class="archetype__block-label">When to use</div><div class="archetype__block-body">Bold declarative slide. One big idea, center-aligned. Use for mission statements. Use sparingly – max two per deck.</div></div>
+                <div><div class="archetype__block-label">Layout</div><div class="archetype__block-body">Licorice background. Large white headline center-aligned at 80pt Semi Bold. Zendesk wordmark bottom-left.</div></div>
+                <div><div class="archetype__block-label">What to avoid</div><div class="archetype__block-body">Don't use if the idea needs explanation. Don't stack Statements. Don't write more than two lines.</div></div>
+            </div>
         </div>
+    </section>
 
-        <div class="parameters">
-          <div class="parameters__title">Parameters</div>
-          <ul class="parameters__list">
-            <li><strong>rows:</strong> 3–8 (each row = section name + optional subline + number placeholder)</li>
-            <li><strong>Matcha placement:</strong> "Agenda" title text (structural)</li>
-          </ul>
+    <section class="section" id="quote">
+        <div class="container">
+            <div class="section__marker">05 – Quote</div>
+            <div class="archetype__header">
+                <div><div class="archetype__num">Archetype 05</div><div class="archetype__name">Quote</div></div>
+                <div class="param-list"><span class="param param--matcha">portrait image</span><span class="param param--matcha">hanging punctuation</span></div>
+            </div>
+            <div class="archetype__frame"><img src="https://raw.githubusercontent.com/dlcious/slides/main/assets/renders/quote--canonical.png" alt="Quote archetype" loading="lazy"></div>
+            <div class="archetype__meta">
+                <div><div class="archetype__block-label">When to use</div><div class="archetype__block-body">Customer or partner testimonial. Use in the proof section. Best when the quote is specific and credible.</div></div>
+                <div><div class="archetype__block-label">Layout</div><div class="archetype__block-body">White background. Portrait placeholder left (345×926px). Quote text right at 80pt with hanging punctuation. Attribution below.</div></div>
+                <div><div class="archetype__block-label">What to avoid</div><div class="archetype__block-body">Don't use internal quotes. Don't use quotes longer than three lines. Real faces build trust – avoid portrait placeholders.</div></div>
+            </div>
         </div>
+    </section>
 
-        <div class="slide">
-          <img src="https://raw.githubusercontent.com/dlcious/slides/main/assets/renders/agenda--canonical.png" alt="Agenda archetype" class="slide__image">
+    <section class="section" id="content">
+        <div class="container">
+            <div class="section__marker">06 – Content</div>
+            <div class="archetype__header">
+                <div><div class="archetype__num">Archetype 06</div><div class="archetype__name">Content</div></div>
+                <div class="param-list"><span class="param param--matcha">columns: 1–5</span><span class="param param--matcha">media: image/icon/none</span></div>
+            </div>
+            <div class="archetype__frame"><img src="https://raw.githubusercontent.com/dlcious/slides/main/assets/renders/content--cols5-none.png" alt="Content archetype" loading="lazy"></div>
+            <div class="archetype__meta">
+                <div><div class="archetype__block-label">When to use</div><div class="archetype__block-body">The workhorse. Headline + optional subline + columnar body. Use columns: 1 for narrative, 3–5 for feature lists.</div></div>
+                <div><div class="archetype__block-label">Layout</div><div class="archetype__block-body">White background. Headline 80pt Semi Bold. Subline 40pt Regular. Columns equal-width with 32px gaps. Divider tops each column.</div></div>
+                <div><div class="archetype__block-label">What to avoid</div><div class="archetype__block-body">Don't pad with empty columns. Don't bury the lede. Max 5 columns – split if more are needed.</div></div>
+            </div>
         </div>
-      </section>
+    </section>
 
-      <!-- 03 — Section divider -->
-      <section class="section">
-        <div class="section__number">03 — SECTION DIVIDER</div>
-        <h2 class="section__title">Section divider</h2>
-
-        <div class="section__prose">
-          <p><strong>When to use:</strong> Chapter break. Marks a major shift in topic or argument. The large headline sits bottom-aligned; optional body text top-left provides context if the section name alone is cryptic. Use <code>body: yes</code> for sections that need a one-sentence framing ("Today's agents spend 60% of their time searching for answers instead of helping customers"). Use <code>body: no</code> when the headline is self-explanatory.</p>
-          <p><strong>What pairs with it:</strong> Follows an Agenda item. The headline should match the agenda row verbatim — if the agenda said "The support gap," the Section divider says "The support gap." Signals to the audience: we're moving to the next chapter.</p>
-          <p><strong>What to avoid:</strong> Don't use Section divider for every slide. It's a beat, not a slide type. Don't write body text longer than two lines — if you need more than that, use a Content slide instead.</p>
+    <section class="section" id="product-plate">
+        <div class="container">
+            <div class="section__marker">07 – Product plate</div>
+            <div class="archetype__header">
+                <div><div class="archetype__num">Archetype 07</div><div class="archetype__name">Product plate</div></div>
+                <div class="param-list"><span class="param param--matcha">bg: Matcha 600</span></div>
+            </div>
+            <div class="archetype__frame"><img src="https://raw.githubusercontent.com/dlcious/slides/main/assets/renders/product-plate--canonical.png" alt="Product plate archetype" loading="lazy"></div>
+            <div class="archetype__meta">
+                <div><div class="archetype__block-label">When to use</div><div class="archetype__block-body">Product feature with large screenshot. Use for demos and feature deep-dives. Matcha 600 signals 'this is the product.'</div></div>
+                <div><div class="archetype__block-label">Layout</div><div class="archetype__block-body">Dark green (Matcha 600) background. Headline top-left white. Body bottom-left white. Screenshot right (944×612px).</div></div>
+                <div><div class="archetype__block-label">What to avoid</div><div class="archetype__block-body">Don't use for non-product imagery. Don't use without a real screenshot. Body text max three lines.</div></div>
+            </div>
         </div>
+    </section>
 
-        <div class="parameters">
-          <div class="parameters__title">Parameters</div>
-          <ul class="parameters__list">
-            <li><strong>body:</strong> yes/no (optional body text top-left)</li>
-            <li><strong>Background:</strong> Dark (licorice), white text</li>
-            <li><strong>Matcha placement:</strong> None (this archetype does not use Matcha)</li>
-          </ul>
+    <section class="section" id="data-display">
+        <div class="container">
+            <div class="section__marker">08 – Data display</div>
+            <div class="archetype__header">
+                <div><div class="archetype__num">Archetype 08</div><div class="archetype__name">Data display</div></div>
+                <div class="param-list"><span class="param param--matcha">type: callouts</span><span class="param param--matcha">3×2 grid</span></div>
+            </div>
+            <div class="archetype__frame"><img src="https://raw.githubusercontent.com/dlcious/slides/main/assets/renders/data-display--callouts.png" alt="Data display archetype" loading="lazy"></div>
+            <div class="archetype__meta">
+                <div><div class="archetype__block-label">When to use</div><div class="archetype__block-body">Grid of metric callouts – dashboards, ROI summaries, impact reports. Best when numbers tell the story on their own.</div></div>
+                <div><div class="archetype__block-label">Layout</div><div class="archetype__block-body">White background. Headline 80pt top. 3×2 grid with alternating Fern/Shamrock backgrounds. Values in bright Matcha.</div></div>
+                <div><div class="archetype__block-label">What to avoid</div><div class="archetype__block-body">Only callouts are supported – no charts. Never invent statistics. Sublines max two lines.</div></div>
+            </div>
         </div>
+    </section>
 
-        <div class="slide">
-          <img src="https://raw.githubusercontent.com/dlcious/slides/main/assets/renders/section-divider--canonical.png" alt="Section divider archetype" class="slide__image">
+    <section class="section" id="timeline">
+        <div class="container">
+            <div class="section__marker">09 – Timeline</div>
+            <div class="archetype__header">
+                <div><div class="archetype__num">Archetype 09</div><div class="archetype__name">Timeline</div></div>
+                <div class="param-list"><span class="param param--matcha">milestones: 2–4</span></div>
+            </div>
+            <div class="archetype__frame"><img src="https://raw.githubusercontent.com/dlcious/slides/main/assets/renders/timeline--canonical.png" alt="Timeline archetype" loading="lazy"></div>
+            <div class="archetype__meta">
+                <div><div class="archetype__block-label">When to use</div><div class="archetype__block-body">Roadmaps, company history, release schedules. Best with 2–4 milestones – more than 4 gets crowded.</div></div>
+                <div><div class="archetype__block-label">Layout</div><div class="archetype__block-body">White background. Headline top-left. Horizontal Matcha connector line with dark circles. Headers ALL CAPS BOLD.</div></div>
+                <div><div class="archetype__block-label">What to avoid</div><div class="archetype__block-body">Don't mix time granularity. Don't use for non-chronological steps – that's a Content slide.</div></div>
+            </div>
         </div>
-      </section>
+    </section>
 
-      <!-- 04 — Statement -->
-      <section class="section">
-        <div class="section__number">04 — STATEMENT</div>
-        <h2 class="section__title">Statement</h2>
-
-        <div class="section__prose">
-          <p><strong>When to use:</strong> Bold declarative slide. One big idea, center-aligned, no supporting text. Use for mission statements, principles, or turning-point moments in the narrative. This is the slide that gets screenshotted and posted to Slack. Make it count.</p>
-          <p><strong>What pairs with it:</strong> Sandwiched between evidence slides. Lead with data or proof (Content, Data display), follow with the Statement as the conclusion, then move forward. Or use it as a transition — close one section with a Statement, then start the next section.</p>
-          <p><strong>What to avoid:</strong> Don't use Statement for concepts that need explanation — if the idea requires a subline or bullets to make sense, use Content instead. Don't stack multiple Statements back-to-back; they lose impact. Don't write more than two lines of text — Statement is about brevity and emphasis.</p>
+    <section class="section" id="closing">
+        <div class="container">
+            <div class="section__marker">10 – Closing</div>
+            <div class="archetype__header">
+                <div><div class="archetype__num">Archetype 10</div><div class="archetype__name">Closing</div></div>
+                <div class="param-list"><span class="param param--matcha">no eyebrow</span><span class="param param--matcha">wordmark only</span></div>
+            </div>
+            <div class="archetype__frame"><img src="https://raw.githubusercontent.com/dlcious/slides/main/assets/renders/closing--canonical.png" alt="Closing archetype" loading="lazy"></div>
+            <div class="archetype__meta">
+                <div><div class="archetype__block-label">When to use</div><div class="archetype__block-body">Final slide. Pure brand presence. Use when the deck is self-contained and needs no follow-up action.</div></div>
+                <div><div class="archetype__block-label">Layout</div><div class="archetype__block-body">Licorice background. Large 'zendesk' wordmark bottom-left in white. No eyebrow. No footer.</div></div>
+                <div><div class="archetype__block-label">What to avoid</div><div class="archetype__block-body">Don't end on a data slide – it's abrupt. Don't use mid-deck. If you need a CTA, add a Content slide before this.</div></div>
+            </div>
         </div>
+    </section>
 
-        <div class="parameters">
-          <div class="parameters__title">Parameters</div>
-          <ul class="parameters__list">
-            <li><strong>None</strong> (statement text is the only variable)</li>
-            <li><strong>Eyebrow:</strong> Always present (section number and label)</li>
-            <li><strong>Background:</strong> Dark (licorice), white text</li>
-            <li><strong>Zendesk logo:</strong> Bottom-left (master element)</li>
-          </ul>
-        </div>
-
-        <div class="slide">
-          <img src="https://raw.githubusercontent.com/dlcious/slides/main/assets/renders/statement--canonical.png" alt="Statement archetype" class="slide__image">
-        </div>
-      </section>
-
-      <!-- 05 — Quote -->
-      <section class="section">
-        <div class="section__number">05 — QUOTE</div>
-        <h2 class="section__title">Quote</h2>
-
-        <div class="section__prose">
-          <p><strong>When to use:</strong> Customer or partner testimonial. Includes portrait image, quote text with hanging punctuation, and attribution (name, title, company). Use in the "proof" section of a deck — after you've explained what you built, show that customers validate it. Best when the quote is specific and credible, not generic praise.</p>
-          <p><strong>What pairs with it:</strong> Follows a Product plate or Content slide that explains the feature. Pair with Data display if you want to alternate qualitative proof (quote) and quantitative proof (metrics). Use before closing to leave the audience with a customer voice in their head.</p>
-          <p><strong>What to avoid:</strong> Don't use internal quotes (from your own team) unless it's a retrospective or post-mortem. Don't use quotes longer than three lines — edit for the most compelling excerpt. Don't use a placeholder portrait; real faces build trust. If you don't have a customer photo, use a different archetype.</p>
-        </div>
-
-        <div class="parameters">
-          <div class="parameters__title">Parameters</div>
-          <ul class="parameters__list">
-            <li><strong>None</strong> (quote text, name, title, company, portrait image)</li>
-            <li><strong>Image placeholder:</strong> Portrait orientation, left side</li>
-            <li><strong>Quote text:</strong> Hanging punctuation (opening quote sits in margin)</li>
-          </ul>
-        </div>
-
-        <div class="slide">
-          <img src="https://raw.githubusercontent.com/dlcious/slides/main/assets/renders/quote--canonical.png" alt="Quote archetype" class="slide__image">
-        </div>
-      </section>
-
-      <!-- 06 — Content -->
-      <section class="section">
-        <div class="section__number">06 — CONTENT</div>
-        <h2 class="section__title">Content</h2>
-
-        <div class="section__prose">
-          <p><strong>When to use:</strong> Flexible information layout. The workhorse. Headline + optional subline + columnar body. Use <code>columns: 1</code> for narrative (a single story or argument). Use <code>columns: 3–5</code> for feature lists, comparison tables, process steps. Use <code>media: image</code> to add a hero image; <code>media: icon</code> to pair icons with headers; <code>media: none</code> for text-only.</p>
-          <p><strong>What pairs with it:</strong> Everything. Content is modular and compositional — use it after a Section divider to unpack the chapter, use it before a Statement to build the argument, use it after a Quote to show product details. Stack multiple Content slides if the narrative requires it, but vary the column count to maintain rhythm.</p>
-          <p><strong>What to avoid:</strong> Don't overload a single Content slide with more than 5 columns. Split instead. Don't use empty columns to pad out a grid — if you only have 3 items, use <code>columns: 3</code>, not <code>columns: 4</code> with one blank. Don't bury the lede in body text — surface the conclusion in the headline.</p>
-        </div>
-
-        <div class="parameters">
-          <div class="parameters__title">Parameters</div>
-          <ul class="parameters__list">
-            <li><strong>columns:</strong> 1/2/3/4/5 (equal flex-grow distribution, 32px gaps)</li>
-            <li><strong>media:</strong> image/icon/none (adds hero image or icon row)</li>
-            <li><strong>Subline:</strong> Optional (755px width when present)</li>
-          </ul>
-        </div>
-
-        <div class="slide">
-          <img src="https://raw.githubusercontent.com/dlcious/slides/main/assets/renders/content--cols5-none.png" alt="Content archetype (5 columns)" class="slide__image">
-        </div>
-      </section>
-
-      <!-- 07 — Product plate -->
-      <section class="section">
-        <div class="section__number">07 — PRODUCT PLATE</div>
-        <h2 class="section__title">Product plate</h2>
-
-        <div class="section__prose">
-          <p><strong>When to use:</strong> Product feature with large image. Left column: headline top-aligned, body text bottom-aligned. Right: product screenshot. Use for demos, feature deep-dives, or "see it in action" moments. The dark green background (matcha-600) signals "this is the product" — use it to transition from concept to concrete.</p>
-          <p><strong>What pairs with it:</strong> Follows a Content slide that explains the feature conceptually. Pair with Quote to show customer reaction after demonstrating the product. Use before Data display if you want to show the feature, then show the impact metrics.</p>
-          <p><strong>What to avoid:</strong> Don't use Product plate for non-product imagery (charts, diagrams, photos). That's what Content with <code>media: image</code> is for. Don't use it without a real product screenshot — the placeholder makes it look unfinished. Don't write body text longer than three lines; this archetype is about showing, not telling.</p>
-        </div>
-
-        <div class="parameters">
-          <div class="parameters__title">Parameters</div>
-          <ul class="parameters__list">
-            <li><strong>None</strong> (headline, body text, product image)</li>
-            <li><strong>Background:</strong> Dark green (matcha-600), white text</li>
-            <li><strong>Image placeholder:</strong> Right side, landscape orientation</li>
-          </ul>
-        </div>
-
-        <div class="slide">
-          <img src="https://raw.githubusercontent.com/dlcious/slides/main/assets/renders/product-plate--canonical.png" alt="Product plate archetype" class="slide__image">
-        </div>
-      </section>
-
-      <!-- 08 — Data display -->
-      <section class="section">
-        <div class="section__number">08 — DATA DISPLAY</div>
-        <h2 class="section__title">Data display</h2>
-
-        <div class="section__prose">
-          <p><strong>When to use:</strong> Grid of metric callouts. Each callout: large number/value + descriptive subline. Use for dashboards, ROI summaries, impact reports. Best when the metrics are the headline — the numbers tell the story on their own. Alternating color schemes (Matcha on Fern, Sesame on Shamrock) provide visual rhythm.</p>
-          <p><strong>What pairs with it:</strong> Follows a Product plate or Content slide that explains what was built. Pair with Quote to alternate quantitative proof (metrics) and qualitative proof (customer voice). Use near the end of the deck to summarize impact before closing.</p>
-          <p><strong>What to avoid:</strong> Don't use Data display for charts or graphs — only the callouts variant exists. If you need a bar chart or line graph, provide a custom image. Don't use callouts for non-numeric data (text-only callouts lose impact). Don't write sublines longer than two lines — keep the focus on the number.</p>
-        </div>
-
-        <div class="parameters">
-          <div class="parameters__title">Parameters</div>
-          <ul class="parameters__list">
-            <li><strong>type:</strong> callouts (only variant; chart/map/pricing-table do not exist)</li>
-            <li><strong>Callout grid:</strong> 3 columns × 2 rows, 32px gaps</li>
-            <li><strong>Matcha placement:</strong> Text color in callout boxes (structural)</li>
-            <li><strong>Color alternation:</strong> Pattern fixed by template (Matcha/Fern, Sesame/Shamrock)</li>
-          </ul>
-        </div>
-
-        <div class="slide">
-          <img src="https://raw.githubusercontent.com/dlcious/slides/main/assets/renders/data-display--callouts.png" alt="Data display archetype" class="slide__image">
-        </div>
-      </section>
-
-      <!-- 09 — Timeline -->
-      <section class="section">
-        <div class="section__number">09 — TIMELINE</div>
-        <h2 class="section__title">Timeline</h2>
-
-        <div class="section__prose">
-          <p><strong>When to use:</strong> Horizontal milestone sequence. Each milestone: year/date header (all caps, bold) + body text. Use for roadmaps, company history, release schedules. The timeline connector (Matcha line + circles) visually links the milestones into a sequence. Best with 2–4 milestones; more than that and the layout gets crowded.</p>
-          <p><strong>What pairs with it:</strong> Follows a Product plate or Content slide that explains the vision. Use near the end of the deck to show "what's next" after demonstrating the current state. Pair with Data display if you want to show future milestones, then show current metrics.</p>
-          <p><strong>What to avoid:</strong> Don't mix granularity — if milestones are years (2023, 2024, 2025), don't insert "Q4 2024" as one milestone. Keep the time scale consistent. Don't use Timeline for non-chronological steps (that's a Content slide with <code>columns: 3</code> or <code>columns: 4</code>). Don't write body text longer than three lines per milestone.</p>
-        </div>
-
-        <div class="parameters">
-          <div class="parameters__title">Parameters</div>
-          <ul class="parameters__list">
-            <li><strong>milestones:</strong> 2–4 (each milestone = header + body text)</li>
-            <li><strong>Matcha placement:</strong> Timeline connector graphic (line and circles, structural)</li>
-            <li><strong>Headers:</strong> All caps, bold (e.g., "Q2 2026", "2027", "PHASE 3")</li>
-          </ul>
-        </div>
-
-        <div class="slide">
-          <img src="https://raw.githubusercontent.com/dlcious/slides/main/assets/renders/timeline--canonical.png" alt="Timeline archetype" class="slide__image">
-        </div>
-      </section>
-
-      <!-- 10 — Closing -->
-      <section class="section">
-        <div class="section__number">10 — CLOSING</div>
-        <h2 class="section__title">Closing</h2>
-
-        <div class="section__prose">
-          <p><strong>When to use:</strong> Final slide. Zendesk wordmark on black, no text, no CTA. Use as the last slide when the deck is self-contained and doesn't require follow-up action. The wordmark is brand presence — a signature, not a call to action.</p>
-          <p><strong>What pairs with it:</strong> Nothing follows Closing. It's the end. If you need a CTA (contact details, next steps, "Questions?"), use a Content slide before Closing, then end with this.</p>
-          <p><strong>What to avoid:</strong> Don't skip Closing in favor of ending on a data slide — it feels abrupt. Don't use Closing mid-deck as a transition. Don't add text to this slide — if you need text, use a different archetype.</p>
-        </div>
-
-        <div class="parameters">
-          <div class="parameters__title">Parameters</div>
-          <ul class="parameters__list">
-            <li><strong>None</strong> (Zendesk wordmark only, centered)</li>
-            <li><strong>Background:</strong> Dark (licorice)</li>
-            <li><strong>No eyebrow:</strong> This is the only archetype without an eyebrow component</li>
-          </ul>
-        </div>
-
-        <div class="slide">
-          <img src="https://raw.githubusercontent.com/dlcious/slides/main/assets/renders/closing--canonical.png" alt="Closing archetype" class="slide__image">
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer-nav">
-      <a href="index.html" class="footer-nav__link">← Overview</a>
-      <a href="slides-skill-reference.html" class="footer-nav__link">Skill Reference →</a>
-    </footer>
-  </div>
+</main>
+<div class="toggle">
+    <a href="slides-visual-reference.html" class="toggle__btn toggle__btn--active">Human</a>
+    <a href="slides-skill-reference.html" class="toggle__btn">Machine</a>
+</div>
+<script>
+    const sections = document.querySelectorAll('section[id]');
+    const navItems = document.querySelectorAll('.nav__item');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.id;
+                navItems.forEach(item => item.classList.toggle('nav__item--active', item.getAttribute('href') === '#' + id));
+            }
+        });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    sections.forEach(s => observer.observe(s));
+</script>
 </body>
 </html>
