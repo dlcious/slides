@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline Archetype – Zendesk AI Slides</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #000; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
+        .slide { width: 1920px; height: 1080px; background: #FFFFFF; position: relative; padding: 30px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); }
+        .eyebrow { position: absolute; top: 30px; left: 30px; padding: 6px 14px; background: rgba(112, 163, 42, 0.1); border: 1px solid rgba(112, 163, 42, 0.3); border-radius: 999px; font-size: 14px; font-weight: 500; color: #70A32A; letter-spacing: 0.05em; }
+        .headline { margin-top: 120px; margin-bottom: 120px; font-size: 80px; font-weight: 600; line-height: 1.1; color: #11110D; letter-spacing: -0.01em; max-width: 1200px; }
+        .timeline { position: relative; padding-top: 60px; }
+        .timeline-line { position: absolute; top: 30px; left: 0; right: 0; height: 4px; background: #D1F470; }
+        .timeline-items { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+        .timeline-item { position: relative; }
+        .timeline-dot { width: 60px; height: 60px; border-radius: 50%; background: #11110D; position: absolute; top: -30px; left: 0; border: 4px solid #FFFFFF; }
+        .timeline-header { font-size: 32px; font-weight: 700; text-transform: uppercase; color: #11110D; margin-bottom: 16px; margin-top: 60px; }
+        .timeline-body { font-size: 27px; font-weight: 400; line-height: 1.3; color: #11110D; }
+        .footer { position: absolute; bottom: 30px; right: 30px; font-size: 14px; font-weight: 500; color: #11110D; opacity: 0.75; }
+        @media (max-width: 1920px) { .slide { transform: scale(0.8); } }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="eyebrow">[NN] · [SECTION LABEL]</div>
+        <h1 class="headline">Data slide headline Inter Semi Bold 80pt, line height 110%</h1>
+        <div class="timeline">
+            <div class="timeline-line"></div>
+            <div class="timeline-items">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-header">HEADER BOLD ALL CAPS</div>
+                    <div class="timeline-body">Body copy placeholder text Inter Reg 27pt, line height 130%</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-header">HEADER BOLD ALL CAPS</div>
+                    <div class="timeline-body">Body copy placeholder text Inter Reg 27pt, line height 130%</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-header">HEADER BOLD ALL CAPS</div>
+                    <div class="timeline-body">Body copy placeholder text Inter Reg 27pt, line height 130%</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-header">HEADER BOLD ALL CAPS</div>
+                    <div class="timeline-body">Body copy placeholder text Inter Reg 27pt, line height 130%</div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">© 2026 Zendesk, Inc. All rights reserved. Private and confidential.</div>
+    </div>
+</body>
+</html>
