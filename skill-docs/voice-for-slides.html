@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice for Slides</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 15px;
+            line-height: 1.6;
+            color: #FFFFFF;
+            background-color: #11110D;
+            padding: 40px;
+        }
+
+        h1 {
+            font-size: 42px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: #FFFFFF;
+        }
+
+        h2 {
+            font-size: 30px;
+            font-weight: 600;
+            margin-top: 40px;
+            margin-bottom: 16px;
+            color: #FFFFFF;
+        }
+
+        h3 {
+            font-size: 21px;
+            font-weight: 600;
+            margin-top: 24px;
+            margin-bottom: 12px;
+            color: #FFFFFF;
+        }
+
+        p {
+            margin-bottom: 16px;
+        }
+
+        strong {
+            font-weight: 600;
+            color: #D1F470;
+        }
+
+        code {
+            font-family: 'SF Mono', 'Monaco', 'Courier New', monospace;
+            font-size: 13px;
+            background-color: #0A0A07;
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #D1F470;
+        }
+
+        pre {
+            background-color: #0A0A07;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 16px 0;
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+            color: #FFFFFF;
+        }
+
+        ul, ol {
+            margin-left: 24px;
+            margin-bottom: 16px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            font-size: 15px;
+        }
+
+        th {
+            background-color: #0A0A07;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            border: 1px solid #2A2A24;
+            color: #D1F470;
+        }
+
+        td {
+            padding: 12px;
+            border: 1px solid #2A2A24;
+        }
+
+        tr:nth-child(even) {
+            background-color: #1A1A16;
+        }
+
+        blockquote {
+            border-left: 3px solid #D1F470;
+            padding-left: 16px;
+            margin: 16px 0;
+            color: #CCCCCC;
+            font-style: italic;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #2A2A24;
+            margin: 32px 0;
+        }
+
+        .checkmark {
+            color: #4CAF50;
+            font-weight: 700;
+        }
+
+        .crossmark {
+            color: #F44336;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <h1>Voice for slides</h1>
+
+    <p>Slide copy obeys the master Zendesk brand voice (see <code>zendesk-brand-skill.md</code> for the full principles). This reference adds slide-specific rules because slides are a constrained medium: every word competes for attention against imagery, and the reader has seconds, not minutes.</p>
+
+    <h2>The four slide-copy principles</h2>
+
+    <ol>
+        <li><strong>Cut, then cut again.</strong> Most slide copy is too long on the first draft. If you can say it in fewer words without losing meaning, do. The reader has seconds.</li>
+        <li><strong>Lead with the verb or the noun that matters.</strong> "We reduced handle time by 30%" beats "There was a 30% reduction in handle time."</li>
+        <li><strong>One idea per slide.</strong> If a slide's body copy has two ideas connected by "and" or "also," it's two slides.</li>
+        <li><strong>Write the headline last.</strong> Draft the body, then distill the single takeaway into the headline. Headlines written first tend to be generic.</li>
+    </ol>
+
+    <h2>Jargon swap list</h2>
+
+    <p>Replace the left column with the right column every time. No exceptions.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Swap out</th>
+                <th>Swap in</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Leverage</td>
+                <td>Use</td>
+            </tr>
+            <tr>
+                <td>Utilize</td>
+                <td>Use</td>
+            </tr>
+            <tr>
+                <td>Synergy / synergies</td>
+                <td>Together / combined</td>
+            </tr>
+            <tr>
+                <td>Robust</td>
+                <td>Strong</td>
+            </tr>
+            <tr>
+                <td>Paradigm shift</td>
+                <td>Change</td>
+            </tr>
+            <tr>
+                <td>Stakeholders</td>
+                <td>The team / customers / partners (be specific)</td>
+            </tr>
+            <tr>
+                <td>Bandwidth (non-technical)</td>
+                <td>Time / capacity</td>
+            </tr>
+            <tr>
+                <td>Circle back</td>
+                <td>Follow up</td>
+            </tr>
+            <tr>
+                <td>Deep dive</td>
+                <td>Look closely / explore</td>
+            </tr>
+            <tr>
+                <td>Low-hanging fruit</td>
+                <td>Easy wins</td>
+            </tr>
+            <tr>
+                <td>Move the needle</td>
+                <td>Make a difference</td>
+            </tr>
+            <tr>
+                <td>Boil the ocean</td>
+                <td>Try to do everything</td>
+            </tr>
+            <tr>
+                <td>Best-in-class</td>
+                <td>The best / leading</td>
+            </tr>
+            <tr>
+                <td>Mission-critical</td>
+                <td>Essential</td>
+            </tr>
+            <tr>
+                <td>Solutioning</td>
+                <td>Solving</td>
+            </tr>
+            <tr>
+                <td>Operationalize</td>
+                <td>Put into practice</td>
+            </tr>
+            <tr>
+                <td>Learnings</td>
+                <td>Lessons</td>
+            </tr>
+            <tr>
+                <td>Ask (as noun)</td>
+                <td>Request</td>
+            </tr>
+            <tr>
+                <td>Touch base</td>
+                <td>Talk / check in</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Active voice rewrites</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Passive</th>
+                <th>Active</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Requests are handled by our team</td>
+                <td>Our team handles requests</td>
+            </tr>
+            <tr>
+                <td>A 30% reduction in costs was achieved</td>
+                <td>We reduced costs by 30%</td>
+            </tr>
+            <tr>
+                <td>The feature is being rolled out next quarter</td>
+                <td>We're rolling out the feature next quarter</td>
+            </tr>
+            <tr>
+                <td>Customer satisfaction is prioritized by Zendesk</td>
+                <td>Zendesk puts customer satisfaction first</td>
+            </tr>
+            <tr>
+                <td>Tickets can be resolved with AI</td>
+                <td>AI resolves tickets</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Headline patterns that work</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Pattern</th>
+                <th>Example</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Verb-first action</strong></td>
+                <td>"Resolve tickets faster"</td>
+            </tr>
+            <tr>
+                <td><strong>Number + outcome</strong></td>
+                <td>"30% faster resolutions"</td>
+            </tr>
+            <tr>
+                <td><strong>Direct address</strong></td>
+                <td>"You own the experience"</td>
+            </tr>
+            <tr>
+                <td><strong>Juxtaposition</strong></td>
+                <td>"Human at scale"</td>
+            </tr>
+            <tr>
+                <td><strong>Question</strong></td>
+                <td>"What does good service feel like?"</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Headline patterns to avoid</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Anti-pattern</th>
+                <th>Example (don't)</th>
+                <th>Fix</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Vague noun phrase</td>
+                <td>"Customer Experience Excellence"</td>
+                <td>"Resolve tickets faster"</td>
+            </tr>
+            <tr>
+                <td>Title Case</td>
+                <td>"The Future Of Service"</td>
+                <td>"The future of service"</td>
+            </tr>
+            <tr>
+                <td>Period on headline</td>
+                <td>"We're growing fast."</td>
+                <td>"We're growing fast"</td>
+            </tr>
+            <tr>
+                <td>Buzzword pileup</td>
+                <td>"Leveraging synergies to drive paradigm shifts"</td>
+                <td>"Working together to change how we serve customers"</td>
+            </tr>
+            <tr>
+                <td>Two ideas joined by "and"</td>
+                <td>"Faster service and happier customers"</td>
+                <td>Pick one; make it two slides</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Body copy patterns</h2>
+
+    <ul>
+        <li><strong>Lead with the takeaway, then support it.</strong> First sentence = the point. Second and third = evidence.</li>
+        <li><strong>One sentence per line when possible.</strong> Dense paragraphs on slides don't get read.</li>
+        <li><strong>Use concrete examples.</strong> "A retail customer handling Black Friday" beats "A high-volume customer."</li>
+        <li><strong>Cite specifics, not adjectives.</strong> "Saved 4 hours per agent per week" beats "Significantly saved time."</li>
+    </ul>
+
+    <h2>Numbers and data</h2>
+
+    <ul>
+        <li>Write numbers as digits on slides, even small ones: "3 steps" not "three steps." (Exception: starting a sentence — "Three things to remember.")</li>
+        <li>Round aggressively. "30%" is more memorable than "29.7%."</li>
+        <li>Include the unit with large numbers: "$1.2M" not "1,200,000."</li>
+        <li>One hero number per slide.</li>
+    </ul>
+
+    <h2>Sentence case rules</h2>
+
+    <p>Sentence case means <strong>only the first word and proper nouns are capitalized.</strong></p>
+
+    <ul>
+        <li><span class="checkmark">✅</span> "The future of customer service"</li>
+        <li><span class="crossmark">❌</span> "The Future of Customer Service"</li>
+        <li><span class="checkmark">✅</span> "Meet Zendesk AI" <em>(Zendesk AI is a proper noun)</em></li>
+        <li><span class="checkmark">✅</span> "Why iPhone users prefer us" <em>(iPhone is a proper noun)</em></li>
+    </ul>
+
+    <h2>Punctuation</h2>
+
+    <ul>
+        <li><strong>No periods on headlines.</strong> Headlines are titles, not sentences.</li>
+        <li><strong>Periods on statement slides</strong> are fine because those are full sentences.</li>
+        <li><strong>No ampersands</strong> (&amp;) unless part of a brand name. Use "and."</li>
+        <li><strong>Em dashes, no spaces:</strong> "fast—not reckless" not "fast — not reckless."</li>
+        <li><strong>Curly quotes on quote slides:</strong> " " not " ".</li>
+        <li><strong>Oxford comma:</strong> use it. "Speed, scale, and simplicity."</li>
+    </ul>
+
+    <h2>Avoiding exclusionary language</h2>
+
+    <ul>
+        <li>Avoid gendered language where possible: "the agent" not "he or she"</li>
+        <li>Avoid idioms that don't translate: "knock it out of the park," "boil the ocean," "Monday morning quarterback"</li>
+        <li>Avoid pop-culture references that date the deck or don't land globally</li>
+    </ul>
+
+    <h2>Voice examples — on-brand vs off-brand</h2>
+
+    <h3>Cover slide</h3>
+
+    <p><span class="crossmark">❌</span> Off-brand:</p>
+    <blockquote>"Leveraging AI to Drive Customer Service Excellence in 2026"</blockquote>
+
+    <p><span class="checkmark">✅</span> On-brand:</p>
+    <blockquote>"AI that resolves, not redirects"</blockquote>
+
+    <hr>
+
+    <h3>Statement slide</h3>
+
+    <p><span class="crossmark">❌</span> Off-brand:</p>
+    <blockquote>"Our robust platform enables mission-critical stakeholder engagement across the customer lifecycle."</blockquote>
+
+    <p><span class="checkmark">✅</span> On-brand:</p>
+    <blockquote>"We help your customers feel heard, at any scale."</blockquote>
+
+    <hr>
+
+    <h3>Content slide</h3>
+
+    <p><span class="crossmark">❌</span> Off-brand:</p>
+    <blockquote>"Our AI solution has been leveraged by enterprise customers to operationalize a paradigm shift in how support teams utilize their bandwidth to drive customer satisfaction outcomes."</blockquote>
+
+    <p><span class="checkmark">✅</span> On-brand:</p>
+    <blockquote>"Enterprise teams use Zendesk AI to cut resolution time in half. Agents spend less time on repetitive tickets and more time on the ones that need a human."</blockquote>
+
+    <hr>
+
+    <h3>Quote slide</h3>
+
+    <p><span class="crossmark">❌</span> Off-brand:</p>
+    <blockquote>"Zendesk has been instrumental in our digital transformation journey, enabling us to operationalize best-in-class customer experiences across all touchpoints."</blockquote>
+
+    <p><span class="checkmark">✅</span> On-brand:</p>
+    <blockquote>"Zendesk lets our agents solve problems in minutes. Our customers can feel the difference."</blockquote>
+
+    <hr>
+
+    <h2>One more reminder</h2>
+
+    <p><strong>"The customer is always human."</strong></p>
+
+    <p>Every slide is read by a human with a short attention span and a full day. Write like you're talking to one person — because you are.</p>
+</body>
+</html>

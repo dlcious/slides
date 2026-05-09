@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide Archetypes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 15px;
+            line-height: 1.6;
+            color: #FFFFFF;
+            background-color: #11110D;
+            padding: 40px;
+        }
+
+        h1 {
+            font-size: 42px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: #FFFFFF;
+        }
+
+        h2 {
+            font-size: 30px;
+            font-weight: 600;
+            margin-top: 40px;
+            margin-bottom: 16px;
+            color: #FFFFFF;
+        }
+
+        h3 {
+            font-size: 21px;
+            font-weight: 600;
+            margin-top: 24px;
+            margin-bottom: 12px;
+            color: #FFFFFF;
+        }
+
+        p {
+            margin-bottom: 16px;
+        }
+
+        strong {
+            font-weight: 600;
+            color: #D1F470;
+        }
+
+        code {
+            font-family: 'SF Mono', 'Monaco', 'Courier New', monospace;
+            font-size: 13px;
+            background-color: #0A0A07;
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #D1F470;
+        }
+
+        pre {
+            background-color: #0A0A07;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 16px 0;
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+            color: #FFFFFF;
+        }
+
+        ul, ol {
+            margin-left: 24px;
+            margin-bottom: 16px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            font-size: 15px;
+        }
+
+        th {
+            background-color: #0A0A07;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            border: 1px solid #2A2A24;
+            color: #D1F470;
+        }
+
+        td {
+            padding: 12px;
+            border: 1px solid #2A2A24;
+        }
+
+        tr:nth-child(even) {
+            background-color: #1A1A16;
+        }
+
+        blockquote {
+            border-left: 3px solid #D1F470;
+            padding-left: 16px;
+            margin: 16px 0;
+            color: #CCCCCC;
+            font-style: italic;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #2A2A24;
+            margin: 32px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Slide archetypes — prompt scaffolds and layout notes</h1>
+
+    <p>One section per archetype from the <strong>Zendesk AI Slides</strong> theme. Each includes:</p>
+    <ul>
+        <li><strong>When to use it</strong> — the intent this slide serves</li>
+        <li><strong>Layout</strong> — what's on the slide and where</li>
+        <li><strong>Eyebrow</strong> — what to put in it</li>
+        <li><strong>Imagery rule</strong> — restated inline because the model will skip it otherwise</li>
+        <li><strong>Copy constraints</strong> — headline and body rules specific to this slide type</li>
+        <li><strong>Prompt scaffold</strong> — paste-and-fill prompt for AI drafting</li>
+        <li><strong>On-brand example</strong> — a worked example using the standard draft block</li>
+    </ul>
+
+    <blockquote>
+        <strong>Read this with <code>zendesk-slides-skill.md</code>.</strong> The main skill defines the preflight, the archetype set, the copy rules, and the imagery decision rule. This file is the per-archetype reference. It restates the bits that are most often skipped, in the place where they're most often skipped.
+    </blockquote>
+
+    <h2>Two rules that apply to every archetype below</h2>
+
+    <p>These are repeated inline in each archetype because models drop them when the rule lives in a separate section. Read them once here, then expect to see them again.</p>
+
+    <p><strong>Eyebrow rule.</strong> Every archetype below carries the theme's eyebrow pill in the top-left <strong>except Closing</strong> (which is wordmark-only on black). The number ties to the section, not the slide index. The label is identical across every slide in a section; don't paraphrase between slides. Format: <code>NN · Section label</code>.</p>
+
+    <p><strong>Imagery rule.</strong> For every image region, decide in this order:</p>
+    <ol>
+        <li><strong>REUSE</strong> an existing image already in the deck (from the inventory you took during preflight). Output the image filename from the inventory.</li>
+        <li><strong>PLACEHOLDER</strong> if no existing image fits. Output <code>[placeholder: subject, mood]</code>.</li>
+        <li><strong>Never generate.</strong> No image-generation tool calls, no base64, no SVG substitutes for photography.</li>
+    </ol>
+
+    <h2>Standard draft block — use for every slide</h2>
+
+    <p>Match the format defined in the main skill. Fields beyond Eyebrow / Headline / Subline / Body / Image / Speaker / Quote attribution don't appear in the output.</p>
+
+    <pre><code>**Slide [N]: [Archetype] ([parameters])**
+
+Eyebrow: [NN] · [SECTION LABEL]
+Headline: [headline text]
+Subline: [subline text, if applicable]
+Body: [body text or column content]
+Image: [image filename from inventory OR placeholder description]
+Speaker: [name, title, company — Cover only]
+Quote attribution: [name, title, company — Quote only]</code></pre>
+
+    <p>After showing the draft, ask whether the structure works or needs adjustment.</p>
+
+    <hr>
+
+    <h2>1. Cover</h2>
+
+    <h3>When to use it</h3>
+    <p>The first slide of any deck. Sets the tone and introduces the topic. Two parameter modes:</p>
+    <ul>
+        <li><code>speaker: yes</code> — conference talks, webinars, anywhere there's a presenter on stage. Includes speaker photo, name, title.</li>
+        <li><code>speaker: no</code> — decks sent without a presenter (leave-behinds, async sharing).</li>
+    </ul>
+
+    <h3>Layout</h3>
+    <ul>
+        <li>Top-left: eyebrow pill</li>
+        <li>Headline area: H1, conversational</li>
+        <li>Right or full-bleed: hero photography</li>
+        <li>Speaker block (when <code>speaker: yes</code>): name, title, optional avatar</li>
+        <li>Confidentiality footer is master — don't touch it</li>
+    </ul>
+
+    <p><strong>Eyebrow:</strong> Yes. Typically <code>01 · Overview</code> or the deck's opening section name.</p>
+
+    <p><strong>Imagery rule:</strong> REUSE first, then PLACEHOLDER, never generate. Cover photography sets the deck's visual tone — flag the choice during preflight if the inventory has multiple candidates.</p>
+
+    <h3>Copy constraints</h3>
+    <ul>
+        <li>Headline: ≤ 6 words, sentence case, no period (per main skill)</li>
+        <li>Subline (optional): one supporting line</li>
+        <li>Speaker block: Name on one line, Title (and company if external) on the next</li>
+    </ul>
+
+    <h3>Prompt scaffold</h3>
+    <pre><code>Draft a cover slide for a deck about [TOPIC] presented to [AUDIENCE].
+- Mode: [speaker: yes | speaker: no]
+- Eyebrow: confirm section number and label from preflight.
+- Headline: ≤ 6 words, sentence case, no period.
+- Subline (optional): one supporting line.
+- Speaker block (if speaker: yes): Name, Title, Company.
+- Imagery: check the existing deck inventory first. If a cover-suitable image
+  exists, reuse it. Otherwise insert a placeholder describing the photo mood.</code></pre>
+
+    <h3>Example</h3>
+    <pre><code>**Slide 1: Cover (speaker: yes)**
+
+Eyebrow: 01 · Overview
+Headline: Hi, meet Zendesk AI
+Subline: A quick tour of what's new this year
+Image: [placeholder: confident professional in natural light, holding laptop, warm and forward-looking mood]
+Speaker: Jane Doe, Director of Customer Experience, Zendesk</code></pre>
+
+    <hr>
+
+    <h2>2. Agenda</h2>
+
+    <h3>When to use it</h3>
+    <p>Deck roadmap. Lists major sections, optionally with a one-line subline per row. Use early — slide 2 or 3.</p>
+
+    <p><strong>Stop-and-ask:</strong> For short decks (&lt; 8 slides), confirm with the user whether an agenda is wanted before drafting one.</p>
+
+    <h3>Layout</h3>
+    <ul>
+        <li>Top-left: eyebrow pill</li>
+        <li>Headline area: "Agenda" or a custom title</li>
+        <li>3–8 rows, each with section name and optional subline</li>
+        <li>Numbers right-aligned, items left-aligned</li>
+    </ul>
+
+    <p><strong>Eyebrow:</strong> Yes. Section number + label from preflight (the eyebrow numbering is independent of the agenda's row numbers).</p>
+
+    <p><strong>Imagery rule:</strong> No imagery on this slide.</p>
+
+    <h3>Copy constraints</h3>
+    <ul>
+        <li>3–8 rows (template constraint)</li>
+        <li>Each row name: 2–5 words, sentence case, no period</li>
+        <li>Optional subline per row: ≤ 8 words</li>
+    </ul>
+
+    <h3>Prompt scaffold</h3>
+    <pre><code>Draft an agenda slide for a [DECK TYPE] presented to [AUDIENCE].
+- Eyebrow: confirm section number and label from preflight.
+- 3–8 rows, each 2–5 words, sentence case.
+- Optional subline per row, ≤ 8 words.
+- If the deck is short (< 8 slides), ask the user whether an agenda is wanted
+  before drafting.</code></pre>
+
+    <h3>Example</h3>
+    <pre><code>**Slide 2: Agenda (rows: 5)**
+
+Eyebrow: 01 · Overview
+Headline: Today's agenda
+Body:
+  01 — Why this matters now
+  02 — What we're building
+  03 — How it works
+  04 — Customer results
+  05 — What's next</code></pre>
+
+    <hr>
+
+    <h2>3. Section divider</h2>
+
+    <h3>When to use it</h3>
+    <p>Chapter break between major sections. Re-orients the audience. Two parameter modes:</p>
+    <ul>
+        <li><code>body: no</code> — section name alone. Use when the name is self-explanatory.</li>
+        <li><code>body: yes</code> — section name plus a contextualizing line. Use when the name is cryptic or sets up something specific.</li>
+    </ul>
+
+    <h3>Layout</h3>
+    <ul>
+        <li>Top-left: eyebrow pill (this is the slide that announces the section the eyebrow refers to)</li>
+        <li>Large H1: section name</li>
+        <li>Optional body line below (when <code>body: yes</code>)</li>
+    </ul>
+
+    <p><strong>Eyebrow:</strong> Yes. The eyebrow on this slide opens its section — its number and label match the section being introduced. The headline typically matches the eyebrow label exactly (eyebrow <code>02 · Product</code> → headline <code>Product</code>).</p>
+
+    <p><strong>Imagery rule:</strong> No imagery on this slide.</p>
+
+    <h3>Copy constraints</h3>
+    <ul>
+        <li>Headline: ≤ 4 words, sentence case, no period</li>
+        <li>Body (if <code>body: yes</code>): one sentence, ≤ 15 words, ends with period (per main skill — body text gets periods)</li>
+    </ul>
+
+    <h3>Prompt scaffold</h3>
+    <pre><code>Draft a section divider for the "[SECTION NAME]" section of a deck on [TOPIC].
+- Mode: [body: yes | body: no]
+- Eyebrow: this slide opens the section — number and label match the
+  section being introduced.
+- Headline: section name only, ≤ 4 words. Match the eyebrow label by default.
+- Body (if body: yes): one sentence, ≤ 15 words, terminal period.</code></pre>
+
+    <h3>Example</h3>
+    <pre><code>**Slide 6: Section divider (body: yes)**
+
+Eyebrow: 02 · Product overview
+Headline: Product overview
+Body: How Zendesk AI handles tickets, conversations, and knowledge in one place.</code></pre>
+
+    <hr>
+
+    <h2>4. Statement</h2>
+
+    <h3>When to use it</h3>
+    <p>A single, memorable sentence that carries the whole deck's message — mission statement, core principle, turning-point moment. Use sparingly: one or two per deck maximum.</p>
+
+    <h3>Layout</h3>
+    <ul>
+        <li>Top-left: eyebrow pill (yes — Statement carries the eyebrow)</li>
+        <li>Centered: large bold declarative sentence</li>
+        <li>No body, no supporting text</li>
+    </ul>
+
+    <p><strong>Eyebrow:</strong> Yes. Section number + label.</p>
+
+    <p><strong>Imagery rule:</strong> No imagery on this slide. The slide is the sentence.</p>
+
+    <h3>Copy constraints</h3>
+    <ul>
+        <li>One sentence only. Period at the end is acceptable — it's a full sentence, not a headline.</li>
+        <li>Active voice, declarative tone.</li>
+        <li>≤ 12 words ideal, 16 max.</li>
+    </ul>
+
+    <h3>Prompt scaffold</h3>
+    <pre><code>Draft a statement slide for [DECK TOPIC].
+- Eyebrow: confirm section number and label from preflight.
+- One declarative sentence, ≤ 12 words, active voice, terminal period acceptable.
+- No body, no supporting text — the sentence is the slide.</code></pre>
+
+    <h3>Example</h3>
+    <pre><code>**Slide 12: Statement**
+
+Eyebrow: 04 · What we believe
+Headline: Every conversation should feel like it was made for you.</code></pre>
+
+    <hr>
+
+    <h2>5. Quote</h2>
+
+    <h3>When to use it</h3>
+    <p>Customer quotes, exec quotes, testimonials, research pull-quotes.</p>
+
+    <h3>Layout</h3>
+    <ul>
+        <li>Top-left: eyebrow pill</li>
+        <li>Left: portrait photo</li>
+        <li>Right: quote text with attribution below (Name, Title, Company)</li>
+    </ul>
+
+    <p><strong>Eyebrow:</strong> Yes. Section number + label.</p>
+
+    <p><strong>Imagery rule:</strong> REUSE first, then PLACEHOLDER, never generate. <strong>Never invent the speaker or fabricate the quote.</strong> If the quote isn't provided, propose drafted options and flag them for human review — don't pass drafted quotes off as real.</p>
+
+    <h3>Copy constraints</h3>
+    <ul>
+        <li>Quote: use curly quotes (" "), not straight quotes</li>
+        <li>≤ 20 words for the quote</li>
+        <li>Attribution format: Name, Title, Company</li>
+    </ul>
+
+    <h3>Prompt scaffold</h3>
+    <pre><code>Draft a quote slide.
+- Eyebrow: confirm section number and label from preflight.
+- Speaker: [NAME, TITLE, COMPANY]
+- Source context: [where the quote came from / what it's about]
+- Quote: ≤ 20 words, in the speaker's voice. Use curly quotes.
+- If the quote isn't provided, propose 2–3 quote options and flag them as
+  DRAFTED (not verbatim) for human review.
+- Imagery: check the existing deck inventory first for a portrait. If a
+  suitable image exists, reuse it. Otherwise insert a placeholder.</code></pre>
+
+    <h3>Example</h3>
+    <pre><code>**Slide 8: Quote**
+
+Eyebrow: 03 · Customer story
+Body: "Zendesk AI cut our resolution time in half without making our agents feel replaced."
+Image: [placeholder: mid-shot portrait of a customer success leader in warm natural light, relaxed and authentic]
+Quote attribution: Maria Chen, VP of Support, Acme Corp</code></pre>
+
+    <hr>
+
+    <h2>6. Content</h2>
+
+    <h3>When to use it</h3>
+    <p>Flexible information layout — the workhorse archetype. Parameters:</p>
+    <ul>
+        <li><code>columns: 1</code> — narrative or single idea with supporting visual.</li>
+        <li><code>columns: 2</code> — parallel ideas, before/after, compare/contrast.</li>
+        <li><code>columns: 3</code> — three features, three steps, rule-of-three patterns.</li>
+        <li><code>columns: 4</code> or <code>columns: 5</code> — feature lists, comparison tables, denser process steps.</li>
+        <li><code>media: image</code> — hero image above or beside columns.</li>
+        <li><code>media: icon</code> — icons paired with column headers.</li>
+        <li><code>media: none</code> — text only.</li>
+    </ul>
+
+    <h3>Layout</h3>
+    <ul>
+        <li>Top-left: eyebrow pill</li>
+        <li>Headline + optional subline at top</li>
+        <li>Columnar body below, layout depends on <code>columns</code> and <code>media</code></li>
+    </ul>
+
+    <p><strong>Eyebrow:</strong> Yes. Section number + label.</p>
+
+    <p><strong>Imagery rule:</strong> REUSE first, then PLACEHOLDER, never generate. With multiple images (e.g., <code>columns: 3, media: image</code>), apply the rule to each image independently — fine to reuse one and placeholder another.</p>
+
+    <h3>Copy constraints</h3>
+    <ul>
+        <li>Headline: ≤ 6 words, sentence case, no period</li>
+        <li>Subline (optional): one line, ≤ 12 words, no period</li>
+        <li>Each column body: full sentences, terminal periods, ≤ 25 words per column for <code>columns: 3+</code>, ≤ 30 words for <code>columns: 1</code> or <code>columns: 2</code></li>
+        <li>All columns must be parallel in structure (all verbs, all noun phrases, etc.)</li>
+        <li>Don't pad: if <code>columns: 4</code> but only three items exist, use <code>columns: 3</code></li>
+    </ul>
+
+    <h3>Prompt scaffold</h3>
+    <pre><code>Draft a Content slide on [TOPIC].
+- Mode: columns: [1/2/3/4/5], media: [image/icon/none]
+- Eyebrow: confirm section number and label from preflight.
+- Headline: ≤ 6 words, sentence case, no period.
+- Subline (optional): one line, ≤ 12 words.
+- Columns: parallel structure across all columns. Each ≤ 25 words for 3+
+  columns, ≤ 30 words for 1–2 columns. Terminal periods on body sentences.
+- Imagery (if media: image): for each image, check the inventory first; reuse
+  if possible, otherwise placeholder.
+- If the source material doesn't fill the chosen column count, drop a column
+  rather than padding.</code></pre>
+
+    <h3>Example</h3>
+    <pre><code>**Slide 5: Content (columns: 3, media: none)**
+
+Eyebrow: 02 · Product overview
+Headline: Built for teams that scale
+Subline: Zendesk grows with your business, from startup to enterprise
+Body:
+  - Flexible pricing: Pay for what you use, upgrade anytime.
+  - Seamless integrations: Connect to Slack, Salesforce, Jira, and 1,000+ apps.
+  - Enterprise security: SOC 2, GDPR, HIPAA compliant out of the box.</code></pre>
+
+    <hr>
+
+    <h2>7. Product plate</h2>
+
+    <h3>When to use it</h3>
+    <p>Showing a Zendesk product UI in detail — demos, feature deep-dives, "see it in action" moments.</p>
+
+    <h3>Layout</h3>
+    <ul>
+        <li>Top-left: eyebrow pill</li>
+        <li>Left column: headline at top, body text at bottom</li>
+        <li>Right column: product screenshot</li>
+    </ul>
+
+    <p><strong>Eyebrow:</strong> Yes. Section number + label.</p>
+
+    <p><strong>Imagery rule:</strong> REUSE first, then PLACEHOLDER, never generate. Product screenshots especially benefit from reuse — if an earlier slide introduced a workspace view, a later slide referencing the same view should reuse the exact screenshot.</p>
+
+    <h3>Copy constraints</h3>
+    <ul>
+        <li>Headline: ≤ 6 words, sentence case, no period</li>
+        <li>Body: full sentences with terminal periods, ≤ 40 words total</li>
+        <li>Don't add captions like "ADMIN WORKSPACE" — the screenshot speaks for itself</li>
+    </ul>
+
+    <h3>Prompt scaffold</h3>
+    <pre><code>Draft a Product plate slide featuring [PRODUCT AREA].
+- Eyebrow: confirm section number and label from preflight.
+- Headline: ≤ 6 words describing what the screenshot demonstrates.
+- Body: full sentences, ≤ 40 words, terminal periods.
+- Imagery: check inventory first for an existing screenshot of this area.
+  If found, reuse it. Otherwise placeholder describing the workspace view
+  to be captured.</code></pre>
+
+    <h3>Example</h3>
+    <pre><code>**Slide 9: Product plate**
+
+Eyebrow: 02 · Product overview
+Headline: Resolve tickets faster
+Body: Agents see AI-generated summaries, suggested replies, and customer history in one view. No tab-switching, no copy-paste.
+Image: [placeholder: Agent Workspace screenshot showing AI ticket summary panel and suggested replies]</code></pre>
+
+    <hr>
+
+    <h2>8. Data display</h2>
+
+    <h3>When to use it</h3>
+    <p>Grid of metric callouts — dashboards, ROI summaries, impact reports. Parameter:</p>
+    <ul>
+        <li><code>type: callouts</code> — the only supported type. Up to 6 callouts per slide.</li>
+    </ul>
+
+    <p><strong>Gap note:</strong> The template does not support chart, map, or pricing-table data displays. If the user asks for these, suggest the callout grid or ask whether they'll provide a custom image.</p>
+
+    <h3>Layout</h3>
+    <ul>
+        <li>Top-left: eyebrow pill</li>
+        <li>Headline + optional subline at top</li>
+        <li>Grid of up to 6 callouts: each is a large number with a subline</li>
+    </ul>
+
+    <p><strong>Eyebrow:</strong> Yes. Section number + label.</p>
+
+    <p><strong>Imagery rule:</strong> No imagery on this slide.</p>
+
+    <h3>Copy constraints</h3>
+    <ul>
+        <li>Headline: ≤ 6 words, sentence case, no period</li>
+        <li>Each callout number: a single value (percentage, dollar amount, count). Don't combine multiple numbers in one callout.</li>
+        <li>Each callout subline: ≤ 8 words explaining the number, terminal period</li>
+        <li><strong>Never invent statistics.</strong> If the data isn't provided, stop and ask.</li>
+    </ul>
+
+    <h3>Prompt scaffold</h3>
+    <pre><code>Draft a Data display slide showing [METRICS] for [CONTEXT].
+- Mode: type: callouts
+- Eyebrow: confirm section number and label from preflight.
+- Headline: ≤ 6 words.
+- Up to 6 callouts. Each: one number + ≤ 8-word subline with terminal period.
+- If specific metric values aren't provided, STOP and ask. Do not invent
+  statistics.</code></pre>
+
+    <h3>Example</h3>
+    <pre><code>**Slide 14: Data display (type: callouts)**
+
+Eyebrow: 03 · Customer results
+Headline: Impact across the customer base
+Body:
+  - 47% — Faster average resolution time.
+  - $2.3M — Annual savings per enterprise customer.
+  - 89% — CSAT score across AI-handled tickets.
+  - 12 weeks — Average time to full deployment.</code></pre>
+
+    <hr>
+
+    <h2>9. Timeline</h2>
+
+    <h3>When to use it</h3>
+    <p>Roadmaps, company history, release schedules — anything ordered along a temporal axis. Parameter:</p>
+    <ul>
+        <li><code>milestones: 2–4</code> — horizontal timeline with this many points.</li>
+    </ul>
+
+    <h3>Layout</h3>
+    <ul>
+        <li>Top-left: eyebrow pill</li>
+        <li>Headline + optional subline at top</li>
+        <li>Horizontal timeline with 2–4 milestones, each with year/date header and body text</li>
+    </ul>
+
+    <p><strong>Eyebrow:</strong> Yes. Section number + label.</p>
+
+    <p><strong>Imagery rule:</strong> No imagery on this slide.</p>
+
+    <h3>Copy constraints</h3>
+    <ul>
+        <li>Headline: ≤ 6 words, sentence case, no period</li>
+        <li>Each milestone header: date or year, consistent granularity across milestones (don't mix "2024" and "Q4 2024" — pick one)</li>
+        <li>Each milestone body: ≤ 15 words, terminal period</li>
+        <li><strong>Never invent dates or milestones.</strong> If the data isn't provided, stop and ask.</li>
+    </ul>
+
+    <h3>Prompt scaffold</h3>
+    <pre><code>Draft a Timeline slide covering [PROJECT/ROADMAP] from [START] to [END].
+- Eyebrow: confirm section number and label from preflight.
+- Headline: ≤ 6 words.
+- 2–4 milestones. Each: date/year header (consistent granularity) + ≤ 15-word
+  body with terminal period.
+- If milestone dates or names aren't provided, STOP and ask. Do not invent.</code></pre>
+
+    <h3>Example</h3>
+    <pre><code>**Slide 16: Timeline (milestones: 4)**
+
+Eyebrow: 05 · What's next
+Headline: The road ahead
+Body:
+  - 2024 — Launched Zendesk AI for ticket triage and summarization.
+  - 2025 — Expanded to voice and proactive customer outreach.
+  - 2026 — Released agentic workflows for autonomous resolution.
+  - 2027 — Industry-specific AI models for regulated verticals.</code></pre>
+
+    <hr>
+
+    <h2>10. Closing</h2>
+
+    <h3>When to use it</h3>
+    <p>Final slide of the deck. Wordmark on black, no text, no CTA — pure brand presence.</p>
+
+    <p><strong>Stop-and-ask:</strong> Some decks end with a CTA slide (contact details, next steps) instead of the wordmark. Before drafting, confirm whether the user wants the Closing archetype or a custom Content slide for the final slide.</p>
+
+    <h3>Layout</h3>
+    <ul>
+        <li>Black background</li>
+        <li>Zendesk wordmark centered</li>
+        <li>No eyebrow, no headline, no body</li>
+    </ul>
+
+    <p><strong>Eyebrow:</strong> No. Closing is the only archetype without an eyebrow.</p>
+
+    <p><strong>Imagery rule:</strong> No imagery beyond the wordmark, which is part of the template.</p>
+
+    <h3>Copy constraints</h3>
+    <ul>
+        <li>No copy. The slide is the wordmark.</li>
+    </ul>
+
+    <h3>Prompt scaffold</h3>
+    <pre><code>Confirm the deck should end with a Closing slide (wordmark only) rather than
+a custom CTA slide with contact details or next steps. If Closing is correct,
+no further drafting is needed — the template handles it.</code></pre>
+
+    <h3>Example</h3>
+    <pre><code>**Slide 20: Closing**
+
+(No eyebrow, no headline, no body — Zendesk wordmark on black, template-rendered.)</code></pre>
+
+    <hr>
+
+    <h2>Quick reference: which archetype for which intent?</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>If you want to…</th>
+                <th>Use this archetype</th>
+                <th>Eyebrow?</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Start the deck</td>
+                <td>Cover</td>
+                <td>Yes</td>
+            </tr>
+            <tr>
+                <td>Map the deck's structure</td>
+                <td>Agenda</td>
+                <td>Yes</td>
+            </tr>
+            <tr>
+                <td>Transition between sections</td>
+                <td>Section divider</td>
+                <td>Yes</td>
+            </tr>
+            <tr>
+                <td>Land one powerful sentence</td>
+                <td>Statement</td>
+                <td>Yes</td>
+            </tr>
+            <tr>
+                <td>Share a customer or exec voice</td>
+                <td>Quote</td>
+                <td>Yes</td>
+            </tr>
+            <tr>
+                <td>Explain ideas in 1–5 columns</td>
+                <td>Content</td>
+                <td>Yes</td>
+            </tr>
+            <tr>
+                <td>Show the product UI</td>
+                <td>Product plate</td>
+                <td>Yes</td>
+            </tr>
+            <tr>
+                <td>Present metrics as callouts</td>
+                <td>Data display</td>
+                <td>Yes</td>
+            </tr>
+            <tr>
+                <td>Show a roadmap with 2–4 milestones</td>
+                <td>Timeline</td>
+                <td>Yes</td>
+            </tr>
+            <tr>
+                <td>End the deck</td>
+                <td>Closing</td>
+                <td><strong>No</strong></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

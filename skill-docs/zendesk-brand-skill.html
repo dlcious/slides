@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zendesk Brand System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-size: 15px;
+            line-height: 1.6;
+            color: #FFFFFF;
+            background-color: #11110D;
+            padding: 40px;
+        }
+
+        h1 {
+            font-size: 42px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: #FFFFFF;
+        }
+
+        h2 {
+            font-size: 30px;
+            font-weight: 600;
+            margin-top: 40px;
+            margin-bottom: 16px;
+            color: #FFFFFF;
+        }
+
+        h3 {
+            font-size: 21px;
+            font-weight: 600;
+            margin-top: 24px;
+            margin-bottom: 12px;
+            color: #FFFFFF;
+        }
+
+        p {
+            margin-bottom: 16px;
+        }
+
+        strong {
+            font-weight: 600;
+            color: #D1F470;
+        }
+
+        code {
+            font-family: 'SF Mono', 'Monaco', 'Courier New', monospace;
+            font-size: 13px;
+            background-color: #0A0A07;
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #D1F470;
+        }
+
+        pre {
+            background-color: #0A0A07;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 16px 0;
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+            color: #FFFFFF;
+        }
+
+        ul, ol {
+            margin-left: 24px;
+            margin-bottom: 16px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            font-size: 15px;
+        }
+
+        th {
+            background-color: #0A0A07;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            border: 1px solid #2A2A24;
+            color: #D1F470;
+        }
+
+        td {
+            padding: 12px;
+            border: 1px solid #2A2A24;
+        }
+
+        tr:nth-child(even) {
+            background-color: #1A1A16;
+        }
+
+        blockquote {
+            border-left: 3px solid #D1F470;
+            padding-left: 16px;
+            margin: 16px 0;
+            color: #CCCCCC;
+            font-style: italic;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #2A2A24;
+            margin: 32px 0;
+        }
+
+        .crossmark {
+            color: #F44336;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <h1>Zendesk Brand System</h1>
+
+    <p>You are a Zendesk brand expert. Ensure all design and code follows the Zendesk brand guidelines.</p>
+
+    <h2>THE DEFINING RULE</h2>
+
+    <p><strong>Reserve Matcha for primary CTAs only. Limit to 1–2 per page.</strong></p>
+
+    <p>This is the most important rule in the Zendesk visual system. Matcha's power comes from restraint.</p>
+
+    <hr>
+
+    <h2>Design Tokens</h2>
+
+    <p><strong>Always use these files when generating code:</strong></p>
+
+    <ul>
+        <li><strong>[assets/tokens.css](assets/tokens.css)</strong> - CSS custom properties, ready to <code>@import</code></li>
+        <li><strong>[assets/tokens.json](assets/tokens.json)</strong> - JSON format for programmatic use</li>
+    </ul>
+
+    <p><strong>Never</strong> type hex values manually—reference the token files to avoid transcription errors.</p>
+
+    <pre><code>/* Correct */
+@import 'assets/tokens.css';
+.button { background: var(--color-matcha); }
+
+/* Wrong */
+.button { background: #D1F470; }  /* Don't hardcode */</code></pre>
+
+    <hr>
+
+    <h2>Reference Documentation</h2>
+
+    <p>Each topic has its own detailed guide:</p>
+
+    <h3>[references/colors.md](references/colors.md)</h3>
+    <ul>
+        <li>THE DEFINING RULE (Matcha 1-2 per page)</li>
+        <li>Primary palette (Coconut, Licorice, Matcha, Sesame, Fern)</li>
+        <li>Secondary palette (Cactus, Pineapple, Shamrock)</li>
+        <li>Tonal scales (Matcha 000-600, Sesame 100-700)</li>
+        <li>Neutral opacities (Light/Dark mode scales)</li>
+        <li>State colors (Success, Error)</li>
+        <li>Data visualization palettes (Cyan, Blue, Lavender, Purple)</li>
+        <li>Color usage rules (don'ts)</li>
+    </ul>
+
+    <h3>[references/typography.md](references/typography.md)</h3>
+    <ul>
+        <li>Font families (Zendesk Sans, Zendesk Mono)</li>
+        <li>Complete type scale (H1-H4, Body, Large, Supertitle, Caption)</li>
+        <li>Correct sizes: H1 42px/500, H2 30px/500, H3 21px/500, Body 15px/400</li>
+        <li>Typography rules (sentence case, no periods on headlines)</li>
+        <li>Localization guidelines</li>
+    </ul>
+
+    <h3>[references/spacing-and-layout.md](references/spacing-and-layout.md)</h3>
+    <ul>
+        <li>Spacing scale (8, 12, 16, 24, 40, 56, 72, 96)</li>
+        <li>Layout patterns (container, grid, two-column, three-column)</li>
+        <li>Responsive breakpoints (XS, S, M, L, XL)</li>
+        <li>White space principles</li>
+        <li>Shadows (SS1, SS2, S1-S4)</li>
+        <li>Border radius guidelines</li>
+        <li>Image masking rules</li>
+    </ul>
+
+    <h3>[references/components.md](references/components.md)</h3>
+    <ul>
+        <li>Button hierarchy (Primary/Secondary/Tertiary)</li>
+        <li>THE DEFINING RULE implementation</li>
+        <li>Cards (structure, styling, rules)</li>
+        <li>Hero sections (pattern, CSS, rules)</li>
+        <li>Forms (structure, validation, accessibility)</li>
+        <li>Navigation patterns</li>
+        <li>Imagery rules</li>
+        <li>Logo usage</li>
+    </ul>
+
+    <h3>[references/accessibility.md](references/accessibility.md)</h3>
+    <ul>
+        <li>WCAG 2.1 Level AA requirements</li>
+        <li>Color contrast (4.5:1 minimum for normal text)</li>
+        <li>Keyboard navigation</li>
+        <li>Touch targets (44x44px minimum on mobile)</li>
+        <li>Semantic HTML &amp; ARIA</li>
+        <li>Screen reader optimization</li>
+        <li>Form accessibility</li>
+        <li>Modal dialogs</li>
+        <li>Testing checklist</li>
+    </ul>
+
+    <h3>[references/voice.md](references/voice.md)</h3>
+    <ul>
+        <li>Brand philosophy ("The customer is always human")</li>
+        <li>Brand attributes (Approachable, Modern, Trusted, Connected, Fresh)</li>
+        <li>Core principles (active voice, concise, direct address)</li>
+        <li>Copy structure (headlines, body, CTAs)</li>
+        <li>Technical rules (sentence case, no periods, Oxford comma)</li>
+        <li>Language rules (avoid jargon, no gender references)</li>
+        <li>Localization</li>
+        <li>Voice examples (on-brand vs off-brand)</li>
+    </ul>
+
+    <hr>
+
+    <h2>Assets</h2>
+
+    <h3>Design Tokens</h3>
+    <ul>
+        <li><code>assets/tokens.css</code> - CSS custom properties</li>
+        <li><code>assets/tokens.json</code> - JSON format</li>
+    </ul>
+
+    <h3>Fonts</h3>
+    <ul>
+        <li><code>assets/fonts/zendesk-sans/</code> - Complete Zendesk Sans family (100-900)</li>
+        <li><code>assets/fonts/zendesk-mono/</code> - Complete Zendesk Mono family</li>
+    </ul>
+
+    <h3>Logos</h3>
+    <ul>
+        <li><code>assets/logo-coconut.svg</code> - White logo for dark backgrounds</li>
+        <li><code>assets/logo-licorice.svg</code> - Dark logo for light backgrounds</li>
+    </ul>
+
+    <hr>
+
+    <h2>Working Examples</h2>
+
+    <p><strong>Reference these when building components:</strong></p>
+
+    <ul>
+        <li>
+            <strong>[examples/hero-section.html](examples/hero-section.html)</strong>
+            <ul>
+                <li>Complete hero with proper token usage</li>
+                <li>THE DEFINING RULE: 1 primary Matcha button (limit 1–2 per page)</li>
+                <li>Active voice copy, sentence case, direct address</li>
+                <li>Inline comments explaining every brand decision</li>
+            </ul>
+        </li>
+        <li>
+            <strong>[examples/card-component.html](examples/card-component.html)</strong>
+            <ul>
+                <li>Card grid showing proper typography and spacing</li>
+                <li>Matcha used only as accent (link underlines)</li>
+                <li>1 primary Matcha button in CTA section (limit 1–2 per page)</li>
+                <li>Demonstrates proper component patterns</li>
+            </ul>
+        </li>
+    </ul>
+
+    <p><strong>Use these as templates</strong> when building new components or pages.</p>
+
+    <hr>
+
+    <h2>Brand Anti-Patterns (Common Mistakes)</h2>
+
+    <h3>THE MOST IMPORTANT</h3>
+
+    <p><span class="crossmark">❌</span> <strong>Multiple Matcha buttons on one page</strong> - Violates THE DEFINING RULE<br>
+    <span class="crossmark">❌</span> <strong>Matcha backgrounds</strong> - Matcha is for CTAs only, not surfaces<br>
+    <span class="crossmark">❌</span> <strong>Matcha text highlighting</strong> - Use typography weight instead</p>
+
+    <h3>Colors</h3>
+    <p><span class="crossmark">❌</span> Don't use secondary colors (Cactus, Pineapple) as backgrounds<br>
+    <span class="crossmark">❌</span> Don't alternate background colors in every section<br>
+    <span class="crossmark">❌</span> Don't highlight text with different colors<br>
+    <span class="crossmark">❌</span> Don't apply custom colors to the Zendesk logo<br>
+    <span class="crossmark">❌</span> Don't rely solely on color to convey meaning</p>
+
+    <h3>Typography</h3>
+    <p><span class="crossmark">❌</span> Don't use title case for headlines (use sentence case)<br>
+    <span class="crossmark">❌</span> Don't add periods to headlines<br>
+    <span class="crossmark">❌</span> Don't use similar sizes or weights (create clear hierarchy)<br>
+    <span class="crossmark">❌</span> Don't mix text styles in same line</p>
+
+    <h3>Copy &amp; Voice</h3>
+    <p><span class="crossmark">❌</span> Don't use passive voice ("requests are handled by..." → "we handle...")<br>
+    <span class="crossmark">❌</span> Don't use jargon ("leverage," "synergy," "paradigm shift")<br>
+    <span class="crossmark">❌</span> Don't use possessives with Zendesk ("Zendesk's" → "Zendesk")<br>
+    <span class="crossmark">❌</span> Don't use ampersands (unless part of brand name)<br>
+    <span class="crossmark">❌</span> Don't add spaces around em dashes ("word — word" → "word—word")</p>
+
+    <h3>Layout</h3>
+    <p><span class="crossmark">❌</span> Don't use arbitrary spacing (always use scale: 8, 12, 16, 24, 40, 56, 72, 96)<br>
+    <span class="crossmark">❌</span> Don't use borders on web imagery (let images breathe)<br>
+    <span class="crossmark">❌</span> Don't use circles or polygons for image masks (use rounded rectangles)</p>
+
+    <hr>
+
+    <h2>Workflow</h2>
+
+    <p>When creating Zendesk-branded work:</p>
+
+    <ol>
+        <li><strong>Import tokens</strong> - Use <code>assets/tokens.css</code> or <code>assets/tokens.json</code> (never hardcode)</li>
+        <li><strong>Follow THE DEFINING RULE</strong> - 1-2 Matcha elements max per page</li>
+        <li><strong>Reference examples</strong> - Check <code>examples/</code> for working patterns</li>
+        <li><strong>Read relevant guides</strong> - See <code>references/</code> for typography, colors, spacing, components, voice, accessibility</li>
+        <li><strong>Avoid anti-patterns</strong> - Review don'ts above</li>
+    </ol>
+
+    <hr>
+
+    <h2>Full Visual Reference</h2>
+
+    <p>For comprehensive visual examples and design context:</p>
+    <ul>
+        <li>[references/zendesk-brand-visual-reference.html](references/zendesk-brand-visual-reference.html)</li>
+        <li>[references/zendesk-brand-code-reference.html](references/zendesk-brand-code-reference.html)</li>
+    </ul>
+
+    <hr>
+
+    <h2>Brand Philosophy</h2>
+
+    <p><strong>"The customer is always human."</strong></p>
+
+    <p>Brand Attributes: <strong>Approachable, Modern, Trusted, Connected, Fresh</strong></p>
+
+    <p>When things go sideways, you want service you can count on. Zendesk ensures every interaction ends in resolution, helping brands show up for their customers exactly how they need to.</p>
+</body>
+</html>
