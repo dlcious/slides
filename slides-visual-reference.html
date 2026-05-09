@@ -85,7 +85,7 @@
         .param{font-family:var(--font-mono);font-size:11px;padding:4px 10px;border-radius:999px;border:1px solid var(--color-coconut-13);color:var(--color-coconut-79);}
         .param--matcha{border-color:var(--color-matcha);color:var(--color-matcha);}
         .archetype__frame{width:100%;aspect-ratio:16/9;background:var(--color-coconut-5);border:1px solid var(--color-coconut-13);border-radius:12px;overflow:hidden;margin-bottom:var(--s-24);position:relative;}
-        .archetype__frame iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;display:block;}
+        .archetype__frame iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;transform:scale(1);transform-origin:0 0;}
         .archetype__meta{display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--s-24);}
         .archetype__block-label{font-family:var(--font-mono);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--color-coconut-47);margin-bottom:8px;}
         .archetype__block-body{font-size:14px;line-height:1.55;color:var(--color-coconut-79);}
@@ -331,6 +331,24 @@
         });
     }, { rootMargin: '-40% 0px -55% 0px' });
     sections.forEach(s => observer.observe(s));
+
+    // Scale iframes to fit containers
+    function scaleIframes() {
+        const frames = document.querySelectorAll('.archetype__frame');
+        frames.forEach(frame => {
+            const iframe = frame.querySelector('iframe');
+            if (iframe) {
+                const containerWidth = frame.clientWidth;
+                const scale = containerWidth / 1920;
+                iframe.style.width = '1920px';
+                iframe.style.height = '1080px';
+                iframe.style.transform = `scale(${scale})`;
+            }
+        });
+    }
+
+    window.addEventListener('load', scaleIframes);
+    window.addEventListener('resize', scaleIframes);
 
     const themeToggle = document.querySelector('.theme-toggle');
     const sunIcon = document.querySelector('.theme-toggle__icon--sun');
