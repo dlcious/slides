@@ -1,6 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
+    <script>
+        (function() {
+            const theme = localStorage.getItem('zendesk-slides-theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skill Reference – Zendesk AI Slides</title>
@@ -11,14 +17,33 @@
         @font-face{font-family:'Zendesk Mono';src:url('fonts/zendesk-mono/ZendeskMono-Medium.woff2')format('woff2');font-weight:500}
         @font-face{font-family:'Zendesk Mono';src:url('fonts/zendesk-mono/ZendeskMono-SemiBold.woff2')format('woff2');font-weight:600}
         :root{
+            --sans:'Zendesk Sans',-apple-system,sans-serif;
+            --mono:'Zendesk Mono',ui-monospace,monospace;
+            --nav:280px;--max:980px;
+        }
+
+        [data-theme="dark"]{
             --licorice:#11110D;--coconut:#FFFFFF;--matcha:#D1F470;--matcha-400:#70A32A;
             --c79:rgba(255,255,255,0.79);--c47:rgba(255,255,255,0.47);--c32:rgba(255,255,255,0.32);
             --c13:rgba(255,255,255,0.13);--c7:rgba(255,255,255,0.07);--c5:rgba(255,255,255,0.05);
             --syn-key:#D1F470;--syn-str:#FFFFFF;--syn-num:#FEEB7E;--syn-bool:#A1D78F;
             --syn-null:rgba(255,255,255,.47);--syn-comment:rgba(255,255,255,.32);
-            --sans:'Zendesk Sans',-apple-system,sans-serif;
-            --mono:'Zendesk Mono',ui-monospace,monospace;
-            --nav:280px;--max:980px;
+            --bg-primary:#11110D;--bg-secondary:#0A0A07;
+            --text-primary:#FFFFFF;--text-secondary:rgba(255,255,255,0.79);
+            --border-color:rgba(255,255,255,0.07);
+            --grid-pattern:rgba(255,255,255,0.07);
+        }
+
+        [data-theme="light"]{
+            --licorice:#FFFFFF;--coconut:#11110D;--matcha:#70A32A;--matcha-400:#70A32A;
+            --c79:rgba(17,17,13,0.79);--c47:rgba(17,17,13,0.47);--c32:rgba(17,17,13,0.32);
+            --c13:rgba(17,17,13,0.13);--c7:rgba(17,17,13,0.07);--c5:rgba(17,17,13,0.05);
+            --syn-key:#70A32A;--syn-str:#11110D;--syn-num:#C89600;--syn-bool:#70A32A;
+            --syn-null:rgba(17,17,13,.47);--syn-comment:rgba(17,17,13,.32);
+            --bg-primary:#FFFFFF;--bg-secondary:#F5F5F2;
+            --text-primary:#11110D;--text-secondary:rgba(17,17,13,0.79);
+            --border-color:rgba(17,17,13,0.13);
+            --grid-pattern:rgba(17,17,13,0.07);
         }
         *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
         html{scroll-behavior:smooth}
@@ -26,7 +51,7 @@
         a{color:inherit} button{font-family:inherit}
 
         /* NAV */
-        .nav{position:fixed;top:0;left:0;width:var(--nav);height:100vh;background:#0A0A07;border-right:1px solid var(--c7);padding:56px 40px;display:flex;flex-direction:column;z-index:100;overflow-y:auto}
+        .nav{position:fixed;top:0;left:0;width:var(--nav);height:100vh;background:var(--bg-secondary);border-right:1px solid var(--border-color);padding:56px 40px;display:flex;flex-direction:column;z-index:100;overflow-y:auto}
         .nav__brand{display:flex;align-items:center;gap:14px;margin-bottom:72px;text-decoration:none;color:inherit}
         .nav__mark{width:36px;height:26px;flex-shrink:0}
         .nav__brand-text{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--coconut);line-height:1.4}
@@ -65,7 +90,7 @@
         .section__subhead:first-of-type{margin-top:0}
 
         /* CODE BLOCKS */
-        .code-block{background:#0A0A07;border:1px solid var(--c7);border-radius:12px;margin-bottom:24px;position:relative;overflow:hidden}
+        .code-block{background:var(--bg-secondary);border:1px solid var(--border-color);border-radius:12px;margin-bottom:24px;position:relative;overflow:hidden}
         .code-block__head{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid var(--c7);background:rgba(255,255,255,.02)}
         .code-block__name{font-family:var(--mono);font-size:11px;color:var(--c47);text-transform:uppercase;letter-spacing:0.08em;display:flex;align-items:center;gap:10px}
         .code-block__dots{display:flex;gap:5px}
@@ -97,7 +122,7 @@
         .param-tag{display:inline-block;font-family:var(--mono);font-size:10px;padding:2px 8px;border-radius:4px;background:rgba(209,244,112,.08);color:var(--matcha);border:1px solid rgba(209,244,112,.15);margin:2px 2px 2px 0}
 
         /* WORKED EXAMPLE */
-        .example{background:#0A0A07;border:1px solid var(--c7);border-radius:12px;padding:32px;margin-bottom:24px}
+        .example{background:var(--bg-secondary);border:1px solid var(--border-color);border-radius:12px;padding:32px;margin-bottom:24px}
         .example__label{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--matcha);margin-bottom:16px}
         .example__slide{margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--c7)}
         .example__slide:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
@@ -125,9 +150,17 @@
 
         /* TOGGLE */
         .toggle{position:fixed;bottom:40px;left:50%;transform:translateX(calc(-50% + var(--nav)/2));background:rgba(20,20,16,.95);backdrop-filter:blur(10px);padding:6px;border-radius:999px;display:flex;gap:4px;z-index:200;border:1px solid var(--c13);box-shadow:0 16px 40px rgba(0,0,0,.5)}
+        [data-theme="light"] .toggle{background:rgba(245,245,242,.95);}
         .toggle__btn{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:10px 22px;border-radius:999px;border:none;background:transparent;color:var(--c79);text-decoration:none;cursor:pointer;transition:all .2s}
         .toggle__btn:hover{color:var(--coconut)}
         .toggle__btn--active{background:var(--matcha);color:var(--licorice)}
+
+        /* THEME TOGGLE */
+        .theme-toggle{position:fixed;top:40px;right:40px;width:48px;height:48px;background:rgba(20,20,16,.95);backdrop-filter:blur(10px);border:1px solid var(--c13);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:200;transition:all .2s;box-shadow:0 4px 12px rgba(0,0,0,.3);}
+        [data-theme="light"] .theme-toggle{background:rgba(245,245,242,.95);}
+        .theme-toggle:hover{border-color:var(--matcha);transform:scale(1.05);}
+        .theme-toggle svg{width:20px;height:20px;color:var(--c79);transition:all .2s;}
+        .theme-toggle:hover svg{color:var(--matcha);}
 
         @media(max-width:1024px){.nav{transform:translateX(-100%)}.page{margin-left:0}.toggle{transform:translateX(-50%)}.overview-list{grid-template-columns:1fr}}
         @media(max-width:640px){.container,.hero__inner{padding:0 24px}.example{padding:24px}}
@@ -435,6 +468,23 @@ then ask me for the deck brief.</pre>
         <a href="slides-skill-reference.html" class="toggle__btn toggle__btn--active">Machine</a>
     </div>
 
+    <button class="theme-toggle" aria-label="Toggle theme">
+        <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+    </button>
+
     <script>
         // Active nav on scroll
         const sections=document.querySelectorAll('section[id]');
@@ -452,6 +502,57 @@ then ask me for the deck brief.</pre>
                 setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
             });
         }
+
+        // Theme toggle
+        const themeToggle = document.querySelector('.theme-toggle');
+        const sunIcon = document.querySelector('.theme-toggle__icon--sun');
+        const moonIcon = document.querySelector('.theme-toggle__icon--moon');
+
+        function updateThemeIcon(theme) {
+            if (theme === 'light') {
+                sunIcon.style.display = 'none';
+                moonIcon.style.display = 'block';
+            } else {
+                sunIcon.style.display = 'block';
+                moonIcon.style.display = 'none';
+            }
+        }
+
+        updateThemeIcon(document.documentElement.getAttribute('data-theme'));
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('zendesk-slides-theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+
+        // Apply theme to iframes (for embedded skill docs)
+        function applyThemeToIframes() {
+            const theme = document.documentElement.getAttribute('data-theme');
+            const iframes = document.querySelectorAll('.doc-embed iframe');
+            iframes.forEach(iframe => {
+                try {
+                    if (iframe.contentDocument) {
+                        iframe.contentDocument.documentElement.setAttribute('data-theme', theme);
+                    }
+                } catch (e) {
+                    // Cross-origin iframes will throw error, ignore
+                }
+            });
+        }
+
+        // Apply theme to iframes after they load
+        window.addEventListener('load', () => {
+            setTimeout(applyThemeToIframes, 100);
+        });
+
+        // Also apply when theme changes
+        const originalToggleClick = themeToggle.onclick;
+        themeToggle.addEventListener('click', () => {
+            setTimeout(applyThemeToIframes, 50);
+        });
     </script>
 </body>
 </html>

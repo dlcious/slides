@@ -1,6 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
+    <script>
+        (function() {
+            const theme = localStorage.getItem('zendesk-slides-theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', theme);
+        })();
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zendesk AI Slides – Visual Reference</title>
@@ -11,22 +17,40 @@
         @font-face { font-family: 'Zendesk Mono'; src: url('fonts/zendesk-mono/ZendeskMono-Regular.woff2') format('woff2'); font-weight: 400; font-display: swap; }
         @font-face { font-family: 'Zendesk Mono'; src: url('fonts/zendesk-mono/ZendeskMono-Medium.woff2') format('woff2'); font-weight: 500; font-display: swap; }
         :root {
-            --color-licorice:#11110D; --color-coconut:#FFFFFF; --color-matcha:#D1F470;
-            --color-coconut-79:rgba(255,255,255,0.79); --color-coconut-47:rgba(255,255,255,0.47);
-            --color-coconut-32:rgba(255,255,255,0.32); --color-coconut-13:rgba(255,255,255,0.13);
-            --color-coconut-7:rgba(255,255,255,0.07); --color-coconut-5:rgba(255,255,255,0.05);
             --font-sans:'Zendesk Sans',-apple-system,BlinkMacSystemFont,sans-serif;
             --font-mono:'Zendesk Mono',ui-monospace,'SF Mono',Menlo,monospace;
             --s-8:8px;--s-12:12px;--s-16:16px;--s-24:24px;--s-40:40px;
             --s-56:56px;--s-72:72px;--s-96:96px;--s-128:128px;
             --nav-width:260px; --content-max:1040px;
         }
+
+        [data-theme="dark"] {
+            --color-licorice:#11110D; --color-coconut:#FFFFFF; --color-matcha:#D1F470;
+            --color-coconut-79:rgba(255,255,255,0.79); --color-coconut-47:rgba(255,255,255,0.47);
+            --color-coconut-32:rgba(255,255,255,0.32); --color-coconut-13:rgba(255,255,255,0.13);
+            --color-coconut-7:rgba(255,255,255,0.07); --color-coconut-5:rgba(255,255,255,0.05);
+            --bg-primary:#11110D; --bg-secondary:#0A0A07;
+            --text-primary:#FFFFFF; --text-secondary:rgba(255,255,255,0.79);
+            --border-color:rgba(255,255,255,0.07);
+            --grid-pattern:rgba(255,255,255,0.07);
+        }
+
+        [data-theme="light"] {
+            --color-licorice:#FFFFFF; --color-coconut:#11110D; --color-matcha:#70A32A;
+            --color-coconut-79:rgba(17,17,13,0.79); --color-coconut-47:rgba(17,17,13,0.47);
+            --color-coconut-32:rgba(17,17,13,0.32); --color-coconut-13:rgba(17,17,13,0.13);
+            --color-coconut-7:rgba(17,17,13,0.07); --color-coconut-5:rgba(17,17,13,0.05);
+            --bg-primary:#FFFFFF; --bg-secondary:#F5F5F2;
+            --text-primary:#11110D; --text-secondary:rgba(17,17,13,0.79);
+            --border-color:rgba(17,17,13,0.13);
+            --grid-pattern:rgba(17,17,13,0.07);
+        }
         *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
         html{scroll-behavior:smooth;}
         body{font-family:var(--font-sans);background:var(--color-licorice);color:var(--color-coconut);-webkit-font-smoothing:antialiased;}
         a{color:inherit;text-decoration:none;}
-        body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(circle at 1px 1px,var(--color-coconut-7) 1px,transparent 0);background-size:28px 28px;pointer-events:none;z-index:0;}
-        .nav{position:fixed;top:0;left:0;width:var(--nav-width);height:100vh;background:#0A0A07;border-right:1px solid var(--color-coconut-7);padding:var(--s-56) var(--s-40);display:flex;flex-direction:column;z-index:100;overflow-y:auto;}
+        body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(circle at 1px 1px,var(--grid-pattern) 1px,transparent 0);background-size:28px 28px;pointer-events:none;z-index:0;}
+        .nav{position:fixed;top:0;left:0;width:var(--nav-width);height:100vh;background:var(--bg-secondary);border-right:1px solid var(--border-color);padding:var(--s-56) var(--s-40);display:flex;flex-direction:column;z-index:100;overflow-y:auto;}
         .nav__brand{display:flex;align-items:center;gap:12px;margin-bottom:var(--s-72);}
         .nav__mark{width:32px;height:23px;flex-shrink:0;}
         .nav__brand-text{font-family:var(--font-mono);font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--color-coconut);line-height:1.4;}
@@ -67,9 +91,15 @@
         .archetype__block-body{font-size:14px;line-height:1.55;color:var(--color-coconut-79);}
         .archetype__block-body strong{color:var(--color-coconut);font-weight:500;}
         .toggle{position:fixed;bottom:var(--s-40);left:50%;transform:translateX(calc(-50% + var(--nav-width)/2));background:rgba(20,20,16,.95);backdrop-filter:blur(10px);padding:6px;border-radius:999px;display:flex;gap:4px;z-index:200;border:1px solid var(--color-coconut-13);box-shadow:0 16px 40px rgba(0,0,0,.5);}
+        [data-theme="light"] .toggle{background:rgba(245,245,242,.95);}
         .toggle__btn{font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:10px 22px;border-radius:999px;border:none;background:transparent;color:var(--color-coconut-79);text-decoration:none;cursor:pointer;transition:all .2s;}
         .toggle__btn:hover{color:var(--color-coconut);}
         .toggle__btn--active{background:var(--color-matcha);color:var(--color-licorice);}
+        .theme-toggle{position:fixed;top:var(--s-40);right:var(--s-40);width:48px;height:48px;background:rgba(20,20,16,.95);backdrop-filter:blur(10px);border:1px solid var(--color-coconut-13);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:200;transition:all .2s;box-shadow:0 4px 12px rgba(0,0,0,.3);}
+        [data-theme="light"] .theme-toggle{background:rgba(245,245,242,.95);}
+        .theme-toggle:hover{border-color:var(--color-matcha);transform:scale(1.05);}
+        .theme-toggle svg{width:20px;height:20px;color:var(--color-coconut-79);transition:all .2s;}
+        .theme-toggle:hover svg{color:var(--color-matcha);}
         @media(max-width:1024px){.nav{transform:translateX(-100%)}.page{margin-left:0}.toggle{transform:translateX(-50%)}}
         @media(max-width:768px){.archetype__meta{grid-template-columns:1fr}.container{padding:0 var(--s-24)}}
     </style>
@@ -273,6 +303,22 @@
     <a href="slides-visual-reference.html" class="toggle__btn toggle__btn--active">Human</a>
     <a href="slides-skill-reference.html" class="toggle__btn">Machine</a>
 </div>
+<button class="theme-toggle" aria-label="Toggle theme">
+    <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+    <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+    </svg>
+</button>
 <script>
     const sections = document.querySelectorAll('section[id]');
     const navItems = document.querySelectorAll('.nav__item');
@@ -285,6 +331,30 @@
         });
     }, { rootMargin: '-40% 0px -55% 0px' });
     sections.forEach(s => observer.observe(s));
+
+    const themeToggle = document.querySelector('.theme-toggle');
+    const sunIcon = document.querySelector('.theme-toggle__icon--sun');
+    const moonIcon = document.querySelector('.theme-toggle__icon--moon');
+
+    function updateThemeIcon(theme) {
+        if (theme === 'light') {
+            sunIcon.style.display = 'none';
+            moonIcon.style.display = 'block';
+        } else {
+            sunIcon.style.display = 'block';
+            moonIcon.style.display = 'none';
+        }
+    }
+
+    updateThemeIcon(document.documentElement.getAttribute('data-theme'));
+
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('zendesk-slides-theme', newTheme);
+        updateThemeIcon(newTheme);
+    });
 </script>
 </body>
 </html>
