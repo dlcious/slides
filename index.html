@@ -248,8 +248,8 @@
         /* DOWNLOAD */
         .download-section {
             display: flex;
-            justify-content: center;
-            margin-bottom: var(--s-56);
+            justify-content: flex-start;
+            margin-bottom: var(--s-72);
         }
 
         .download-btn {
@@ -383,6 +383,17 @@
             <h1 class="hero__title">Built so every deck<br><em>ships</em> on brand.</h1>
             <p class="hero__lede">A single source of truth for the Zendesk AI Slides design system – expressed two ways. A visual reference for designers and stakeholders. A structured skill reference for AI agents.</p>
 
+            <div class="download-section">
+                <button class="download-btn" id="downloadSkills">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Download skill files
+                </button>
+            </div>
+
             <div class="ticker" aria-hidden="true">
                 <div class="ticker__track">
                     <span class="ticker__item ticker__item--hi">01 · Cover</span>
@@ -421,17 +432,6 @@
                     <p class="route__desc">How to install and use the AI skill. Full skill content, worked examples, token reference, and common follow-ups.</p>
                     <span class="route__cta">Open skill guide <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
                 </a>
-            </div>
-
-            <div class="download-section">
-                <button class="download-btn" id="downloadSkills">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                        <polyline points="7 10 12 15 17 10"></polyline>
-                        <line x1="12" y1="15" x2="12" y2="3"></line>
-                    </svg>
-                    Download skill files
-                </button>
             </div>
 
             <div class="meta">
