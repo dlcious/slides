@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cover Archetype – Zendesk AI Slides</title>
+    <style>
+        @font-face {
+            font-family: 'Inter';
+            src: url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .slide {
+            width: 1920px;
+            height: 1080px;
+            background: #FFFFFF;
+            position: relative;
+            padding: 30px;
+            display: flex;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Eyebrow pill */
+        .eyebrow {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            padding: 6px 14px;
+            background: rgba(112, 163, 42, 0.1);
+            border: 1px solid rgba(112, 163, 42, 0.3);
+            border-radius: 999px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #70A32A;
+            letter-spacing: 0.05em;
+        }
+
+        /* Left content area */
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding-right: 60px;
+            position: relative;
+        }
+
+        /* Headline */
+        .headline {
+            font-size: 140px;
+            font-weight: 600;
+            line-height: 0.85;
+            letter-spacing: -0.02em;
+            color: #70A32A;
+            margin-top: 140px;
+            max-width: 900px;
+        }
+
+        /* Speaker section */
+        .speaker {
+            position: absolute;
+            bottom: 80px;
+            left: 0;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .speaker-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #E5E5E2;
+        }
+
+        .speaker-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .speaker-name {
+            font-size: 21px;
+            font-weight: 600;
+            color: #11110D;
+        }
+
+        .speaker-title {
+            font-size: 16px;
+            font-weight: 400;
+            color: #11110D;
+            opacity: 0.7;
+        }
+
+        /* Right image area */
+        .image-container {
+            width: 755px;
+            height: 926px;
+            background: #E5E5E2;
+            border-radius: 20px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 8px;
+            color: #11110D;
+            font-size: 15px;
+            margin-top: 60px;
+        }
+
+        .image-label {
+            font-weight: 500;
+        }
+
+        .image-specs {
+            font-size: 13px;
+            opacity: 0.6;
+        }
+
+        /* Footer */
+        .footer {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #11110D;
+            opacity: 0.75;
+            text-align: right;
+        }
+
+        /* Zendesk logo */
+        .logo {
+            position: absolute;
+            bottom: 30px;
+            right: 490px;
+            width: 60px;
+            height: 43px;
+        }
+
+        /* Responsive scaling */
+        @media (max-width: 1920px) {
+            .slide {
+                transform: scale(0.9);
+                transform-origin: center;
+            }
+        }
+
+        @media (max-width: 1600px) {
+            .slide {
+                transform: scale(0.7);
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .slide {
+                transform: scale(0.5);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <!-- Eyebrow -->
+        <div class="eyebrow">[NN] · [SECTION LABEL]</div>
+
+        <!-- Left content -->
+        <div class="content">
+            <!-- Headline -->
+            <h1 class="headline">Headline — sentence case, no period, 140pt</h1>
+
+            <!-- Speaker info -->
+            <div class="speaker">
+                <div class="speaker-avatar"></div>
+                <div class="speaker-info">
+                    <div class="speaker-name">Name</div>
+                    <div class="speaker-title">Title, Company</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right image -->
+        <div class="image-container">
+            <div class="image-label">[cover image placeholder</div>
+            <div class="image-specs">755×926px, 20px corner radius]</div>
+        </div>
+
+        <!-- Zendesk logo -->
+        <svg class="logo" viewBox="0 0 144 105" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M77.4095 104.5C77.5392 86.3085 92.3259 71.6016 110.548 71.6016C128.77 71.6016 143.556 86.3085 143.686 104.5L77.4095 104.5Z" fill="#11110D"/>
+            <path d="M143.5 0H77.5V77L143.5 0Z" fill="#11110D"/>
+            <path d="M66.2766 0C66.1468 18.1914 51.3605 32.8983 33.1385 32.8984C14.9165 32.8984 0.12976 18.1915 0 0L66.2766 0Z" fill="#11110D"/>
+            <path d="M0 104.5L66.5 104.5L66.5 27.5L0 104.5Z" fill="#11110D"/>
+        </svg>
+
+        <!-- Footer -->
+        <div class="footer">© 2026 Zendesk, Inc. All rights reserved. Private and confidential.</div>
+    </div>
+</body>
+</html>

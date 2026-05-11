@@ -245,6 +245,40 @@
         .route__cta svg { width:14px; height:14px; transition: transform 0.2s; }
         .route:hover .route__cta svg { transform: translateX(4px); }
 
+        /* DOWNLOAD */
+        .download-section {
+            display: flex;
+            justify-content: center;
+            margin-bottom: var(--s-56);
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--s-12);
+            padding: 16px 32px;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--color-licorice);
+            background: var(--color-matcha);
+            border: 1px solid var(--color-matcha);
+            border-radius: 999px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(209,244,112,0.3);
+        }
+        .download-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
         /* META */
         .meta {
             display: flex; flex-wrap: wrap; gap: var(--s-40);
@@ -389,6 +423,17 @@
                 </a>
             </div>
 
+            <div class="download-section">
+                <button class="download-btn" id="downloadSkills">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Download skill files
+                </button>
+            </div>
+
             <div class="meta">
                 <div class="meta__item"><span class="meta__label">System</span><span>AI Slides 1.0</span></div>
                 <div class="meta__item"><span class="meta__label">Version</span><span>2026.05</span></div>
@@ -443,6 +488,36 @@
             document.documentElement.setAttribute('data-theme', newTheme);
             localStorage.setItem('zendesk-slides-theme', newTheme);
             updateThemeIcon(newTheme);
+        });
+
+        // Download skill files
+        const downloadBtn = document.getElementById('downloadSkills');
+        const skillFiles = [
+            'zendesk-slides-skill.md',
+            'slide-archetypes.md',
+            'voice-for-slides.md',
+            'zendesk-brand-skill.md'
+        ];
+
+        downloadBtn.addEventListener('click', async () => {
+            for (const file of skillFiles) {
+                try {
+                    const response = await fetch(file);
+                    const blob = await response.blob();
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = file;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    window.URL.revokeObjectURL(url);
+                    // Small delay between downloads
+                    await new Promise(resolve => setTimeout(resolve, 100));
+                } catch (error) {
+                    console.error(`Failed to download ${file}:`, error);
+                }
+            }
         });
     </script>
 </body>
