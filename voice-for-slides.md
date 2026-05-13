@@ -1,3 +1,8 @@
+---
+name: voice-for-slides
+description: Zendesk brand voice principles adapted for slide copy. Covers the four slide-specific principles (cut ruthlessly, lead with verbs/nouns, one idea per slide, write headlines last), sentence-level rules, and before/after examples. Use when writing or reviewing slide copy.
+---
+
 # Voice for slides
 
 Slide copy obeys the master Zendesk brand voice (see `zendesk-brand-skill.md` for the full principles). This reference adds slide-specific rules because slides are a constrained medium: every word competes for attention against imagery, and the reader has seconds, not minutes.

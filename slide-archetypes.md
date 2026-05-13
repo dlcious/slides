@@ -1,3 +1,8 @@
+---
+name: slide-archetypes
+description: Reference guide for all Zendesk AI Slides archetypes. Includes when to use each slide type, layout rules, eyebrow formats, imagery guidelines, copy constraints, prompt scaffolds, and on-brand examples. Use when drafting slides or choosing the right archetype for specific content.
+---
+
 # Slide archetypes — prompt scaffolds and layout notes
 
 One section per archetype from the **Zendesk AI Slides** theme. Each includes:
