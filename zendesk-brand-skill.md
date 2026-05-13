@@ -181,14 +181,6 @@ When creating Zendesk-branded work:
 
 ---
 
-## Full Visual Reference
-
-For comprehensive visual examples and design context:
-- [references/zendesk-brand-visual-reference.html](references/zendesk-brand-visual-reference.html)
-- [references/zendesk-brand-code-reference.html](references/zendesk-brand-code-reference.html)
-
----
-
 ## Brand Philosophy
 
 **"The customer is always human."**
