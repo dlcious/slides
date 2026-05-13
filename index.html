@@ -493,19 +493,21 @@
         // Download skill files
         const downloadBtn = document.getElementById('downloadSkills');
         const skillFiles = [
-            'zendesk-slides.skill',
-            'zendesk-brand.skill'
+            { url: 'https://raw.githubusercontent.com/dlcious/slides/main/zendesk-slides-skill.md', name: 'zendesk-slides-skill.md' },
+            { url: 'https://raw.githubusercontent.com/dlcious/slides/main/zendesk-brand-skill.md', name: 'zendesk-brand-skill.md' },
+            { url: 'https://raw.githubusercontent.com/dlcious/slides/main/slide-archetypes.md', name: 'slide-archetypes.md' },
+            { url: 'https://raw.githubusercontent.com/dlcious/slides/main/voice-for-slides.md', name: 'voice-for-slides.md' }
         ];
 
         downloadBtn.addEventListener('click', async () => {
             for (const file of skillFiles) {
                 try {
-                    const response = await fetch(file);
+                    const response = await fetch(file.url);
                     const blob = await response.blob();
                     const url = window.URL.createObjectURL(blob);
                     const a = document.createElement('a');
                     a.href = url;
-                    a.download = file;
+                    a.download = file.name;
                     document.body.appendChild(a);
                     a.click();
                     document.body.removeChild(a);
@@ -513,7 +515,7 @@
                     // Small delay between downloads
                     await new Promise(resolve => setTimeout(resolve, 100));
                 } catch (error) {
-                    console.error(`Failed to download ${file}:`, error);
+                    console.error(`Failed to download ${file.name}:`, error);
                 }
             }
         });
